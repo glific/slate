@@ -2,13 +2,11 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
   - graphql
   - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
+  - <a href='https://glific.io/'>Glific</a>
 
 includes:
   - tags
@@ -28,8 +26,6 @@ code_clipboard: true
 Welcome to the Glific API! You can use our API to access the Glific API endpoint, which can get information on various data types, high level concepts, functions and more on GLific
 
 We have language bindings in GraphQL and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate).
 
 # Authentication
 
