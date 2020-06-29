@@ -15,6 +15,7 @@ includes:
   - providers
   - contacts
   - tags
+  - contact_tag
   - saved_searches
   - search
   - messages
