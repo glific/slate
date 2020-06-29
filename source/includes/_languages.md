@@ -255,7 +255,7 @@ In case of errors, all the above functions return an error object like the below
     "deleteLanguage": {
       "errors": [
         {
-          "key": "Elixir.Glific.Languages.Language 3",
+          "key": "Elixir.Glific.Settings.Language 3",
           "message": "Resource not found"
         }
       ]
