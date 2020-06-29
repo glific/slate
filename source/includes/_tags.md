@@ -113,7 +113,7 @@ query tag($id: ID!) {
 
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
-ID | <a href="#id">ID</a>
+ID | <a href="#id">ID</a> | nil ||
 
 ## Count all Tags
 

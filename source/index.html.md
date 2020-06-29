@@ -2,6 +2,7 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
+  - shell
   - graphql
   - javascript
 
@@ -9,14 +10,18 @@ toc_footers:
   - <a href='https://glific.io/'>Glific</a>
 
 includes:
+  - languages
+  - organizations
+  - providers
+  - tags
+  - saved_searches
   - messages
   - messages_media
   - messages_tags
-  - organizations
-  - languages
-  - tags
   - conversations
-  - saved_searches
+  - groups
+  - contact_group
+  - message_group
   - types
   - scalars
   - enums

@@ -236,7 +236,7 @@ mutation updateOrganization($id: ID!, $input:OrganizationInput!) {
 {
   "id": "1",
   "input": {
-    "display_name": "updated organization display name",
+    "display_name": "updated organization display name"
   }
 }
 ```
