@@ -113,7 +113,7 @@ query tag($id: ID!) {
 
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
-filter | <a href="#tagfilter">TagFilter</a> | nil | filter the list
+id | <a href="#id">ID</a> | nil |
 
 ## Count all Tags
 

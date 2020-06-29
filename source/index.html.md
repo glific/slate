@@ -2,6 +2,7 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
+  - shell
   - graphql
   - javascript
 
@@ -14,6 +15,9 @@ includes:
   - tags
   - messages
   - conversations
+  - groups
+  - contact_group
+  - message_group
   - types
   - scalars
   - enums
