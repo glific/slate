@@ -213,7 +213,11 @@ mutation deleteGroup($id: ID!) {
 
 ```json
 {
-  "id": 2
+  "data": {
+    "deleteGroup": {
+      "errors": null
+    }
+  }
 }
 ```
 

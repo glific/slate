@@ -108,7 +108,7 @@ query message($id: ID!) {
 
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
-filter | <a href="#messagefilter">MessageFilter</a> | nil | filter the list
+ID | <a href="#id">ID</a>
 
 ## Count all Messages
 

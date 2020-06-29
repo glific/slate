@@ -10,6 +10,8 @@ toc_footers:
   - <a href='https://glific.io/'>Glific</a>
 
 includes:
+  - messages
+  - message_media
   - organizations
   - languages
   - tags
