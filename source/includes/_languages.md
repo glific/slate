@@ -44,6 +44,11 @@ This returns all the languages
 
 None
 
+### Return Parameters
+Type | Description
+| ---- | -----------
+[<a href="#language">Language</a>] | List of languages
+
 ## Get a specific language by ID
 
 ```graphql
@@ -82,6 +87,11 @@ Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 id | <a href="#id">ID</a>! | required ||
 
+### Return Parameters
+Type | Description
+| ---- | -----------
+<a href="#languageresult">LanguageResult</a> | Queried Language
+
 ## Count all Languages
 
 ```graphql
@@ -103,6 +113,11 @@ query countLanguages {
 ### Query Parameters
 
 None
+
+### Return Parameters
+Type | Description
+| ---- | -----------
+<a href="#int">Int</a> | Count of languages
 
 ## Create a Lanuguage
 
@@ -278,7 +293,7 @@ Parameter | Type | Default | Description
 id | <a href="#id">ID</a>! | required ||
 
 ### Return Parameters
-Parameter | Type | Default | Description
+Type | Description
 --------- | ---- | ------- | -----------
 <a href="#languageresult">LanguageResult</a> | An error object or empty
 

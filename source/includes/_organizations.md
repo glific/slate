@@ -57,6 +57,11 @@ Parameter | Type | Default | Description
 filter | <a href="#organizationfilter">OrganizationFilter</a> | nil | filter the list
 order | <a href="#sortorder">SortOrder</a> | ASC | ASC / DESC
 
+### Return Parameters
+Type | Description
+| ---- | -----------
+[<a href="#organization">Organization</a>] | List of organization
+
 ## Get a specific Organization by ID
 
 ```graphql
@@ -103,6 +108,11 @@ Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 filter | <a href="#organizationfilter">OrganizationFilter</a> | nil | filter the list
 
+### Return Parameters
+Type | Description
+| ---- | -----------
+<a href="#organizationresult">OrganizationResult</a> | Queried Organization
+
 ## Count all Organizations
 
 ```graphql
@@ -132,6 +142,11 @@ query countOrganizations($filter: OrganizationFilter) {
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 filter | <a href="#organizationfilter">OrganizationFilter</a> | nil | filter the list
+
+### Return Parameters
+Type | Description
+| ---- | -----------
+<a href="#int">Int</a> | Count of filtered organization
 
 ## Create an Organization
 
@@ -324,7 +339,7 @@ Parameter | Type | Default | Description
 id | <a href="#id">ID</a>! | required ||
 
 ### Return Parameters
-Parameter | Type | Default | Description
+Type | Description
 --------- | ---- | ------- | -----------
 <a href="#organizationresult">OrganizationResult</a> | An error object or empty
 

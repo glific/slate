@@ -55,6 +55,11 @@ Parameter | Type | Default | Description
 filter | <a href="#contactfilter">ContactFilter</a> | nil | filter the list
 opts | <a href="#opts">Opts</a> | nil | limit / offset / sort order options
 
+### Return Parameters
+Type | Description
+| ---- | -----------
+[<a href="#contact">Contact</a>] | List of contacts
+
 ## Get a specific Contact by ID
 
 ```graphql
@@ -108,6 +113,11 @@ Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 ID | <a href="#id">ID</a> | nil ||
 
+### Return Parameters
+Type | Description
+| ---- | -----------
+<a href="#contactresult">ContactResult</a> | Queried Contact
+
 ## Count all Contacts
 
 ```graphql
@@ -137,6 +147,11 @@ query countContacts($filter: ContactFilter) {
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 filter | <a href="#contactfilter">ContactFilter</a> | nil | filter the list
+
+### Return Parameters
+Type | Description
+| ---- | -----------
+<a href="#int">Int</a> | Count of filtered contacts
 
 ## Create a Contact
 
@@ -325,7 +340,7 @@ Parameter | Type | Default | Description
 id | <a href="#id">ID</a>! | required ||
 
 ### Return Parameters
-Parameter | Type | Default | Description
+Type | Description
 --------- | ---- | ------- | -----------
 <a href="#contactresult">ContactResult</a> | An error object or empty
 

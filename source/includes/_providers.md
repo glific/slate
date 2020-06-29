@@ -44,6 +44,11 @@ Parameter | Type | Default | Description
 filter | <a href="#providerfilter">ProviderFilter</a> | nil | filter the list
 order | <a href="#sortorder">SortOrder</a> | ASC | ASC / DESC
 
+### Return Parameters
+Type | Description
+| ---- | -----------
+[<a href="#provider">Provider</a>] | List of providers
+
 ## Get a specific Provider by ID
 
 ```graphql
@@ -86,6 +91,11 @@ Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 filter | <a href="#providerfilter">ProviderFilter</a> | nil | filter the list
 
+### Return Parameters
+Type | Description
+| ---- | -----------
+<a href="#providerresult">ProviderResult</a> | Queried Provider
+
 ## Count all Providers
 
 ```graphql
@@ -114,6 +124,11 @@ query countProviders($filter: ProviderFilter) {
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 filter | <a href="#providerfilter">ProviderFilter</a> | nil | filter the list
+
+### Return Parameters
+Type | Description
+| ---- | -----------
+<a href="#int">Int</a> | Count of filtered providers
 
 ## Create a Provider
 
