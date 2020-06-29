@@ -10,6 +10,7 @@ toc_footers:
 
 includes:
   - organizations
+  - languages
   - tags
   - messages
   - conversations
