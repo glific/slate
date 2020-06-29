@@ -84,6 +84,12 @@ The Message Status enum
 <td valign="top"><strong>SENT</strong></td>
 <td></td>
 </tr>
+
+<tr>
+<td valign="top"><strong>CONTACT OPT OUT</strong></td>
+<td></td>
+</tr>
+
 </tbody>
 </table>
 

@@ -10,6 +10,7 @@ toc_footers:
 
 includes:
   - messages
+  - message_media
   - tags
   - conversations
   - organizations
