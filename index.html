@@ -335,6 +335,31 @@
                     <a href="#delete-a-tag" class="toc-h2 toc-link" data-title="Delete a Tag">Delete a Tag</a>
                   </li>
                   <li>
+                    <a href="#tag-objects" class="toc-h2 toc-link" data-title="Tag Objects">Tag Objects</a>
+                  </li>
+                  <li>
+                    <a href="#tag-inputs" class="toc-h2 toc-link" data-title="Tag Inputs">Tag Inputs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#conversations" class="toc-h1 toc-link" data-title="Conversations">Conversations</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-conversations" class="toc-h2 toc-link" data-title="Get All Conversations">Get All Conversations</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-conversation-by-contact-id" class="toc-h2 toc-link" data-title="Get a specific Conversation by Contact ID">Get a specific Conversation by Contact ID</a>
+                  </li>
+                  <li>
+                    <a href="#conversation-objects" class="toc-h2 toc-link" data-title="Conversation Objects">Conversation Objects</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#glific-system" class="toc-h1 toc-link" data-title="Glific System">Glific System</a>
+              <ul class="toc-list-h2">
+                  <li>
                     <a href="#objects" class="toc-h2 toc-link" data-title="Objects">Objects</a>
                   </li>
                   <li>
@@ -816,7 +841,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='objects'>Objects</h2><h3 id='tag'>Tag</h3>
+<h2 id='tag-objects'>Tag Objects</h2><h3 id='tag'>Tag</h3>
 <table>
 <thead>
 <tr>
@@ -892,7 +917,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tr>
 </tbody>
 </table>
-<h2 id='inputs'>Inputs</h2><h3 id='tagfilter'>TagFilter</h3>
+<h2 id='tag-inputs'>Tag Inputs</h2><h3 id='tagfilter'>TagFilter</h3>
 <p>Filtering options for tags</p>
 
 <table>
@@ -1016,6 +1041,376 @@ Match the parent
 <tr>
 <td colspan="2" valign="top"><strong>languageId</strong></td>
 <td valign="top"><a href="#id">ID</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id='conversations'>Conversations</h1><h2 id='get-all-conversations'>Get All Conversations</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">conversations</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">ConversationsFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$contactOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">,</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">conversations</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w"> </span><span class="n">contactOpts</span><span class="p">:</span><span class="nv">$contactOpts</span><span class="p">,</span><span class="w"> </span><span class="n">messageOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">contact</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">name</span><span class="w">
+      </span><span class="n">phone</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">messages</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">body</span><span class="w">
+      </span><span class="n">flow</span><span class="w">
+      </span><span class="n">type</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">messageOpts</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">limit</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">order</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">ASC</span><span class="err">"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">"</span><span class="n">contactOpts</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">order</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">DESC</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">limit</span><span class="err">":</span><span class="w"> </span><span class="err">2</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">"</span><span class="n">filter</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"conversations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"194"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rossie Bruen"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"657/719-5377"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"There is nothing either good or bad, but thinking makes it so."</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INBOUND"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8576"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Althea Hirthe"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"542-462-6684"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Now is the winter of our discontent."</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OUTBOUND"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2297"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This returns all the conversations starting with most recent. You can use limit, offset and
+sort order options on both the contacts and the conversations returned</p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filter</td>
+<td><a href="#conversationfilter">ConversationFilter</a></td>
+<td>nil</td>
+<td>filter the conversations</td>
+</tr>
+<tr>
+<td>contactOpts</td>
+<td><a href="#opts">Opts</a></td>
+<td>nil</td>
+<td>limit / offset / sort order contact options</td>
+</tr>
+<tr>
+<td>messageOpts</td>
+<td><a href="#opts">Opts</a></td>
+<td>nil</td>
+<td>limit / offset / sort order message options</td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>[<a href="#conversation">Conversation</a>]</td>
+<td>A list of conversation objects</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-conversation-by-contact-id'>Get a specific Conversation by Contact ID</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">conversation</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">ConversationFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$contactId</span><span class="p">:</span><span class="w"> </span><span class="n">Gid</span><span class="p">!,</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">conversation</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w"> </span><span class="n">contactId</span><span class="p">:</span><span class="w"> </span><span class="nv">$contactId</span><span class="p">,</span><span class="w"> </span><span class="n">messageOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">contact</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">name</span><span class="w">
+      </span><span class="n">phone</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">messages</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">body</span><span class="w">
+      </span><span class="n">flow</span><span class="w">
+      </span><span class="n">type</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">messageOpts</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">limit</span><span class="err">":</span><span class="w"> </span><span class="err">3</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">order</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">ASC</span><span class="err">"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">"</span><span class="n">contactId</span><span class="err">":"194"</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">filter</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"conversation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"194"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rossie Bruen"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"657/719-5377"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"There is nothing either good or bad, but thinking makes it so."</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INBOUND"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8576"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rich gifts wax poor when givers prove unkind."</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OUTBOUND"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8575"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What's in a name? That which we call a rose by any other name would smell as sweet."</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INBOUND"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8574"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filter</td>
+<td><a href="#conversationfilter">ConversationFilter</a></td>
+<td>nil</td>
+<td>filter the conversation</td>
+</tr>
+<tr>
+<td>contactId</td>
+<td><a href="#id">ID</a></td>
+<td>nil</td>
+<td></td>
+</tr>
+<tr>
+<td>messageOpts</td>
+<td><a href="#opts">Opts</a></td>
+<td>nil</td>
+<td>limit / offset / sort order message options</td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-2'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#conversation">Conversation</a></td>
+<td>The conversation object</td>
+</tr>
+</tbody></table>
+<h2 id='conversation-objects'>Conversation Objects</h2><h3 id='conversation'>Conversation</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>contact</strong></td>
+<td valign="top"><a href="#contact">Contact</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>messages</strong></td>
+<td valign="top">[<a href="#message">Message</a>]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id='conversationfilter'>ConversationFilter</h3>
+<p>Filtering options for conversations</p>
+
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>excludeTags</strong></td>
+<td valign="top">[<a href="#gid">Gid</a>]</td>
+<td>
+
+Exclude conversations with these tags
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>includeTags</strong></td>
+<td valign="top">[<a href="#gid">Gid</a>]</td>
+<td>
+
+Include conversations with these tags
+
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id='conversationsfilter'>ConversationsFilter</h3>
+<p>Filtering options for conversations</p>
+
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>excludeTags</strong></td>
+<td valign="top">[<a href="#gid">Gid</a>]</td>
+<td>
+
+Exclude conversations with these tags
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>id</strong></td>
+<td valign="top"><a href="#gid">Gid</a></td>
+<td>
+
+Match one contact ID
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>ids</strong></td>
+<td valign="top">[<a href="#gid">Gid</a>]</td>
+<td>
+
+Match multiple contact ids
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>includeTags</strong></td>
+<td valign="top">[<a href="#gid">Gid</a>]</td>
+<td>
+
+Include conversations with these tags
+
+</td>
+</tr>
+</tbody>
+</table>
+<h1 id='glific-system'>Glific System</h1><h2 id='objects'>Objects</h2><h3 id='inputerror'>InputError</h3>
+<p>An error encountered trying to persist input</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>key</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>message</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id='inputs'>Inputs</h2><h3 id='opts'>Opts</h3>
+<p>Lets collapse sort order, limit and offset into its own little groups</p>
+
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>limit</strong></td>
+<td valign="top"><a href="#int">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>offset</strong></td>
+<td valign="top"><a href="#int">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>order</strong></td>
+<td valign="top"><a href="#sortorder">SortOrder</a></td>
 <td></td>
 </tr>
 </tbody>
