@@ -9,6 +9,7 @@ toc_footers:
   - <a href='https://glific.io/'>Glific</a>
 
 includes:
+  - messages
   - tags
   - conversations
   - types
