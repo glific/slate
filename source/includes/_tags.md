@@ -329,7 +329,7 @@ Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 <a href="#tagresult">TagResult</a> | An error object or empty
 
-## Objects
+## Tag Objects
 
 ### Tag
 
@@ -411,7 +411,7 @@ Parameter | Type | Default | Description
 </tbody>
 </table>
 
-## Inputs ##
+## Tag Inputs ##
 
 
 ### TagFilter ###

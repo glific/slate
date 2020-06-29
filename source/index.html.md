@@ -12,6 +12,8 @@ toc_footers:
 
 includes:
   - tags
+  - conversations
+  - types
   - scalars
   - enums
   - errors
