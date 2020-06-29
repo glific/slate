@@ -276,10 +276,6 @@ Type | Description
 ```graphql
 mutation deleteOrganization($id: ID!) {
   deleteOrganization(id: $id) {
-    organization {
-      id
-      name
-    }
     errors {
       key
       message
@@ -298,8 +294,7 @@ mutation deleteOrganization($id: ID!) {
 {
   "data": {
     "deleteOrganization": {
-      "errors": null,
-      "organization": null
+      "errors": null
     }
   }
 }

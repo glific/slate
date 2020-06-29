@@ -13,6 +13,7 @@ includes:
   - languages
   - organizations
   - providers
+  - contacts
   - tags
   - saved_searches
   - search

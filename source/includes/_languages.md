@@ -40,6 +40,10 @@ query languages {
 ```
 This returns all the languages
 
+### Query Parameters
+
+None
+
 ## Get a specific language by ID
 
 ```graphql
@@ -95,6 +99,10 @@ query countLanguages {
   }
 }
 ```
+
+### Query Parameters
+
+None
 
 ## Create a Lanuguage
 
@@ -240,8 +248,7 @@ mutation deleteLanguage($id: ID!) {
 {
   "data": {
     "deleteLanguage": {
-      "errors": null,
-      "language": null
+      "errors": null
     }
   }
 }
