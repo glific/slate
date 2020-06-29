@@ -288,7 +288,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;graphql&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;graphql&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -296,9 +296,8 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-1e815a84.png" class="logo" alt="" />
+      <img src="images/logo-f26e3b37.png" class="logo" alt="" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="graphql">graphql</a>
               <a href="#" data-language-name="javascript">javascript</a>
         </div>
@@ -312,6 +311,35 @@
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#organizations" class="toc-h1 toc-link" data-title="Organizations">Organizations</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-organizations" class="toc-h2 toc-link" data-title="Get All Organizations">Get All Organizations</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-organization-by-id" class="toc-h2 toc-link" data-title="Get a specific Organization by ID">Get a specific Organization by ID</a>
+                  </li>
+                  <li>
+                    <a href="#count-all-organizations" class="toc-h2 toc-link" data-title="Count all Organizations">Count all Organizations</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-organization" class="toc-h2 toc-link" data-title="Create an Organization">Create an Organization</a>
+                  </li>
+                  <li>
+                    <a href="#update-an-organization" class="toc-h2 toc-link" data-title="Update an Organization">Update an Organization</a>
+                  </li>
+                  <li>
+                    <a href="#delete-an-organization" class="toc-h2 toc-link" data-title="Delete an Organization">Delete an Organization</a>
+                  </li>
+                  <li>
+                    <a href="#organization-objects" class="toc-h2 toc-link" data-title="Organization Objects">Organization Objects</a>
+                  </li>
+                  <li>
+                    <a href="#organization-inputs" class="toc-h2 toc-link" data-title="Organization Inputs">Organization Inputs</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#tags" class="toc-h1 toc-link" data-title="Tags">Tags</a>
@@ -339,6 +367,41 @@
                   </li>
                   <li>
                     <a href="#tag-inputs" class="toc-h2 toc-link" data-title="Tag Inputs">Tag Inputs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#messages" class="toc-h1 toc-link" data-title="Messages">Messages</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-messages" class="toc-h2 toc-link" data-title="Get All Messages">Get All Messages</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-message-by-id" class="toc-h2 toc-link" data-title="Get a specific Message by ID">Get a specific Message by ID</a>
+                  </li>
+                  <li>
+                    <a href="#count-all-messages" class="toc-h2 toc-link" data-title="Count all Messages">Count all Messages</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-message" class="toc-h2 toc-link" data-title="Create a Message">Create a Message</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-message" class="toc-h2 toc-link" data-title="Update a Message">Update a Message</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-message" class="toc-h2 toc-link" data-title="Delete a Message">Delete a Message</a>
+                  </li>
+                  <li>
+                    <a href="#subscription-for-sent-message" class="toc-h2 toc-link" data-title="Subscription for Sent Message">Subscription for Sent Message</a>
+                  </li>
+                  <li>
+                    <a href="#subscription-for-received-message" class="toc-h2 toc-link" data-title="Subscription for Received Message">Subscription for Received Message</a>
+                  </li>
+                  <li>
+                    <a href="#message-objects" class="toc-h2 toc-link" data-title="Message Objects">Message Objects</a>
+                  </li>
+                  <li>
+                    <a href="#message-inputs" class="toc-h2 toc-link" data-title="Message Inputs">Message Inputs</a>
                   </li>
               </ul>
           </li>
@@ -418,8 +481,7 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='https://glific.io/'>Glific</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -429,8 +491,6 @@
 <p>Welcome to the Glific API! You can use our API to access the Glific API endpoint, which can get information on various data types, high level concepts, functions and more on GLific</p>
 
 <p>We have language bindings in GraphQL and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>To authorize, use this code: (need to replace this section with Glific Auth)</p>
@@ -455,6 +515,624 @@ curl <span class="s2">"api_endpoint_here"</span>
 <aside class="notice">
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
+<h1 id='organizations'>Organizations</h1><h2 id='get-all-organizations'>Get All Organizations</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">organizations</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">OrganizationFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$order</span><span class="p">:</span><span class="w"> </span><span class="n">SortOrder</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">organizations</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w"> </span><span class="n">order</span><span class="p">:</span><span class="nv">$order</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">id</span><span class="w">
+    </span><span class="n">name</span><span class="w">
+    </span><span class="n">defaultLanguage</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">label</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">order</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">ASC</span><span class="err">"</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">filter</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">defaultLanguage</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Hindi</span><span class="err">"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"organizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"defaultLanguage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hindi"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Organization"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"defaultLanguage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hindi"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Slam Out Loud"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This returns all the organizations filtered by the input <a href="#organizationfilter">OrganizationFilter</a></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filter</td>
+<td><a href="#organizationfilter">OrganizationFilter</a></td>
+<td>nil</td>
+<td>filter the list</td>
+</tr>
+<tr>
+<td>order</td>
+<td><a href="#sortorder">SortOrder</a></td>
+<td>ASC</td>
+<td>ASC / DESC</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-organization-by-id'>Get a specific Organization by ID</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">organization</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">organization</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">organization</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">name</span><span class="w">
+      </span><span class="n">defaultLanguage</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">id</span><span class="w">
+        </span><span class="n">label</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"defaultLanguage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hindi"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Organization"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filter</td>
+<td><a href="#organizationfilter">OrganizationFilter</a></td>
+<td>nil</td>
+<td>filter the list</td>
+</tr>
+</tbody></table>
+<h2 id='count-all-organizations'>Count all Organizations</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">countOrganizations</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">OrganizationFilter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">countOrganizations</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">filter</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">language</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Hindi</span><span class="err">"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"countOrganizations"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filter</td>
+<td><a href="#organizationfilter">OrganizationFilter</a></td>
+<td>nil</td>
+<td>filter the list</td>
+</tr>
+</tbody></table>
+<h2 id='create-an-organization'>Create an Organization</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createOrganization</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="n">OrganizationInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">createOrganization</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">organization</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">name</span><span class="w">
+      </span><span class="n">displayName</span><span class="w">
+      </span><span class="n">contactName</span><span class="w">
+            </span><span class="n">email</span><span class="w">
+      </span><span class="n">provider</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">id</span><span class="w">
+        </span><span class="n">name</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+      </span><span class="n">providerKey</span><span class="w">
+      </span><span class="n">providerNumber</span><span class="w">
+      </span><span class="n">defaultLanguage</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">id</span><span class="w">
+        </span><span class="n">label</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">key</span><span class="w">
+      </span><span class="n">message</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">name</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">new_organization</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">displayName</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">new</span><span class="w"> </span><span class="n">organization</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">contactName</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">organization</span><span class="err">'</span><span class="n">s</span><span class="w"> </span><span class="n">contact</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">email</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">test</span><span class="k">@test</span><span class="err">.</span><span class="n">com</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">providerId</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">providerKey</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Key</span><span class="w"> </span><span class="n">provided</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">provider</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">providerNumber</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Number</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">defaultLanguageId</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"createOrganization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"contactName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"organization's contact"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"defaultLanguage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hindi"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new organization"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@test.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new_organization"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Provider"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"providerKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Key provided by provider"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"providerNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Number"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>input</td>
+<td><a href="#organizationinput">OrganizationInput</a></td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#organizationresult">OrganizationResult</a></td>
+<td>The created organization object</td>
+</tr>
+</tbody></table>
+<h2 id='update-an-organization'>Update an Organization</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateOrganization</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$input</span><span class="p">:</span><span class="n">OrganizationInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updateOrganization</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">organization</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">name</span><span class="w">
+      </span><span class="n">displayName</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">key</span><span class="w">
+      </span><span class="n">message</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">display_name</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">updated</span><span class="w"> </span><span class="n">organization</span><span class="w"> </span><span class="n">display</span><span class="w"> </span><span class="n">name</span><span class="err">"</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"updateOrganization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"updated organization display name"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Organization"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-5'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><a href="#id">ID</a>!</td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>input</td>
+<td><a href="#organizationinput">OrganizationInput</a></td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-2'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#organizationresult">OrganizationResult</a></td>
+<td>The updated organization object</td>
+</tr>
+</tbody></table>
+<h2 id='delete-an-organization'>Delete an Organization</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">deleteOrganization</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">deleteOrganization</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">organization</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">name</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">key</span><span class="w">
+      </span><span class="n">message</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"3"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"deleteOrganization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>In case of errors, all the above functions return an error object like the below</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"deleteOrganization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Elixir.Glific.Partners.Organization 3"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resource not found"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><a href="#id">ID</a>!</td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-3'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#organizationresult">OrganizationResult</a></td>
+<td>An error object or empty</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='organization-objects'>Organization Objects</h2><h3 id='organization'>Organization</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>contact</strong></td>
+<td valign="top"><a href="#contact">Contact</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>contactName</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>defaultLanguage</strong></td>
+<td valign="top"><a href="#language">Language</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>displayName</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>email</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>id</strong></td>
+<td valign="top"><a href="#id">ID</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>provider</strong></td>
+<td valign="top"><a href="#provider">Provider</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>providerKey</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>providerNumber</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id='organizationresult'>OrganizationResult</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>errors</strong></td>
+<td valign="top">[<a href="#inputerror">InputError</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>organization</strong></td>
+<td valign="top"><a href="#organization">Organization</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id='organization-inputs'>Organization Inputs</h2><h3 id='organizationfilter'>OrganizationFilter</h3>
+<p>Filtering options for organizations</p>
+
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>contactName</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Match the contact name
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>defaultLanguage</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Match the default language
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>displayName</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Match the display name
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>email</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Match the email
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Match the name
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>provider</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Match the provider
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>providerNumber</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Match the whatsapp number of organization
+
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id='organizationinput'>OrganizationInput</h3>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>contactId</strong></td>
+<td valign="top"><a href="#id">ID</a></td>
+<td>
+
+Nullable
+
+</td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Unique
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>contactName</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>defaultLanguageId</strong></td>
+<td valign="top"><a href="#id">ID</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>displayName</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>email</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>providerId</strong></td>
+<td valign="top"><a href="#id">ID</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>providerKey</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>providerNumber</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h1 id='tags'>Tags</h1><h2 id='get-all-tags'>Get All Tags</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">tags</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">TagFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$opts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">tags</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">:</span><span class="nv">$opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">id</span><span class="w">
@@ -1045,6 +1723,741 @@ Match the parent
 </tr>
 </tbody>
 </table>
+<h1 id='messages'>Messages</h1><h2 id='get-all-messages'>Get All Messages</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">messages</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">MessageFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$opts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">messages</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">:</span><span class="nv">$opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">id</span><span class="w">
+    </span><span class="n">body</span><span class="w">
+    </span><span class="n">type</span><span class="w">
+    </span><span class="n">sender</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">id</span><span class="p">,</span><span class="w">
+        </span><span class="n">name</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">opts</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">order</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">ASC</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">limit</span><span class="err">":</span><span class="w"> </span><span class="err">10</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">offset</span><span class="err">":</span><span class="w"> </span><span class="err">0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">"</span><span class="n">filter</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">body</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Hello</span><span class="err">"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello, how are you"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Sender"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello world"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Althea Hirthe"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This returns all the messages for the organization filtered by the input <a href="#messagefilter">MessageFilter</a></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filter</td>
+<td><a href="#messagefilter">MessageFilter</a></td>
+<td>nil</td>
+<td>filter the list</td>
+</tr>
+<tr>
+<td>opts</td>
+<td><a href="#opts">Opts</a></td>
+<td>nil</td>
+<td>limit / offset / sort order options</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-message-by-id'>Get a specific Message by ID</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">message</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">message</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">message</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">body</span><span class="w">
+      </span><span class="n">receiver</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">id</span><span class="w">
+        </span><span class="n">name</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Can one desire too much of a good thing?."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chrissy Cron"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filter</td>
+<td><a href="#messagefilter">MessageFilter</a></td>
+<td>nil</td>
+<td>filter the list</td>
+</tr>
+</tbody></table>
+<h2 id='count-all-messages'>Count all Messages</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">countMessages</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">MessageFilter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">countMessages</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">filter</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">body</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">hello</span><span class="err">"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"countMessage"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filter</td>
+<td><a href="#messagefilter">MessageFilter</a></td>
+<td>nil</td>
+<td>filter the list</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-message'>Create a Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createMessage</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="n">MessageInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">createMessage</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">message</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">body</span><span class="w">
+      </span><span class="n">sender</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">id</span><span class="w">
+        </span><span class="n">name</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">key</span><span class="w">
+      </span><span class="n">message</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">body</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">So</span><span class="w"> </span><span class="n">wise</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="n">young</span><span class="p">,</span><span class="w"> </span><span class="n">they</span><span class="w"> </span><span class="n">say</span><span class="p">,</span><span class="w"> </span><span class="n">do</span><span class="w"> </span><span class="n">never</span><span class="w"> </span><span class="n">live</span><span class="w"> </span><span class="n">long</span><span class="err">."</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">type</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">TEXT</span><span class="err">"</span><span class="w">
+    </span><span class="err">"</span><span class="n">flow</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">TEXT</span><span class="err">"</span><span class="w">
+    </span><span class="err">"</span><span class="n">senderId</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">receiverId</span><span class="err">":</span><span class="w"> </span><span class="err">3</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"createMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"So wise so young, they say, do never live long."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adelle Cavin"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>input</td>
+<td><a href="#messageinput">MessageInput</a></td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#messageresult">MessageResult</a></td>
+<td>The created message object</td>
+</tr>
+</tbody></table>
+<h2 id='update-a-message'>Update a Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateMessage</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$input</span><span class="p">:</span><span class="n">MessageInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updateMessage</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">message</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">body</span><span class="w">
+      </span><span class="n">sender</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">id</span><span class="w">
+        </span><span class="n">name</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">key</span><span class="w">
+      </span><span class="n">message</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"26"</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">body</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">It</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">east</span><span class="p">,</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">Juliet</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">sun</span><span class="err">."</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="err">```</span><span class="w">
+
+</span><span class="err">&gt;</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">above</span><span class="w"> </span><span class="k">query</span><span class="w"> </span><span class="n">returns</span><span class="w"> </span><span class="n">JSON</span><span class="w"> </span><span class="n">structured</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="n">this</span><span class="err">:</span><span class="w">
+
+</span><span class="err">```</span><span class="n">json</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">updateMessage</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="err">"</span><span class="n">errors</span><span class="err">":</span><span class="w"> </span><span class="n">null</span><span class="p">,</span><span class="w">
+      </span><span class="err">"</span><span class="n">message</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"26"</span><span class="p">,</span><span class="w">
+        </span><span class="err">"</span><span class="n">body</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">It</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">east</span><span class="p">,</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">Juliet</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">sun</span><span class="err">."</span><span class="p">,</span><span class="w">
+        </span><span class="err">"</span><span class="n">sender</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"3"</span><span class="p">,</span><span class="w">
+          </span><span class="err">"</span><span class="n">label</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Conrad</span><span class="w"> </span><span class="n">Barton</span><span class="err">"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-5'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><a href="#id">ID</a>!</td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>input</td>
+<td><a href="#messageInput">MessageInput</a></td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-2'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#messageresult">MessageResult</a></td>
+<td>The updated message object</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-message'>Delete a Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">deleteMessage</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">deleteMessage</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">key</span><span class="w">
+      </span><span class="n">message</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"26"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"deleteMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>In case of errors, all the above functions return an error object like the below</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"deleteMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Elixir.Glific.Messages.Message 26"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resource not found"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><a href="#id">ID</a>!</td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-3'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#messageresult">MessageResult</a></td>
+<td>An error object or empty</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='subscription-for-sent-message'>Subscription for Sent Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">subscription</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">sentMessage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">id</span><span class="w">
+    </span><span class="n">body</span><span class="w">
+    </span><span class="n">flow</span><span class="w">
+    </span><span class="n">type</span><span class="w">
+    </span><span class="n">receiver</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">id</span><span class="w">
+        </span><span class="n">phone</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+    </span><span class="n">sender</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">id</span><span class="w">
+        </span><span class="n">phone</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"sentMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OUTBOUND"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10397"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"484"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"91997612324"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"917834811114"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='return-parameters-4'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#messageresult">MessageResult</a></td>
+<td>An error or object</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='subscription-for-received-message'>Subscription for Received Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">subscription</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">receivedMessage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">id</span><span class="w">
+    </span><span class="n">body</span><span class="w">
+    </span><span class="n">flow</span><span class="w">
+    </span><span class="n">type</span><span class="w">
+    </span><span class="n">receiver</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">id</span><span class="w">
+        </span><span class="n">phone</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+    </span><span class="n">sender</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">id</span><span class="w">
+        </span><span class="n">phone</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"sentMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Message"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OUTBOUND"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10397"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"917834811114"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"91998782231"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='return-parameters-5'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#messageresult">MessageResult</a></td>
+<td>An error or an object</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='message-objects'>Message Objects</h2><h3 id='message'>Message</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>id</strong></td>
+<td valign="top"><a href="#id">ID</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>body</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>type</strong></td>
+<td valign="top"><a href="#boolean">MessageTypesEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>flow</strong></td>
+<td valign="top"><a href="#boolean">MessageFlowEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>ProviderMessageId</strong></td>
+<td valign="top">[<a href="#string">String</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>ProviderStatus</strong></td>
+<td valign="top"><a href="#string">MessageStatusEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>Sender</strong></td>
+<td valign="top"><a href="#contact">Contact</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>Receiver</strong></td>
+<td valign="top"><a href="#contact">Contact</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>Media</strong></td>
+<td valign="top"><a href="#messagemedia">MessageMedia</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>Tags</strong></td>
+<td valign="top"><a href="#tags">Tags</a></td>
+<td></td>
+</tr>
+
+</tbody>
+</table>
+<h3 id='messageresult'>MessageResult</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>errors</strong></td>
+<td valign="top">[<a href="#inputerror">InputError</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>message</strong></td>
+<td valign="top"><a href="#message">Message</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id='message-inputs'>Message Inputs</h2><h3 id='messagefilter'>MessageFilter</h3>
+<p>Filtering options for messages</p>
+
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>body</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Match the body
+
+</td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>Sender</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Match the sender name
+
+</td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>Sender</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Match the sender name
+
+</td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>Receiver</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Match the receiver name
+
+</td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>Either</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Match the phone with either the sender or receiver
+
+</td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>Either</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Match the phone with either the sender or receiver
+
+</td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>ProviderStatus</strong></td>
+<td valign="top"><a href="#messagestatusenum">MessageStatusEnum</a></td>
+<td>
+
+Match the status
+
+</td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>TagsIncluded</strong></td>
+<td valign="top">[<a href="#gid">Gid</a>]</td>
+<td>
+
+Match the tags included
+
+</td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>TagsExcluded</strong></td>
+<td valign="top">[<a href="#gid">Gid</a>]</td>
+<td>
+
+Match the tags excluded
+
+</td>
+</tr>
+
+
+</tbody>
+</table>
+<h3 id='messageinput'>MessageInput</h3>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+
+
+<tr>
+<td colspan="2" valign="top"><strong>body</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>type</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>flow</strong></td>
+<td valign="top"><a href="#message_flow_enum">MessageFlowEnum</a></td>
+<td></td>
+</tr>
+
+
+<tr>
+<td colspan="2" valign="top"><strong>sender_id</strong></td>
+<td valign="top"><a href="#id">Id</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>receiver_id</strong></td>
+<td valign="top"><a href="#id">Id</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>media_id</strong></td>
+<td valign="top"><a href="#id">Id</a></td>
+<td></td>
+</tr>
+
+</tbody>
+</table>
 <h1 id='conversations'>Conversations</h1><h2 id='get-all-conversations'>Get All Conversations</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">conversations</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">ConversationsFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$contactOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">,</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">conversations</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w"> </span><span class="n">contactOpts</span><span class="p">:</span><span class="nv">$contactOpts</span><span class="p">,</span><span class="w"> </span><span class="n">messageOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">contact</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1627,7 +3040,6 @@ represent free-form human-readable text.</p>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
                 <a href="#" data-language-name="graphql">graphql</a>
                 <a href="#" data-language-name="javascript">javascript</a>
           </div>
