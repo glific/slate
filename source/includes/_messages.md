@@ -321,14 +321,7 @@ Parameter | Type | Default | Description
 
 
 
-
-
-
-
-
-
-
-## Sent Message Subscription
+## Subscription for Sent Message
 
 ```graphql
 subscription {
@@ -378,7 +371,7 @@ Parameter | Type | Default | Description
 <a href="#messageresult">MessageResult</a> | An error or object
 
 
-## Received Message Subscription
+## Subscription for Received Message
 
 ```graphql
 subscription {
