@@ -15,6 +15,7 @@ includes:
   - providers
   - tags
   - saved_searches
+  - search
   - messages
   - messages_media
   - messages_tags
