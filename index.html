@@ -317,6 +317,9 @@
                     <a href="#create-a-new-user" class="toc-h2 toc-link" data-title="Create a new user">Create a new user</a>
                   </li>
                   <li>
+                    <a href="#send-an-otp-request-to-verify-a-phone-number" class="toc-h2 toc-link" data-title="Send an OTP request to verify a phone number">Send an OTP request to verify a phone number</a>
+                  </li>
+                  <li>
                     <a href="#create-a-new-session-for-an-existing-user" class="toc-h2 toc-link" data-title="Create a new session for an existing user">Create a new session for an existing user</a>
                   </li>
                   <li>
@@ -854,7 +857,7 @@ We do <strong>not</strong> use GraphQL for authorization, but use REST to genera
 authentication tokens should be included in all GraphQL requests. This section will be expanded to also
 include roles and permissions. User management will be done via GraphQL</p>
 
-<p>The four main API endpoints are listed below</p>
+<p>The main API endpoints are listed below</p>
 <h2 id='create-a-new-user'>Create a new user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span>
   <span class="s2">"user[phone]=test@example.com&amp;user[password]=secret1234 </span><span class="se">\</span><span class="s2">
   &amp;user[password_confirmation]=secret1234"</span>
@@ -865,11 +868,22 @@ include roles and permissions. User management will be done via GraphQL</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:{</span><span class="nl">"renewal_token"</span><span class="p">:</span><span class="s2">"RENEW_TOKEN"</span><span class="p">,</span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"AUTH_TOKEN"</span><span class="p">}}</span><span class="w">
 </span></code></pre></div>
-<p>Glific expects for the access token to be included in all API requests to the server in a header
+<p>Glific expects for the auth token to be included in all API requests to the server in a header
 that looks like the following:</p>
 
 <p><code>Authorization: AUTH_TOKEN</code></p>
-<h2 id='create-a-new-session-for-an-existing-user'>Create a new session for an existing user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span>
+<h2 id='send-an-otp-request-to-verify-a-phone-number'>Send an OTP request to verify a phone number</h2>
+<p>(this needs to be protected by some form of access control)</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span>
+  <span class="s2">"user[phone]=test@example.com"</span>
+  http://glific.io/api/v1/registration/send_otp
+</code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="err">phone</span><span class="p">,</span><span class="w"> </span><span class="nl">"otp"</span><span class="p">:</span><span class="w"> </span><span class="err">otp</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP #{otp} sent successfully to #{phone}"</span><span class="p">}}</span><span class="w">
+</span></code></pre></div><h2 id='create-a-new-session-for-an-existing-user'>Create a new session for an existing user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span>
   <span class="s2">"user[phone]=test@example.com&amp;user[password]=secret1234"</span>
   http://glific.io/api/v1/session
 </code></pre></div>
