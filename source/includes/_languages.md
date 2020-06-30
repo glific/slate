@@ -140,10 +140,10 @@ mutation createLanguage($input:LanguageInput!) {
 
 {
   "input": {
-    "label": "English (United Kingdom)",
+    "label": "Kannada",
     "isActive": true,
-    "locale": "en_UK",
-    "labelLocale": "English"
+    "locale": "kn",
+    "labelLocale": "Kannada"
   }
 }
 ```
@@ -158,9 +158,9 @@ mutation createLanguage($input:LanguageInput!) {
       "language": {
         "id": "3",
         "isActive": true,
-        "label": "English (United Kingdom)",
-        "labelLocale": "English",
-        "locale": "en_UK"
+        "label": "Kannada",
+        "labelLocale": "Kannada",
+        "locale": "kn"
       }
     }
   }
@@ -200,10 +200,10 @@ mutation updateLanguage($id: ID!, $input: LanguageInput!) {
 {
   "id": 3,
   "input": {
-    "label": "English (United Kingdom)",
+    "label": "Kannada",
     "isActive": false,
-    "locale": "en_UK",
-    "labelLocale": "English"
+    "locale": "kn",
+    "labelLocale": "Kannada"
   }
 }
 ```
@@ -218,9 +218,9 @@ mutation updateLanguage($id: ID!, $input: LanguageInput!) {
       "language": {
         "id": "3",
         "isActive": false,
-        "label": "English (United Kingdom)",
-        "labelLocale": "English",
-        "locale": "en_UK"
+        "label": "Kannada",
+        "labelLocale": "Kannada",
+        "locale": "kn"
       }
     }
   }

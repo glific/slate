@@ -14,6 +14,7 @@ includes:
   - organizations
   - providers
   - contacts
+  - users
   - tags
   - contact_tag
   - saved_searches
@@ -21,10 +22,12 @@ includes:
   - messages
   - messages_media
   - messages_tags
+  - session_templates
   - conversations
   - groups
   - contact_group
   - message_group
+  - user_group
   - types
   - scalars
   - enums

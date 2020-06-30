@@ -299,7 +299,7 @@ Parameter | Type | Default | Description
 id | <a href="#id">ID</a>! | required ||
 
 ### Return Parameters
-Parameter | Type | Default | Description
+Type | Description
 --------- | ---- | ------- | -----------
 <a href="#providerresult">ProviderResult</a> | An error object or empty
 

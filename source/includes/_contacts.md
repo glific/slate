@@ -247,7 +247,7 @@ mutation updateContact($id: ID!, $input:ContactInput!) {
 {
   "id": "2",
   "input": {
-    "name": "This is a updated contact for this example",
+    "name": "This is a updated contact for this example"
   }
 }
 ```
