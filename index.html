@@ -312,6 +312,20 @@
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-new-user" class="toc-h2 toc-link" data-title="Create a new user">Create a new user</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-new-session-for-an-existing-user" class="toc-h2 toc-link" data-title="Create a new session for an existing user">Create a new session for an existing user</a>
+                  </li>
+                  <li>
+                    <a href="#renew-an-existing-session" class="toc-h2 toc-link" data-title="Renew an existing session">Renew an existing session</a>
+                  </li>
+                  <li>
+                    <a href="#delete-an-existing-session" class="toc-h2 toc-link" data-title="Delete an existing session">Delete an existing session</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#languages" class="toc-h1 toc-link" data-title="Languages">Languages</a>
@@ -828,34 +842,56 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Glific API! You can use our API to access the Glific API endpoint, which can get information on various data types, high level concepts, functions and more on GLific</p>
+<p>Welcome to the Glific API! You can use this API to access the Glific  endpoint via GraphQL. This is the
+interface used between the Glific FrontEnd and BackEnd and as such is expected to be
+complete, documented and tested.</p>
 
-<p>We have language bindings in GraphQL and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>We have language bindings in GraphQL and shell (for authentication).
+You can view code examples in the dark area to the right.</p>
 <h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code: (need to replace this section with Glific Auth)</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<p>Authorization in Glific is still at a prototype stage and is not currently enforced by the system.
+We do <strong>not</strong> use GraphQL for authorization, but use REST to generate and renew tokens. The
+authentication tokens should be included in all GraphQL requests. This section will be expanded to also
+include roles and permissions. User management will be done via GraphQL</p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
+<p>The four main API endpoints are listed below</p>
+<h2 id='create-a-new-user'>Create a new user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span>
+  <span class="s2">"user[phone]=test@example.com&amp;user[password]=secret1234 </span><span class="se">\</span><span class="s2">
+  &amp;user[password_confirmation]=secret1234"</span>
+  http://glific.io/api/v1/registration
 </code></pre></div>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>The above query returns JSON structured like this:</p>
 </blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:{</span><span class="nl">"renewal_token"</span><span class="p">:</span><span class="s2">"RENEW_TOKEN"</span><span class="p">,</span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"AUTH_TOKEN"</span><span class="p">}}</span><span class="w">
+</span></code></pre></div>
+<p>Glific expects for the access token to be included in all API requests to the server in a header
+that looks like the following:</p>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='languages'>Languages</h1><h2 id='get-all-languages'>Get All Languages</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">languages</span><span class="w"> </span><span class="p">{</span><span class="w">
+<p><code>Authorization: AUTH_TOKEN</code></p>
+<h2 id='create-a-new-session-for-an-existing-user'>Create a new session for an existing user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span>
+  <span class="s2">"user[phone]=test@example.com&amp;user[password]=secret1234"</span>
+  http://glific.io/api/v1/session
+</code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:{</span><span class="nl">"renewal_token"</span><span class="p">:</span><span class="s2">"RENEW_TOKEN"</span><span class="p">,</span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"AUTH_TOKEN"</span><span class="p">}}</span><span class="w">
+</span></code></pre></div><h2 id='renew-an-existing-session'>Renew an existing session</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"Authorization: RENEW_TOKEN"</span>
+  http://localhost:4000/api/v1/session/renew
+</code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:{</span><span class="nl">"renewal_token"</span><span class="p">:</span><span class="s2">"RENEW_TOKEN"</span><span class="p">,</span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"AUTH_TOKEN"</span><span class="p">}}</span><span class="w">
+</span></code></pre></div><h2 id='delete-an-existing-session'>Delete an existing session</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="nt">-H</span> <span class="s2">"Authorization: AUTH_TOKEN"</span>
+  http://localhost:4000/api/v1/session
+</code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:{}}</span><span class="w">
+</span></code></pre></div><h1 id='languages'>Languages</h1><h2 id='get-all-languages'>Get All Languages</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">languages</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">languages</span><span class="p">{</span><span class="w">
     </span><span class="n">id</span><span class="w">
     </span><span class="n">label</span><span class="w">
