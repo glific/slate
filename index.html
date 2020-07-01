@@ -859,7 +859,7 @@ include roles and permissions. User management will be done via GraphQL</p>
 
 <p>The main API endpoints are listed below</p>
 <h2 id='create-a-new-user'>Create a new user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span>
-  <span class="s2">"user[phone]=test@example.com&amp;user[password]=secret1234 </span><span class="se">\</span><span class="s2">
+  <span class="s2">"user[phone]=919820176543&amp;user[password]=secret1234 </span><span class="se">\</span><span class="s2">
   &amp;user[password_confirmation]=secret1234"</span>
   http://glific.io/api/v1/registration
 </code></pre></div>
@@ -875,7 +875,7 @@ that looks like the following:</p>
 <h2 id='send-an-otp-request-to-verify-a-phone-number'>Send an OTP request to verify a phone number</h2>
 <p>(this needs to be protected by some form of access control)</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span>
-  <span class="s2">"user[phone]=test@example.com"</span>
+  <span class="s2">"user[phone]=919820176543"</span>
   http://glific.io/api/v1/registration/send_otp
 </code></pre></div>
 <blockquote>
@@ -884,7 +884,7 @@ that looks like the following:</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="err">phone</span><span class="p">,</span><span class="w"> </span><span class="nl">"otp"</span><span class="p">:</span><span class="w"> </span><span class="err">otp</span><span class="p">,</span><span class="w">
           </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP #{otp} sent successfully to #{phone}"</span><span class="p">}}</span><span class="w">
 </span></code></pre></div><h2 id='create-a-new-session-for-an-existing-user'>Create a new session for an existing user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span>
-  <span class="s2">"user[phone]=test@example.com&amp;user[password]=secret1234"</span>
+  <span class="s2">"user[phone]=919820176543&amp;user[password]=secret1234"</span>
   http://glific.io/api/v1/session
 </code></pre></div>
 <blockquote>
@@ -4683,8 +4683,8 @@ Match the parent
 </tr>
 </tbody>
 </table>
-<h1 id='search'>Search</h1><h2 id='search-in-conversation'>Search In conversation</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">search</span><span class="p">(</span><span class="nv">$term</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$shouldSave</span><span class="p">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">!,</span><span class="w"> </span><span class="nv">$searchLabel</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$searchFilter</span><span class="p">:</span><span class="w"> </span><span class="n">SearchFilter</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">search</span><span class="p">(</span><span class="n">term</span><span class="p">:</span><span class="w"> </span><span class="nv">$term</span><span class="p">,</span><span class="w"> </span><span class="n">saveSearch</span><span class="p">:</span><span class="w"> </span><span class="nv">$shouldSave</span><span class="p">,</span><span class="w"> </span><span class="n">searchLabel</span><span class="p">:</span><span class="w"> </span><span class="nv">$searchLabel</span><span class="p">,</span><span class="w"> </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$searchFilter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h1 id='search'>Search</h1><h2 id='search-in-conversation'>Search In conversation</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">search</span><span class="p">(</span><span class="nv">$term</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$searchFilter</span><span class="p">:</span><span class="w"> </span><span class="n">SearchFilter</span><span class="p">!,</span><span class="w"> </span><span class="nv">$shouldSave</span><span class="p">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">!,</span><span class="w"> </span><span class="nv">$saveSearchLabel</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">search</span><span class="p">(</span><span class="n">term</span><span class="p">:</span><span class="w"> </span><span class="nv">$term</span><span class="p">,</span><span class="w"> </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$searchFilter</span><span class="p">,</span><span class="w"> </span><span class="n">saveSearch</span><span class="p">:</span><span class="w"> </span><span class="nv">$shouldSave</span><span class="p">,</span><span class="w"> </span><span class="n">saveSearchLabel</span><span class="p">:</span><span class="w"> </span><span class="nv">$saveSearchLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">messages</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="p">,</span><span class="w">
       </span><span class="n">body</span><span class="p">,</span><span class="w">
@@ -4702,7 +4702,7 @@ Match the parent
 </span><span class="p">{</span><span class="w">
   </span><span class="err">"</span><span class="n">term</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">def</span><span class="err">"</span><span class="p">,</span><span class="w">
   </span><span class="err">"</span><span class="n">shouldSave</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
-  </span><span class="err">"</span><span class="n">searchLabel</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Save</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">Search</span><span class="err">"</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">saveSearchLabel</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Save</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">name</span><span class="err">"</span><span class="p">,</span><span class="w">
   </span><span class="err">"</span><span class="n">searchFilter</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="err">"</span><span class="n">includeTags</span><span class="err">":</span><span class="w"> </span><span class="err">["17"]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -4764,10 +4764,40 @@ Match the parent
 </tr>
 </thead><tbody>
 <tr>
+<td>term</td>
+<td><a href="#sting">String</a></td>
+<td>nil</td>
+<td>keyword for search</td>
+</tr>
+<tr>
 <td>filter</td>
 <td><a href="#searchfilter">SearchFilter</a></td>
 <td>nil</td>
 <td>filter the list</td>
+</tr>
+<tr>
+<td>saveSearch</td>
+<td><a href="#boolean">Boolean</a></td>
+<td>nil</td>
+<td>Search should be saved or not</td>
+</tr>
+<tr>
+<td>saveSearchLabel</td>
+<td><a href="#string">String</a></td>
+<td>nil</td>
+<td>label for save search object</td>
+</tr>
+<tr>
+<td>messageOpts</td>
+<td><a href="#opts">Opts</a></td>
+<td>nil</td>
+<td>limit / offset message options</td>
+</tr>
+<tr>
+<td>contactOpts</td>
+<td><a href="#opts">Opts</a></td>
+<td>nil</td>
+<td>limit / offset contact options</td>
 </tr>
 </tbody></table>
 <h2 id='search-objects'>Search Objects</h2><h3 id='searchfilter'>SearchFilter</h3>
