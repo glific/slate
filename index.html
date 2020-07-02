@@ -858,9 +858,9 @@ authentication tokens should be included in all GraphQL requests. This section w
 include roles and permissions. User management will be done via GraphQL</p>
 
 <p>The main API endpoints are listed below</p>
-<h2 id='create-a-new-user'>Create a new user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span>
+<h2 id='create-a-new-user'>Create a new user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="se">\</span>
   <span class="s2">"user[phone]=919820176543&amp;user[password]=secret1234 </span><span class="se">\</span><span class="s2">
-  &amp;user[password_confirmation]=secret1234"</span>
+  &amp;user[password_confirmation]=secret1234"</span> <span class="se">\</span>
   http://YOUR_HOSTNAME_AND_PORT/api/v1/registration
 </code></pre></div>
 <blockquote>
@@ -874,8 +874,8 @@ that looks like the following:</p>
 <p><code>Authorization: AUTH_TOKEN</code></p>
 <h2 id='send-an-otp-request-to-verify-a-phone-number'>Send an OTP request to verify a phone number</h2>
 <p>(this needs to be protected by some form of access control)</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span>
-  <span class="s2">"user[phone]=919820176543"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="se">\</span>
+  <span class="s2">"user[phone]=919820176543"</span> <span class="se">\</span>
   http://YOUR_HOSTNAME_AND_PORT/api/v1/registration/send_otp
 </code></pre></div>
 <blockquote>
@@ -883,22 +883,22 @@ that looks like the following:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="err">phone</span><span class="p">,</span><span class="w"> </span><span class="nl">"otp"</span><span class="p">:</span><span class="w"> </span><span class="err">otp</span><span class="p">,</span><span class="w">
           </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP #{otp} sent successfully to #{phone}"</span><span class="p">}}</span><span class="w">
-</span></code></pre></div><h2 id='create-a-new-session-for-an-existing-user'>Create a new session for an existing user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span>
-  <span class="s2">"user[phone]=919820176543&amp;user[password]=secret1234"</span>
+</span></code></pre></div><h2 id='create-a-new-session-for-an-existing-user'>Create a new session for an existing user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="se">\</span>
+  <span class="s2">"user[phone]=919820176543&amp;user[password]=secret1234"</span> <span class="se">\</span>
   http://YOUR_HOSTNAME_AND_PORT/api/v1/session
 </code></pre></div>
 <blockquote>
 <p>The above query returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:{</span><span class="nl">"renewal_token"</span><span class="p">:</span><span class="s2">"RENEW_TOKEN"</span><span class="p">,</span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"AUTH_TOKEN"</span><span class="p">}}</span><span class="w">
-</span></code></pre></div><h2 id='renew-an-existing-session'>Renew an existing session</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"Authorization: RENEW_TOKEN"</span>
+</span></code></pre></div><h2 id='renew-an-existing-session'>Renew an existing session</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"Authorization: RENEW_TOKEN"</span> <span class="se">\</span>
   http://localhost:4000/api/v1/session/renew
 </code></pre></div>
 <blockquote>
 <p>The above query returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:{</span><span class="nl">"renewal_token"</span><span class="p">:</span><span class="s2">"RENEW_TOKEN"</span><span class="p">,</span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"AUTH_TOKEN"</span><span class="p">}}</span><span class="w">
-</span></code></pre></div><h2 id='delete-an-existing-session'>Delete an existing session</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="nt">-H</span> <span class="s2">"Authorization: AUTH_TOKEN"</span>
+</span></code></pre></div><h2 id='delete-an-existing-session'>Delete an existing session</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="nt">-H</span> <span class="s2">"Authorization: AUTH_TOKEN"</span> <span class="se">\</span>
   http://localhost:4000/api/v1/session
 </code></pre></div>
 <blockquote>
