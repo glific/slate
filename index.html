@@ -862,6 +862,16 @@ include roles and permissions. User management will be done via GraphQL</p>
   <span class="s2">"user[name]='Test User'&amp;user[phone]=911234554321&amp;user[password]=secret1234 </span><span class="se">\</span><span class="s2">
   &amp;user[password_confirmation]=secret1234"</span> <span class="se">\</span>
   http://YOUR_HOSTNAME_AND_PORT/api/v1/registration
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">If</span> <span class="nx">you</span> <span class="nx">are</span> <span class="nx">using</span> <span class="nx">axios</span> <span class="nx">or</span> <span class="nx">other</span> <span class="nx">libraries</span><span class="p">,</span> <span class="nx">send</span> <span class="nx">the</span> <span class="nx">following</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">BODY</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">POST</span> <span class="nx">request</span>
+
+<span class="p">{</span>
+    <span class="dl">"</span><span class="s2">user</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Test User</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">phone</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">911234554321</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">password</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">secret1234</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">password_confirmation</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">secret1234</span><span class="dl">"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>The above query returns JSON structured like this:</p>
@@ -873,10 +883,19 @@ that looks like the following:</p>
 
 <p><code>Authorization: AUTH_TOKEN</code></p>
 <h2 id='send-an-otp-request-to-verify-a-phone-number'>Send an OTP request to verify a phone number</h2>
-<p>(this needs to be protected by some form of access control)</p>
+<p>The OTP will be sent via WhatsApp and the NGO&#39;s Glific Instance. The API will only send
+a message to contacts that have opted into the system. This also prevents the API
+from being abused.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="se">\</span>
   <span class="s2">"user[phone]=911234554321"</span> <span class="se">\</span>
   http://YOUR_HOSTNAME_AND_PORT/api/v1/registration/send_otp
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">If</span> <span class="nx">you</span> <span class="nx">are</span> <span class="nx">using</span> <span class="nx">axios</span> <span class="nx">or</span> <span class="nx">other</span> <span class="nx">libraries</span><span class="p">,</span> <span class="nx">send</span> <span class="nx">the</span> <span class="nx">following</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">BODY</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">POST</span> <span class="nx">request</span>
+
+<span class="p">{</span>
+    <span class="dl">"</span><span class="s2">user</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">phone</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">911234554321</span><span class="dl">"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>The above query returns JSON structured like this:</p>
@@ -886,6 +905,14 @@ that looks like the following:</p>
 </span></code></pre></div><h2 id='create-a-new-session-for-an-existing-user'>Create a new session for an existing user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="se">\</span>
   <span class="s2">"user[phone]=911234554321&amp;user[password]=secret1234"</span> <span class="se">\</span>
   http://YOUR_HOSTNAME_AND_PORT/api/v1/session
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">If</span> <span class="nx">you</span> <span class="nx">are</span> <span class="nx">using</span> <span class="nx">axios</span> <span class="nx">or</span> <span class="nx">other</span> <span class="nx">libraries</span><span class="p">,</span> <span class="nx">send</span> <span class="nx">the</span> <span class="nx">following</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">BODY</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">POST</span> <span class="nx">request</span>
+
+<span class="p">{</span>
+    <span class="dl">"</span><span class="s2">user</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">phone</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">911234554321</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">password</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">secret1234</span><span class="dl">"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>The above query returns JSON structured like this:</p>
@@ -926,7 +953,7 @@ that looks like the following:</p>
         </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hindi"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"labelLocale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"हिंदी"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hi_IN"</span><span class="w">
+        </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hi"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
@@ -4683,8 +4710,8 @@ Match the parent
 </tr>
 </tbody>
 </table>
-<h1 id='search'>Search</h1><h2 id='search-in-conversation'>Search In conversation</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">search</span><span class="p">(</span><span class="nv">$term</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$searchFilter</span><span class="p">:</span><span class="w"> </span><span class="n">SearchFilter</span><span class="p">!,</span><span class="w"> </span><span class="nv">$shouldSave</span><span class="p">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">!,</span><span class="w"> </span><span class="nv">$saveSearchLabel</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">search</span><span class="p">(</span><span class="n">term</span><span class="p">:</span><span class="w"> </span><span class="nv">$term</span><span class="p">,</span><span class="w"> </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$searchFilter</span><span class="p">,</span><span class="w"> </span><span class="n">saveSearch</span><span class="p">:</span><span class="w"> </span><span class="nv">$shouldSave</span><span class="p">,</span><span class="w"> </span><span class="n">saveSearchLabel</span><span class="p">:</span><span class="w"> </span><span class="nv">$saveSearchLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h1 id='search'>Search</h1><h2 id='search-in-conversation'>Search In conversation</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">search</span><span class="p">(</span><span class="nv">$term</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$searchFilter</span><span class="p">:</span><span class="w"> </span><span class="n">SearchFilter</span><span class="p">!,</span><span class="w"> </span><span class="nv">$shouldSave</span><span class="p">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">!,</span><span class="w"> </span><span class="nv">$saveSearchLabel</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$contactOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!,</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">search</span><span class="p">(</span><span class="n">term</span><span class="p">:</span><span class="w"> </span><span class="nv">$term</span><span class="p">,</span><span class="w"> </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$searchFilter</span><span class="p">,</span><span class="w"> </span><span class="n">saveSearch</span><span class="p">:</span><span class="w"> </span><span class="nv">$shouldSave</span><span class="p">,</span><span class="w"> </span><span class="n">saveSearchLabel</span><span class="p">:</span><span class="w"> </span><span class="nv">$saveSearchLabel</span><span class="p">,</span><span class="w"> </span><span class="n">contactOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$contactOpts</span><span class="p">,</span><span class="w"> </span><span class="n">messageOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">messages</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="p">,</span><span class="w">
       </span><span class="n">body</span><span class="p">,</span><span class="w">
@@ -4705,6 +4732,14 @@ Match the parent
   </span><span class="err">"</span><span class="n">saveSearchLabel</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Save</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">name</span><span class="err">"</span><span class="p">,</span><span class="w">
   </span><span class="err">"</span><span class="n">searchFilter</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="err">"</span><span class="n">includeTags</span><span class="err">":</span><span class="w"> </span><span class="err">["17"]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">"</span><span class="n">messageOpts</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">limit</span><span class="err">":</span><span class="w"> </span><span class="err">3</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">order</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">ASC</span><span class="err">"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">"</span><span class="n">contactOpts</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">order</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">DESC</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">limit</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="w">
   </span><span class="p">},</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -6437,8 +6472,8 @@ Match the tags excluded
 
 </tbody>
 </table>
-<h1 id='session-template'>Session Template</h1><h2 id='get-all-session-templates'>Get All Session Templates</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">sessionTemplates</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">SessionTemplateFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$order</span><span class="p">:</span><span class="w"> </span><span class="n">SortOrder</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">sessionTemplates</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w"> </span><span class="n">order</span><span class="p">:</span><span class="nv">$order</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h1 id='session-template'>Session Template</h1><h2 id='get-all-session-templates'>Get All Session Templates</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">sessionTemplates</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">SessionTemplateFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$opts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">sessionTemplates</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">:</span><span class="nv">$opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">id</span><span class="w">
     </span><span class="n">body</span><span class="w">
     </span><span class="n">label</span><span class="w">
@@ -6465,6 +6500,9 @@ Match the tags excluded
 </span><span class="p">{</span><span class="w">
   </span><span class="err">"</span><span class="n">filter</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="err">"</span><span class="n">body</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">template</span><span class="err">"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">"</span><span class="n">opts</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">order</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">ASC</span><span class="err">"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -6530,10 +6568,10 @@ Match the tags excluded
 <td>filter the list</td>
 </tr>
 <tr>
-<td>order</td>
-<td><a href="#sortorder">SortOrder</a></td>
-<td>ASC</td>
-<td>ASC / DESC</td>
+<td>opts</td>
+<td><a href="#opts">Opts</a></td>
+<td>nil</td>
+<td>limit / offset / sort order options</td>
 </tr>
 </tbody></table>
 <h3 id='return-parameters'>Return Parameters</h3>
@@ -7104,7 +7142,7 @@ Match the shortcode of template
 </tr>
 </tbody>
 </table>
-<h1 id='conversations'>Conversations</h1><h2 id='get-all-conversations'>Get All Conversations</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">conversations</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">ConversationsFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$contactOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">,</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h1 id='conversations'>Conversations</h1><h2 id='get-all-conversations'>Get All Conversations</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">conversations</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">ConversationsFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$contactOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!,</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">conversations</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w"> </span><span class="n">contactOpts</span><span class="p">:</span><span class="nv">$contactOpts</span><span class="p">,</span><span class="w"> </span><span class="n">messageOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">contact</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="w">
@@ -7193,14 +7231,14 @@ sort order options on both the contacts and the conversations returned</p>
 <tr>
 <td>contactOpts</td>
 <td><a href="#opts">Opts</a></td>
-<td>nil</td>
 <td>limit / offset / sort order contact options</td>
+<td></td>
 </tr>
 <tr>
 <td>messageOpts</td>
 <td><a href="#opts">Opts</a></td>
-<td>nil</td>
 <td>limit / offset / sort order message options</td>
+<td></td>
 </tr>
 </tbody></table>
 <h3 id='return-parameters'>Return Parameters</h3>
@@ -7215,7 +7253,7 @@ sort order options on both the contacts and the conversations returned</p>
 <td>A list of conversation objects</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-conversation-by-contact-id'>Get a specific Conversation by Contact ID</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">conversation</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">ConversationFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$contactId</span><span class="p">:</span><span class="w"> </span><span class="n">Gid</span><span class="p">!,</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h2 id='get-a-specific-conversation-by-contact-id'>Get a specific Conversation by Contact ID</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">conversation</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">ConversationFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$contactId</span><span class="p">:</span><span class="w"> </span><span class="n">Gid</span><span class="p">!,</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">conversation</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w"> </span><span class="n">contactId</span><span class="p">:</span><span class="w"> </span><span class="nv">$contactId</span><span class="p">,</span><span class="w"> </span><span class="n">messageOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">contact</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="w">
@@ -7299,8 +7337,8 @@ sort order options on both the contacts and the conversations returned</p>
 <tr>
 <td>messageOpts</td>
 <td><a href="#opts">Opts</a></td>
-<td>nil</td>
 <td>limit / offset / sort order message options</td>
+<td></td>
 </tr>
 </tbody></table>
 <h3 id='return-parameters-2'>Return Parameters</h3>
