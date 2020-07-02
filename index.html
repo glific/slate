@@ -861,7 +861,7 @@ include roles and permissions. User management will be done via GraphQL</p>
 <h2 id='create-a-new-user'>Create a new user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span>
   <span class="s2">"user[phone]=919820176543&amp;user[password]=secret1234 </span><span class="se">\</span><span class="s2">
   &amp;user[password_confirmation]=secret1234"</span>
-  http://glific.io/api/v1/registration
+  http://YOUR_HOSTNAME_AND_PORT/api/v1/registration
 </code></pre></div>
 <blockquote>
 <p>The above query returns JSON structured like this:</p>
@@ -876,7 +876,7 @@ that looks like the following:</p>
 <p>(this needs to be protected by some form of access control)</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span>
   <span class="s2">"user[phone]=919820176543"</span>
-  http://glific.io/api/v1/registration/send_otp
+  http://YOUR_HOSTNAME_AND_PORT/api/v1/registration/send_otp
 </code></pre></div>
 <blockquote>
 <p>The above query returns JSON structured like this:</p>
@@ -885,7 +885,7 @@ that looks like the following:</p>
           </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP #{otp} sent successfully to #{phone}"</span><span class="p">}}</span><span class="w">
 </span></code></pre></div><h2 id='create-a-new-session-for-an-existing-user'>Create a new session for an existing user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span>
   <span class="s2">"user[phone]=919820176543&amp;user[password]=secret1234"</span>
-  http://glific.io/api/v1/session
+  http://YOUR_HOSTNAME_AND_PORT/api/v1/session
 </code></pre></div>
 <blockquote>
 <p>The above query returns JSON structured like this:</p>
