@@ -859,7 +859,7 @@ include roles and permissions. User management will be done via GraphQL</p>
 
 <p>The main API endpoints are listed below</p>
 <h2 id='create-a-new-user'>Create a new user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="se">\</span>
-  <span class="s2">"user[phone]=919820176543&amp;user[password]=secret1234 </span><span class="se">\</span><span class="s2">
+  <span class="s2">"user[name]='Test User'&amp;user[phone]=919820176543&amp;user[password]=secret1234 </span><span class="se">\</span><span class="s2">
   &amp;user[password_confirmation]=secret1234"</span> <span class="se">\</span>
   http://YOUR_HOSTNAME_AND_PORT/api/v1/registration
 </code></pre></div>
