@@ -439,6 +439,9 @@
                     <a href="#delete-a-contact" class="toc-h2 toc-link" data-title="Delete a Contact">Delete a Contact</a>
                   </li>
                   <li>
+                    <a href="#get-contact-39-s-location" class="toc-h2 toc-link" data-title="Get contact's location">Get contact's location</a>
+                  </li>
+                  <li>
                     <a href="#contact-objects" class="toc-h2 toc-link" data-title="Contact Objects">Contact Objects</a>
                   </li>
                   <li>
@@ -626,7 +629,7 @@
                     <a href="#create-a-message-tag" class="toc-h2 toc-link" data-title="Create a Message Tag">Create a Message Tag</a>
                   </li>
                   <li>
-                    <a href="#create-a-message-with-multiple-tags" class="toc-h2 toc-link" data-title="Create a Message with multiple Tags">Create a Message with multiple Tags</a>
+                    <a href="#update-a-message-with-tags-to-be-added-and-tags-to-be-deleted" class="toc-h2 toc-link" data-title="Update a Message with tags to be added and tags to be deleted">Update a Message with tags to be added and tags to be deleted</a>
                   </li>
                   <li>
                     <a href="#delete-a-message-tag" class="toc-h2 toc-link" data-title="Delete a Message Tag">Delete a Message Tag</a>
@@ -2928,6 +2931,56 @@ Match the url of provider
 <td>An error object or empty</td>
 </tr>
 </tbody></table>
+<h2 id='get-contact-39-s-location'>Get contact&#39;s location</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">contactLocation</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">contactLocation</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">latitude</span><span class="w">
+    </span><span class="n">longitude</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"2"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"contactLocation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-30.879910476061603</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">156.21478312951263</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-7'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><a href="#id">ID</a>!</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-7'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#location">Location</a></td>
+<td>A location object</td>
+</tr>
+</tbody></table>
 <h2 id='contact-objects'>Contact Objects</h2><h3 id='contact'>Contact</h3>
 <table>
 <thead>
@@ -2977,6 +3030,29 @@ Match the url of provider
 <tr>
 <td colspan="2" valign="top"><strong>tags</strong></td>
 <td valign="top">[<a href="#tag">Tag</a>]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id='location'>Location</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>latitude</strong></td>
+<td valign="top"><a href="#float">Float</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>longitude</strong></td>
+<td valign="top"><a href="#float">Float</a></td>
 <td></td>
 </tr>
 </tbody>
@@ -6087,8 +6163,8 @@ Match the tags excluded
 <td>The created message tag object</td>
 </tr>
 </tbody></table>
-<h2 id='create-a-message-with-multiple-tags'>Create a Message with multiple Tags</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createMessageTags</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">MessageTagsInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">createMessageTags</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h2 id='update-a-message-with-tags-to-be-added-and-tags-to-be-deleted'>Update a Message with tags to be added and tags to be deleted</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateMessageTags</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">MessageTagsInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updateMessageTags</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">messageTags</span><span class="w"> </span><span class="p">{</span><span class="w">
        </span><span class="n">id</span><span class="p">,</span><span class="w">
       </span><span class="n">message</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6110,7 +6186,8 @@ Match the tags excluded
 </span><span class="p">{</span><span class="w">
   </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="err">"</span><span class="n">messageId</span><span class="err">":</span><span class="w"> </span><span class="err">2</span><span class="p">,</span><span class="w">
-    </span><span class="err">"</span><span class="n">tagsId</span><span class="err">":</span><span class="w"> </span><span class="err">[3</span><span class="p">,</span><span class="w"> </span><span class="err">4</span><span class="p">,</span><span class="w"> </span><span class="err">5</span><span class="p">,</span><span class="w"> </span><span class="err">6]</span><span class="w">
+    </span><span class="err">"</span><span class="n">addTagIds</span><span class="err">":</span><span class="w"> </span><span class="err">[3</span><span class="p">,</span><span class="w"> </span><span class="err">4</span><span class="p">,</span><span class="w"> </span><span class="err">5</span><span class="p">,</span><span class="w"> </span><span class="err">6]</span><span class="w">
+    </span><span class="err">"</span><span class="n">deleteTagIds</span><span class="err">":</span><span class="w"> </span><span class="err">[7</span><span class="p">,</span><span class="w"> </span><span class="err">8]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -6119,7 +6196,7 @@ Match the tags excluded
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"createMessageTags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"updateMessageTags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"messageTags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
          </span><span class="p">{</span><span class="w">
@@ -6142,7 +6219,8 @@ Match the tags excluded
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
 
-      </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">numberDeleted:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -6171,7 +6249,11 @@ Match the tags excluded
 </thead><tbody>
 <tr>
 <td><a href="#message_tags">messageTags</a></td>
-<td>The list of tag messages</td>
+<td>The list of tag messages added</td>
+</tr>
+<tr>
+<td>integer</td>
+<td>The number of messages deleted</td>
 </tr>
 </tbody></table>
 <h2 id='delete-a-message-tag'>Delete a Message Tag</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">deleteMessageTag</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
