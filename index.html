@@ -497,6 +497,9 @@
                     <a href="#delete-a-tag" class="toc-h2 toc-link" data-title="Delete a Tag">Delete a Tag</a>
                   </li>
                   <li>
+                    <a href="#remove-unread-tag-from-messages" class="toc-h2 toc-link" data-title="Remove unread tag from messages">Remove unread tag from messages</a>
+                  </li>
+                  <li>
                     <a href="#tag-objects" class="toc-h2 toc-link" data-title="Tag Objects">Tag Objects</a>
                   </li>
                   <li>
@@ -872,7 +875,8 @@ include roles and permissions. User management will be done via GraphQL</p>
         <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Test User</span><span class="dl">"</span><span class="p">,</span>
         <span class="dl">"</span><span class="s2">phone</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">911234554321</span><span class="dl">"</span><span class="p">,</span>
         <span class="dl">"</span><span class="s2">password</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">secret1234</span><span class="dl">"</span><span class="p">,</span>
-        <span class="dl">"</span><span class="s2">password_confirmation</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">secret1234</span><span class="dl">"</span>
+        <span class="dl">"</span><span class="s2">password_confirmation</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">secret1234</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">otp</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">321721</span><span class="dl">"</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -3972,6 +3976,56 @@ Match the phone
 </thead><tbody>
 <tr>
 <td><a href="#tagresult">TagResult</a></td>
+<td>An error object or empty</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='remove-unread-tag-from-messages'>Remove unread tag from messages</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">markContactMessagesAsRead</span><span class="p">(</span><span class="nv">$contactId</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Gid</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">markContactMessagesAsRead</span><span class="p">(</span><span class="n">contactId</span><span class="p">:</span><span class="w"> </span><span class="nv">$contactId</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">contactId</span><span class="err">":</span><span class="w"> </span><span class="err">"26"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns effected messages ids:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"markContactMessagesAsRead"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"10"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-7'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>contactId</td>
+<td><a href="#gid">Gid</a>!</td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-4'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#list">List</a></td>
 <td>An error object or empty</td>
 <td></td>
 <td></td>
