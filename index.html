@@ -312,12 +312,12 @@
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#send-an-otp-request-to-verify-a-phone-number" class="toc-h1 toc-link" data-title="Send an OTP request to verify a phone number">Send an OTP request to verify a phone number</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#create-a-new-user" class="toc-h2 toc-link" data-title="Create a new user">Create a new user</a>
-                  </li>
-                  <li>
-                    <a href="#send-an-otp-request-to-verify-a-phone-number" class="toc-h2 toc-link" data-title="Send an OTP request to verify a phone number">Send an OTP request to verify a phone number</a>
                   </li>
                   <li>
                     <a href="#create-a-new-session-for-an-existing-user" class="toc-h2 toc-link" data-title="Create a new session for an existing user">Create a new session for an existing user</a>
@@ -864,7 +864,35 @@ authentication tokens should be included in all GraphQL requests. This section w
 include roles and permissions. User management will be done via GraphQL</p>
 
 <p>The main API endpoints are listed below</p>
-<h2 id='create-a-new-user'>Create a new user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="se">\</span>
+<h1 id='send-an-otp-request-to-verify-a-phone-number'>Send an OTP request to verify a phone number</h1>
+<p>The OTP will be sent via WhatsApp and the NGO&#39;s Glific Instance. The API will only send
+a message to contacts that have opted into the system. This also prevents the API
+from being abused.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="se">\</span>
+  <span class="s2">"user[phone]=911234554321"</span> <span class="se">\</span>
+  http://YOUR_HOSTNAME_AND_PORT/api/v1/registration/send_otp
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">If</span> <span class="nx">you</span> <span class="nx">are</span> <span class="nx">using</span> <span class="nx">axios</span> <span class="nx">or</span> <span class="nx">other</span> <span class="nx">libraries</span><span class="p">,</span> <span class="nx">send</span> <span class="nx">the</span> <span class="nx">following</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">BODY</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">POST</span> <span class="nx">request</span>
+
+<span class="p">{</span>
+    <span class="dl">"</span><span class="s2">user</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">phone</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">911234554321</span><span class="dl">"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="err">phone</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP #{otp} sent successfully to #{phone}"</span><span class="p">}}</span><span class="w">
+</span></code></pre></div><h2 id='create-a-new-user'>Create a new user</h2>
+<p>The typical user registration flow will be something like:
+  * User follows the instructions on [gupshup](https://www.gupshup.io/whatsappassistant/#/settings/GlificTest?bt=ACP
+  * User enters: <code>Name</code>, <code>Phone Number</code> and <code>Password</code>
+  * After initial validation, the caller will call the <code>send_otp</code> request
+  * On successful confirmation of the delivery of <code>send_otp</code>, the front-end will display an OTP entry screen to the user.
+  * On successful entry of the OTP, the front-end will call the <code>registration</code> endpoint with the user entered information
+  * The API will return success or failure</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="se">\</span>
   <span class="s2">"user[name]='Test User'&amp;user[phone]=911234554321&amp;user[password]=secret1234 </span><span class="se">\</span><span class="s2">
   &amp;user[password_confirmation]=secret1234&amp;user[otp]=321721"</span> <span class="se">\</span>
   http://YOUR_HOSTNAME_AND_PORT/api/v1/registration
@@ -889,27 +917,7 @@ include roles and permissions. User management will be done via GraphQL</p>
 that looks like the following:</p>
 
 <p><code>Authorization: AUTH_TOKEN</code></p>
-<h2 id='send-an-otp-request-to-verify-a-phone-number'>Send an OTP request to verify a phone number</h2>
-<p>The OTP will be sent via WhatsApp and the NGO&#39;s Glific Instance. The API will only send
-a message to contacts that have opted into the system. This also prevents the API
-from being abused.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="se">\</span>
-  <span class="s2">"user[phone]=911234554321"</span> <span class="se">\</span>
-  http://YOUR_HOSTNAME_AND_PORT/api/v1/registration/send_otp
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">If</span> <span class="nx">you</span> <span class="nx">are</span> <span class="nx">using</span> <span class="nx">axios</span> <span class="nx">or</span> <span class="nx">other</span> <span class="nx">libraries</span><span class="p">,</span> <span class="nx">send</span> <span class="nx">the</span> <span class="nx">following</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">BODY</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">POST</span> <span class="nx">request</span>
-
-<span class="p">{</span>
-    <span class="dl">"</span><span class="s2">user</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="dl">"</span><span class="s2">phone</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">911234554321</span><span class="dl">"</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<p>The above query returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="err">phone</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP #{otp} sent successfully to #{phone}"</span><span class="p">}}</span><span class="w">
-</span></code></pre></div><h2 id='create-a-new-session-for-an-existing-user'>Create a new session for an existing user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="se">\</span>
+<h2 id='create-a-new-session-for-an-existing-user'>Create a new session for an existing user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="se">\</span>
   <span class="s2">"user[phone]=911234554321&amp;user[password]=secret1234"</span> <span class="se">\</span>
   http://YOUR_HOSTNAME_AND_PORT/api/v1/session
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">If</span> <span class="nx">you</span> <span class="nx">are</span> <span class="nx">using</span> <span class="nx">axios</span> <span class="nx">or</span> <span class="nx">other</span> <span class="nx">libraries</span><span class="p">,</span> <span class="nx">send</span> <span class="nx">the</span> <span class="nx">following</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">BODY</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">POST</span> <span class="nx">request</span>
