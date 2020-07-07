@@ -885,13 +885,16 @@ from being abused.</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="err">phone</span><span class="p">,</span><span class="w">
           </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP #{otp} sent successfully to #{phone}"</span><span class="p">}}</span><span class="w">
 </span></code></pre></div><h2 id='create-a-new-user'>Create a new user</h2>
-<p>The typical user registration flow will be something like:
-  * User follows the instructions on [gupshup](https://www.gupshup.io/whatsappassistant/#/settings/GlificTest?bt=ACP
-  * User enters: <code>Name</code>, <code>Phone Number</code> and <code>Password</code>
-  * After initial validation, the caller will call the <code>send_otp</code> request
-  * On successful confirmation of the delivery of <code>send_otp</code>, the front-end will display an OTP entry screen to the user.
-  * On successful entry of the OTP, the front-end will call the <code>registration</code> endpoint with the user entered information
-  * The API will return success or failure</p>
+<p>The typical user registration flow will be something like:</p>
+
+<ul>
+<li>User follows the instructions at <a href="https://www.gupshup.io/whatsappassistant/#/whatsapp-dashboard">gupshup.io</a></li>
+<li>User enters: <code>Name</code>, <code>Phone Number</code> and <code>Password</code></li>
+<li>After initial validation, the caller will call the <code>send_otp</code> request</li>
+<li>On successful confirmation of the delivery of <code>send_otp</code>, the front-end will display an OTP entry screen to the user.</li>
+<li>On successful entry of the OTP, the front-end will call the <code>registration</code> endpoint with the user entered information</li>
+<li>The API will return success or failure</li>
+</ul>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="se">\</span>
   <span class="s2">"user[name]='Test User'&amp;user[phone]=911234554321&amp;user[password]=secret1234 </span><span class="se">\</span><span class="s2">
   &amp;user[password_confirmation]=secret1234&amp;user[otp]=321721"</span> <span class="se">\</span>
