@@ -583,6 +583,15 @@
                     <a href="#delete-a-message" class="toc-h2 toc-link" data-title="Delete a Message">Delete a Message</a>
                   </li>
                   <li>
+                    <a href="#create-and-send-message" class="toc-h2 toc-link" data-title="Create and send Message">Create and send Message</a>
+                  </li>
+                  <li>
+                    <a href="#create-and-send-message-to-multiple-contacts" class="toc-h2 toc-link" data-title="Create and send Message to multiple Contacts">Create and send Message to multiple Contacts</a>
+                  </li>
+                  <li>
+                    <a href="#send-hsm-message" class="toc-h2 toc-link" data-title="Send hsm Message">Send hsm Message</a>
+                  </li>
+                  <li>
                     <a href="#subscription-for-sent-message" class="toc-h2 toc-link" data-title="Subscription for Sent Message">Subscription for Sent Message</a>
                   </li>
                   <li>
@@ -859,7 +868,7 @@ a message to contacts that have opted into the system. This also prevents the AP
 from being abused.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="se">\</span>
   <span class="s2">"user[phone]=911234554321"</span> <span class="se">\</span>
-  http://YOUR_HOSTNAME_AND_PORT/api/v1/registration/send_otp
+  http://YOUR_HOSTNAME_AND_PORT/api/v1/registration/send-registration-otp
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">If</span> <span class="nx">you</span> <span class="nx">are</span> <span class="nx">using</span> <span class="nx">axios</span> <span class="nx">or</span> <span class="nx">other</span> <span class="nx">libraries</span><span class="p">,</span> <span class="nx">send</span> <span class="nx">the</span> <span class="nx">following</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">BODY</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">POST</span> <span class="nx">request</span>
 
 <span class="p">{</span>
@@ -872,7 +881,10 @@ from being abused.</p>
 <p>The above query returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="err">phone</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP #{otp} sent successfully to #{phone}"</span><span class="p">}}</span><span class="w">
+          </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP sent successfully to #{phone}"</span><span class="p">}}</span><span class="w">
+</span></code></pre></div>
+<p>Or</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cannot send the registration otp to #{phone}"</span><span class="p">}}</span><span class="w">
 </span></code></pre></div><h2 id='create-a-new-user'>Create a new user</h2>
 <p>The typical user registration flow will be something like:</p>
 
@@ -887,7 +899,7 @@ to optin to the NGO&#39;s WhatsApp Business API Account.</li>
 </ul>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="se">\</span>
   <span class="s2">"user[name]='Test User'&amp;user[phone]=911234554321&amp;user[password]=secret1234 </span><span class="se">\</span><span class="s2">
-  &amp;user[password_confirmation]=secret1234&amp;user[otp]=321721"</span> <span class="se">\</span>
+  &amp;user[otp]=321721"</span> <span class="se">\</span>
   http://YOUR_HOSTNAME_AND_PORT/api/v1/registration
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">If</span> <span class="nx">you</span> <span class="nx">are</span> <span class="nx">using</span> <span class="nx">axios</span> <span class="nx">or</span> <span class="nx">other</span> <span class="nx">libraries</span><span class="p">,</span> <span class="nx">send</span> <span class="nx">the</span> <span class="nx">following</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">BODY</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">POST</span> <span class="nx">request</span>
 
@@ -896,7 +908,6 @@ to optin to the NGO&#39;s WhatsApp Business API Account.</li>
         <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Test User</span><span class="dl">"</span><span class="p">,</span>
         <span class="dl">"</span><span class="s2">phone</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">911234554321</span><span class="dl">"</span><span class="p">,</span>
         <span class="dl">"</span><span class="s2">password</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">secret1234</span><span class="dl">"</span><span class="p">,</span>
-        <span class="dl">"</span><span class="s2">password_confirmation</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">secret1234</span><span class="dl">"</span><span class="p">,</span>
         <span class="dl">"</span><span class="s2">otp</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">321721</span><span class="dl">"</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -904,7 +915,13 @@ to optin to the NGO&#39;s WhatsApp Business API Account.</li>
 <blockquote>
 <p>The above query returns JSON structured like this:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:{</span><span class="nl">"renewal_token"</span><span class="p">:</span><span class="s2">"RENEW_TOKEN"</span><span class="p">,</span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"AUTH_TOKEN"</span><span class="p">}}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTH_TOKEN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"token_expiry_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-13T16:22:53.678465Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"renewal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RENEW_TOKEN"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Glific expects for the auth token to be included in all API requests to the server in a header
 that looks like the following:</p>
@@ -925,14 +942,30 @@ that looks like the following:</p>
 <blockquote>
 <p>The above query returns JSON structured like this:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:{</span><span class="nl">"renewal_token"</span><span class="p">:</span><span class="s2">"RENEW_TOKEN"</span><span class="p">,</span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"AUTH_TOKEN"</span><span class="p">}}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTH_TOKEN"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"token_expiry_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-13T16:22:53.678465Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"renewal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RENEW_TOKEN"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='renew-an-existing-session'>Renew an existing session</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"Authorization: RENEW_TOKEN"</span> <span class="se">\</span>
   http://localhost:4000/api/v1/session/renew
 </code></pre></div>
 <blockquote>
 <p>The above query returns JSON structured like this:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:{</span><span class="nl">"renewal_token"</span><span class="p">:</span><span class="s2">"RENEW_TOKEN"</span><span class="p">,</span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"AUTH_TOKEN"</span><span class="p">}}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTH_TOKEN"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"token_expiry_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-13T16:22:53.678465Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"renewal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RENEW_TOKEN"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='delete-an-existing-session'>Delete an existing session</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="nt">-H</span> <span class="s2">"Authorization: AUTH_TOKEN"</span> <span class="se">\</span>
   http://localhost:4000/api/v1/session
 </code></pre></div>
@@ -5366,6 +5399,313 @@ Match the parent
 <td></td>
 </tr>
 </tbody></table>
+<h2 id='create-and-send-message'>Create and send Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createAndSendMessage</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">MessageInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">createAndSendMessage</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">message</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">body</span><span class="w">
+      </span><span class="n">receiver</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">id</span><span class="w">
+        </span><span class="n">name</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">key</span><span class="w">
+      </span><span class="n">message</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">body</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Test</span><span class="w"> </span><span class="n">message</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">flow</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">OUTBOUND</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">type</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">TEXT</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">senderId</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">receiverId</span><span class="err">":</span><span class="w"> </span><span class="err">2</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">userId</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"createAndSendMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test message"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default receiver"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createAndSendMessage</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">MessageInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">createAndSendMessage</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">message</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">body</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">key</span><span class="w">
+      </span><span class="n">message</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">body</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">This</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">reach</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="err">9:00</span><span class="n">AM</span><span class="w"> </span><span class="p">(</span><span class="n">India</span><span class="p">)</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">flow</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">OUTBOUND</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">receiverId</span><span class="err">":</span><span class="w"> </span><span class="err">7</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">sendAt</span><span class="err">":</span><span class="w"> </span><span class="err">"2020-07-10</span><span class="w"> </span><span class="err">03:30:00</span><span class="n">Z</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">senderId</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">type</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">TEXT</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">userId</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"createAndSendMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this message should reach at 8:00AM"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-7'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>input</td>
+<td><a href="#messageinput">MessageInput</a></td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-4'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#messageresult">MessageResult</a></td>
+<td>An error object or empty</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='create-and-send-message-to-multiple-contacts'>Create and send Message to multiple Contacts</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createAndSendMessageToContacts</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">MessageInput</span><span class="p">!,</span><span class="w"> </span><span class="nv">$contactIds</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="nb">ID</span><span class="p">]!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">createAndSendMessageToContacts</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">,</span><span class="w"> </span><span class="n">contactIds</span><span class="p">:</span><span class="w"> </span><span class="nv">$contactIds</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">id</span><span class="w">
+    </span><span class="n">body</span><span class="w">
+    </span><span class="n">receiver</span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">body</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Test</span><span class="w"> </span><span class="n">message</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">flow</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">OUTBOUND</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">type</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">TEXT</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">senderId</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">userId</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">"</span><span class="n">contactIds</span><span class="err">":</span><span class="w"> </span><span class="err">[</span><span class="w">
+    </span><span class="err">2</span><span class="p">,</span><span class="w">
+    </span><span class="err">3</span><span class="w">
+  </span><span class="err">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"createAndSendMessageToContacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test message"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test message"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-8'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>input</td>
+<td><a href="#messageinput">MessageInput</a></td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>contactIds</td>
+<td>[<a href="#id">ID</a>]!</td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-5'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>[<a href="#message">Message</a>]</td>
+<td>List of messages</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='send-hsm-message'>Send hsm Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">sendHsmMessage</span><span class="p">(</span><span class="nv">$templateId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$receiverId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$parameters</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="nb">String</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">sendHsmMessage</span><span class="p">(</span><span class="n">templateId</span><span class="p">:</span><span class="w"> </span><span class="nv">$templateId</span><span class="p">,</span><span class="w"> </span><span class="n">receiverId</span><span class="p">:</span><span class="w"> </span><span class="nv">$receiverId</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">:</span><span class="w"> </span><span class="nv">$parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">message</span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">body</span><span class="w">
+      </span><span class="n">isHsm</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">key</span><span class="w">
+      </span><span class="n">message</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">templateId</span><span class="err">":</span><span class="w"> </span><span class="err">34</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">receiverId</span><span class="err">":</span><span class="w"> </span><span class="err">5</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">parameters</span><span class="err">":</span><span class="w"> </span><span class="err">[</span><span class="w">
+    </span><span class="err">"100"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"30</span><span class="w"> </span><span class="n">Oct</span><span class="err">"</span><span class="w">
+  </span><span class="err">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"sendHsmMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your 100 points will expire on 30 Oct."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isHsm"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>In case of error, above function returns an error object like the below</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"sendHsmMessage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"column"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"line"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You need to provide correct number of parameters for hsm template"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"sendHsmMessage"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-9'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>templateId</td>
+<td><a href="#id">ID</a>!</td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>receiverId</td>
+<td><a href="#id">ID</a>!</td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>parameters</td>
+<td>[<a href="#string">String</a>]!</td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-6'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#messageresult">MessageResult</a></td>
+<td>An error object or empty</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 <h2 id='subscription-for-sent-message'>Subscription for Sent Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">subscription</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">sentMessage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">id</span><span class="w">
@@ -5406,7 +5746,7 @@ Match the parent
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='return-parameters-4'>Return Parameters</h3>
+</span></code></pre></div><h3 id='return-parameters-7'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5462,7 +5802,7 @@ Match the parent
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='return-parameters-5'>Return Parameters</h3>
+</span></code></pre></div><h3 id='return-parameters-8'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5720,6 +6060,12 @@ Match the tags excluded
 <tr>
 <td colspan="2" valign="top"><strong>media_id</strong></td>
 <td valign="top"><a href="#id">Id</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>send_at</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
 <td></td>
 </tr>
 
@@ -6615,6 +6961,7 @@ Match the tags excluded
     </span><span class="n">body</span><span class="w">
     </span><span class="n">label</span><span class="w">
     </span><span class="n">shortcode</span><span class="w">
+    </span><span class="n">isHsm</span><span class="w">
     </span><span class="n">type</span><span class="w">
     </span><span class="n">isActive</span><span class="w">
     </span><span class="n">isReserved</span><span class="w">
@@ -6653,6 +7000,7 @@ Match the tags excluded
         </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Another Template"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isHsm"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"isReserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"isSource"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Another Template Label"</span><span class="p">,</span><span class="w">
@@ -6672,6 +7020,7 @@ Match the tags excluded
         </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Template"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isHsm"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"isReserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"isSource"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Template Label"</span><span class="p">,</span><span class="w">
@@ -7112,6 +7461,16 @@ Match the tags excluded
 <td valign="top"><a href="#messagetypesenum">MessageTypesEnum</a></td>
 <td></td>
 </tr>
+<tr>
+<td colspan="2" valign="top"><strong>isHsm</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>number_parameters</strong></td>
+<td valign="top"><a href="#int">Int</a></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h3 id='sessiontemplateresult'>SessionTemplateResult</h3>
@@ -7230,6 +7589,19 @@ Match the shortcode of template
 
 </td>
 </tr>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>is_hsm</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a></td>
+<td>
+
+Match the hsm template message
+
+</td>
+</tr>
+
 </tbody>
 </table>
 <h3 id='sessiontemplateinput'>SessionTemplateInput</h3>
@@ -7255,6 +7627,16 @@ Match the shortcode of template
 <tr>
 <td colspan="2" valign="top"><strong>isSource</strong></td>
 <td valign="top"><a href="#boolean">Boolean</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>isHsm</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>number_parameters</strong></td>
+<td valign="top"><a href="#int">Int</a></td>
 <td></td>
 </tr>
 <tr>
