@@ -312,10 +312,13 @@
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#send-an-otp-request-to-verify-a-phone-number" class="toc-h1 toc-link" data-title="Send an OTP request to verify a phone number">Send an OTP request to verify a phone number</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#send-an-otp-request-to-verify-a-phone-number" class="toc-h2 toc-link" data-title="Send an OTP request to verify a phone number">Send an OTP request to verify a phone number</a>
+                  </li>
+                  <li>
+                    <a href="#send-an-otp-request-to-verify-a-phone-number-of-existing-user" class="toc-h2 toc-link" data-title="Send an OTP request to verify a phone number of existing user">Send an OTP request to verify a phone number of existing user</a>
+                  </li>
                   <li>
                     <a href="#create-a-new-user" class="toc-h2 toc-link" data-title="Create a new user">Create a new user</a>
                   </li>
@@ -327,6 +330,9 @@
                   </li>
                   <li>
                     <a href="#delete-an-existing-session" class="toc-h2 toc-link" data-title="Delete an existing session">Delete an existing session</a>
+                  </li>
+                  <li>
+                    <a href="#reset-password" class="toc-h2 toc-link" data-title="reset password">reset password</a>
                   </li>
               </ul>
           </li>
@@ -465,6 +471,9 @@
                     <a href="#update-a-user" class="toc-h2 toc-link" data-title="Update a User">Update a User</a>
                   </li>
                   <li>
+                    <a href="#update-a-user-password" class="toc-h2 toc-link" data-title="Update a User Password">Update a User Password</a>
+                  </li>
+                  <li>
                     <a href="#delete-a-user" class="toc-h2 toc-link" data-title="Delete a User">Delete a User</a>
                   </li>
                   <li>
@@ -554,7 +563,13 @@
             <a href="#search" class="toc-h1 toc-link" data-title="Search">Search</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#search-in-conversation" class="toc-h2 toc-link" data-title="Search In conversation">Search In conversation</a>
+                    <a href="#search-contacts-and-conversations" class="toc-h2 toc-link" data-title="Search Contacts and Conversations">Search Contacts and Conversations</a>
+                  </li>
+                  <li>
+                    <a href="#saved-search-execution" class="toc-h2 toc-link" data-title="Saved Search Execution">Saved Search Execution</a>
+                  </li>
+                  <li>
+                    <a href="#saved-search-count" class="toc-h2 toc-link" data-title="Saved Search Count">Saved Search Count</a>
                   </li>
                   <li>
                     <a href="#search-objects" class="toc-h2 toc-link" data-title="Search Objects">Search Objects</a>
@@ -584,6 +599,9 @@
                   </li>
                   <li>
                     <a href="#create-and-send-message" class="toc-h2 toc-link" data-title="Create and send Message">Create and send Message</a>
+                  </li>
+                  <li>
+                    <a href="#create-and-send-scheduled-message" class="toc-h2 toc-link" data-title="Create and send Scheduled Message">Create and send Scheduled Message</a>
                   </li>
                   <li>
                     <a href="#create-and-send-message-to-multiple-contacts" class="toc-h2 toc-link" data-title="Create and send Message to multiple Contacts">Create and send Message to multiple Contacts</a>
@@ -862,13 +880,13 @@ authentication tokens should be included in all GraphQL requests. This section w
 include roles and permissions. User management will be done via GraphQL</p>
 
 <p>The main API endpoints are listed below</p>
-<h1 id='send-an-otp-request-to-verify-a-phone-number'>Send an OTP request to verify a phone number</h1>
+<h2 id='send-an-otp-request-to-verify-a-phone-number'>Send an OTP request to verify a phone number</h2>
 <p>The OTP will be sent via WhatsApp and the NGO&#39;s Glific Instance. The API will only send
 a message to contacts that have opted into the system. This also prevents the API
 from being abused.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="se">\</span>
   <span class="s2">"user[phone]=911234554321"</span> <span class="se">\</span>
-  http://YOUR_HOSTNAME_AND_PORT/api/v1/registration/send-registration-otp
+  http://YOUR_HOSTNAME_AND_PORT/api/v1/registration/send-otp
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">If</span> <span class="nx">you</span> <span class="nx">are</span> <span class="nx">using</span> <span class="nx">axios</span> <span class="nx">or</span> <span class="nx">other</span> <span class="nx">libraries</span><span class="p">,</span> <span class="nx">send</span> <span class="nx">the</span> <span class="nx">following</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">BODY</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">POST</span> <span class="nx">request</span>
 
 <span class="p">{</span>
@@ -884,7 +902,32 @@ from being abused.</p>
           </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP sent successfully to #{phone}"</span><span class="p">}}</span><span class="w">
 </span></code></pre></div>
 <p>Or</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cannot send the registration otp to #{phone}"</span><span class="p">}}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cannot send the otp to #{phone}"</span><span class="p">}}</span><span class="w">
+</span></code></pre></div><h2 id='send-an-otp-request-to-verify-a-phone-number-of-existing-user'>Send an OTP request to verify a phone number of existing user</h2>
+<p>The OTP will be sent via WhatsApp and the NGO&#39;s Glific Instance. The API will only send
+a message to existing user</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="se">\</span>
+  <span class="s2">"user[phone]=911234554321&amp;user[registration]=false"</span> <span class="se">\</span>
+  http://YOUR_HOSTNAME_AND_PORT/api/v1/registration/send-otp
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">If</span> <span class="nx">you</span> <span class="nx">are</span> <span class="nx">using</span> <span class="nx">axios</span> <span class="nx">or</span> <span class="nx">other</span> <span class="nx">libraries</span><span class="p">,</span> <span class="nx">send</span> <span class="nx">the</span> <span class="nx">following</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">BODY</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">POST</span> <span class="nx">request</span>
+
+<span class="p">{</span>
+    <span class="dl">"</span><span class="s2">user</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">phone</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">911234554321</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">registration</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">false</span><span class="dl">"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="err">phone</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP sent successfully to #{phone}"</span><span class="p">}}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Or</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cannot send the otp to #{phone}"</span><span class="p">}}</span><span class="w">
 </span></code></pre></div><h2 id='create-a-new-user'>Create a new user</h2>
 <p>The typical user registration flow will be something like:</p>
 
@@ -973,6 +1016,38 @@ that looks like the following:</p>
 <p>The above query returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"data"</span><span class="p">:{}}</span><span class="w">
+</span></code></pre></div><h2 id='reset-password'>reset password</h2>
+<p>The typical forgot password flow will be something like:</p>
+
+<ul>
+<li>The caller will call the <code>send_otp</code> request with a <code>Phone Number</code></li>
+<li>On successful confirmation of the delivery of <code>send_otp</code>, the front-end will display new password entry screen</li>
+<li>User enters: <code>OTP</code>, <code>Phone Number</code> and <code>New Password</code></li>
+</ul>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="se">\</span>
+  <span class="s2">"user[phone]=911234554321&amp;user[new_password]=secret1234 </span><span class="se">\</span><span class="s2">
+  &amp;user[otp]=321721"</span> <span class="se">\</span>
+  http://YOUR_HOSTNAME_AND_PORT/api/v1/registration/reset-password
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">If</span> <span class="nx">you</span> <span class="nx">are</span> <span class="nx">using</span> <span class="nx">axios</span> <span class="nx">or</span> <span class="nx">other</span> <span class="nx">libraries</span><span class="p">,</span> <span class="nx">send</span> <span class="nx">the</span> <span class="nx">following</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">BODY</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">POST</span> <span class="nx">request</span>
+
+<span class="p">{</span>
+    <span class="dl">"</span><span class="s2">user</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">phone</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">911234554321</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">password</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">secret1234</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">otp</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">321721</span><span class="dl">"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTH_TOKEN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"token_expiry_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-13T16:22:53.678465Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"renewal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RENEW_TOKEN"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='languages'>Languages</h1><h2 id='get-all-languages'>Get All Languages</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">languages</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">languages</span><span class="p">{</span><span class="w">
     </span><span class="n">id</span><span class="w">
@@ -2565,6 +2640,10 @@ Match the url of provider
       </span><span class="n">id</span><span class="w">
       </span><span class="n">label</span><span class="w">
     </span><span class="p">}</span><span class="w">
+    </span><span class="n">groups</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">label</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -2581,6 +2660,7 @@ Match the url of provider
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Sender"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"optinTime"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -3070,6 +3150,11 @@ Match the url of provider
 <td valign="top">[<a href="#tag">Tag</a>]</td>
 <td></td>
 </tr>
+<tr>
+<td colspan="2" valign="top"><strong>groups</strong></td>
+<td valign="top">[<a href="#group">Group</a>]</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h3 id='location'>Location</h3>
@@ -3202,6 +3287,9 @@ Match the status
     </span><span class="n">name</span><span class="w">
     </span><span class="n">phone</span><span class="w">
     </span><span class="n">roles</span><span class="w">
+    </span><span class="n">groups</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">label</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -3218,6 +3306,7 @@ Match the status
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+919820198765"</span><span class="p">,</span><span class="w">
@@ -3226,6 +3315,11 @@ Match the status
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First Group"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+918820198765"</span><span class="p">,</span><span class="w">
@@ -3420,7 +3514,83 @@ Match the status
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-4'>Query Parameters</h3>
+</span></code></pre></div>
+<blockquote>
+<p>In case of errors, above function returns an error object like the below</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+  "data": {
+    "updateUser": {
+      "errors": [
+        {
+          "key": "roles",
+          "message": "has an invalid entry"
+        }
+      ],
+      "user": null
+    }
+  }
+}
+</code></pre></div><h2 id='update-a-user-password'>Update a User Password</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateUser</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$input</span><span class="p">:</span><span class="n">UserInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updateUser</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">user</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">name</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">key</span><span class="w">
+      </span><span class="n">message</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"2"</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">name</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Updated</span><span class="w"> </span><span class="n">Name</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">otp</span><span class="err">":</span><span class="w"> </span><span class="err">"340606"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">password</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">new_password</span><span class="err">"</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"updateUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Updated Name"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>In case of otp errors, above function returns an error object like the below</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+  "data": {
+    "updateUser": null
+  },
+  "errors": [
+    {
+      "locations": [
+        {
+          "column": 3,
+          "line": 2
+        }
+      ],
+      "message": "does_not_exist",
+      "path": [
+        "updateUser"
+      ]
+    }
+  ]
+}
+</code></pre></div><h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3550,6 +3720,11 @@ Match the status
 <td valign="top">[<a href="#string">String</a>]</td>
 <td></td>
 </tr>
+<tr>
+<td colspan="2" valign="top"><strong>groups</strong></td>
+<td valign="top">[<a href="#group">Group</a>]</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h3 id='userresult'>UserResult</h3>
@@ -3625,6 +3800,16 @@ Match the phone
 <tr>
 <td colspan="2" valign="top"><strong>roles</strong></td>
 <td valign="top">[<a href="#string">String</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>otp</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>password</strong></td>
+<td valign="top"><a href="#string">String</a></td>
 <td></td>
 </tr>
 </tbody>
@@ -4484,17 +4669,21 @@ Match the parent
 </tr>
 </tbody>
 </table>
-<h1 id='saved-searches'>Saved Searches</h1><h2 id='get-all-saved-searches'>Get All Saved Searches</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">savedSearches</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">SavedSearchFilters</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">savedSearches</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h1 id='saved-searches'>Saved Searches</h1><h2 id='get-all-saved-searches'>Get All Saved Searches</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">savedSearches</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">SavedSearchFilter</span><span class="p">!,</span><span class="w"> </span><span class="nv">$opts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">savedSearches</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">:</span><span class="w"> </span><span class="nv">$opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">id</span><span class="w">
     </span><span class="n">label</span><span class="w">
+    </span><span class="n">shortcode</span><span class="w">
     </span><span class="n">args</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
   </span><span class="err">"</span><span class="n">filter</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="err">"</span><span class="n">label</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Unread</span><span class="err">"</span><span class="w">
+    </span><span class="err">"</span><span class="n">label</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">conv</span><span class="err">"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">"</span><span class="n">opts</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">limit</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -4505,20 +4694,21 @@ Match the parent
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"savedSearches"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All Unread Messages"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{term: "</span><span class="err">\All</span><span class="w"> </span><span class="err">Unread</span><span class="w"> </span><span class="err">Messages\</span><span class="s2">", IncludeTags: [2]}"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All Unread Messages Contacts"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{term: "</span><span class="err">\All</span><span class="w"> </span><span class="err">Unread</span><span class="w"> </span><span class="err">Messages</span><span class="w"> </span><span class="err">Contacts</span><span class="w"> </span><span class="err">\</span><span class="s2">", IncludeTags: [2]}"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{
+          </span><span class="se">\"</span><span class="s2">term</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,
+          </span><span class="se">\"</span><span class="s2">messageOpts</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">limit</span><span class="se">\"</span><span class="s2">:5},
+          </span><span class="se">\"</span><span class="s2">filter</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">includeTags</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">10</span><span class="se">\"</span><span class="s2">]},
+          </span><span class="se">\"</span><span class="s2">contactOpts</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">limit</span><span class="se">\"</span><span class="s2">:10}
+        }"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All unread conversations"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"shortcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unread"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This returns all the saved searches for the organization filtered by the input <a href="#savedsearchfilters">SavedSearchFilters</a></p>
+<p>This returns all the saved searches for the organization filtered by the input <a href="#savedsearchfilters">SavedSearchFilter</a></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -4530,9 +4720,15 @@ Match the parent
 </thead><tbody>
 <tr>
 <td>filter</td>
-<td><a href="#savedsearchfilters">SavedSearchFilters</a></td>
+<td><a href="#savedsearchfilters">SavedSearchFilter</a></td>
 <td>nil</td>
 <td>filter the list</td>
+</tr>
+<tr>
+<td>opts</td>
+<td><a href="#opts">Opts</a></td>
+<td>nil</td>
+<td>limit / offset / sort order options</td>
 </tr>
 </tbody></table>
 <h2 id='get-a-specific-saved-search-by-id'>Get a specific Saved Search by ID</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">savedSearch</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4582,6 +4778,7 @@ Match the parent
     </span><span class="n">savedSearch</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="w">
       </span><span class="n">label</span><span class="w">
+      </span><span class="n">shortcode</span><span class="w">
       </span><span class="n">args</span><span class="w">
     </span><span class="p">}</span><span class="w">
     </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4594,6 +4791,7 @@ Match the parent
 </span><span class="p">{</span><span class="w">
   </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="err">"</span><span class="n">label</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">This</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">saved</span><span class="w"> </span><span class="n">search</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">shortcode</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Save</span><span class="w"> </span><span class="n">Search</span><span class="err">"</span><span class="w">
     </span><span class="err">"</span><span class="n">args</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="p">{</span><span class="err">"</span><span class="n">term</span><span class="err">":</span><span class="w"> </span><span class="err">"\</span><span class="n">Save</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">search</span><span class="err">\"</span><span class="p">}</span><span class="err">"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4608,7 +4806,8 @@ Match the parent
       </span><span class="nl">"savedSearch"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a saved search"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{"</span><span class="err">term</span><span class="s2">": "</span><span class="err">\Save</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">search\</span><span class="s2">"}"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"shortcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Save Search"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">term</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Save this search</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -4646,7 +4845,6 @@ Match the parent
     </span><span class="n">savedSearch</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="w">
       </span><span class="n">label</span><span class="w">
-      </span><span class="n">args</span><span class="w">
     </span><span class="p">}</span><span class="w">
     </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">key</span><span class="w">
@@ -4659,7 +4857,6 @@ Match the parent
   </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"26"</span><span class="p">,</span><span class="w">
   </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="err">"</span><span class="n">label</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">This</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">updated</span><span class="w"> </span><span class="n">saved</span><span class="w"> </span><span class="n">search</span><span class="err">"</span><span class="p">,</span><span class="w">
-    </span><span class="err">"</span><span class="n">args</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="p">{</span><span class="err">"</span><span class="n">term</span><span class="err">":</span><span class="w"> </span><span class="err">"\</span><span class="n">Save</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">search</span><span class="err">\"</span><span class="p">}</span><span class="err">"</span><span class="p">,</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="err">```</span><span class="w">
 
@@ -4673,7 +4870,6 @@ Match the parent
       </span><span class="err">"</span><span class="n">savedSearch</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"26"</span><span class="p">,</span><span class="w">
         </span><span class="err">"</span><span class="n">label</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">This</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">updated</span><span class="w"> </span><span class="n">saved</span><span class="w"> </span><span class="n">search</span><span class="err">"</span><span class="p">,</span><span class="w">
-        </span><span class="err">"</span><span class="n">args</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="p">{</span><span class="err">"</span><span class="n">term</span><span class="err">":</span><span class="w"> </span><span class="err">"\</span><span class="n">Save</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">search</span><span class="err">\"</span><span class="p">}</span><span class="err">"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -4804,6 +5000,11 @@ Match the parent
 <td></td>
 </tr>
 <tr>
+<td colspan="2" valign="top"><strong>shortcode</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
 <td colspan="2" valign="top"><strong>Args</strong></td>
 <td valign="top"><a href="#json">Json</a></td>
 <td></td>
@@ -4848,7 +5049,12 @@ Match the parent
 <tr>
 <td colspan="2" valign="top"><strong>label</strong></td>
 <td valign="top"><a href="#string">String</a></td>
-<td> Match the label </td>
+<td>Match the label</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>shortcode</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>Match the shortcode</td>
 </tr>
 </tbody>
 </table>
@@ -4868,14 +5074,25 @@ Match the parent
 <td></td>
 </tr>
 <tr>
+<td colspan="2" valign="top"><strong>shortcode</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
 <td colspan="2" valign="top"><strong>Args</strong></td>
 <td valign="top"><a href="#json">Json</a></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h1 id='search'>Search</h1><h2 id='search-in-conversation'>Search In conversation</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">search</span><span class="p">(</span><span class="nv">$term</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$searchFilter</span><span class="p">:</span><span class="w"> </span><span class="n">SearchFilter</span><span class="p">!,</span><span class="w"> </span><span class="nv">$shouldSave</span><span class="p">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">!,</span><span class="w"> </span><span class="nv">$saveSearchLabel</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$contactOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!,</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">search</span><span class="p">(</span><span class="n">term</span><span class="p">:</span><span class="w"> </span><span class="nv">$term</span><span class="p">,</span><span class="w"> </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$searchFilter</span><span class="p">,</span><span class="w"> </span><span class="n">saveSearch</span><span class="p">:</span><span class="w"> </span><span class="nv">$shouldSave</span><span class="p">,</span><span class="w"> </span><span class="n">saveSearchLabel</span><span class="p">:</span><span class="w"> </span><span class="nv">$saveSearchLabel</span><span class="p">,</span><span class="w"> </span><span class="n">contactOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$contactOpts</span><span class="p">,</span><span class="w"> </span><span class="n">messageOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h1 id='search'>Search</h1><h2 id='search-contacts-and-conversations'>Search Contacts and Conversations</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">search</span><span class="p">(</span><span class="nv">$term</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$searchFilter</span><span class="p">:</span><span class="w"> </span><span class="n">SearchFilter</span><span class="p">!,</span><span class="w">
+  </span><span class="nv">$shouldSave</span><span class="p">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">,</span><span class="w"> </span><span class="nv">$saveSearchLabel</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nv">$saveSearchShortcode</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">
+  </span><span class="nv">$contactOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!,</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+
+  </span><span class="n">search</span><span class="p">(</span><span class="n">term</span><span class="p">:</span><span class="w"> </span><span class="nv">$term</span><span class="p">,</span><span class="w"> </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$searchFilter</span><span class="p">,</span><span class="w">
+    </span><span class="n">saveSearch</span><span class="p">:</span><span class="w"> </span><span class="nv">$shouldSave</span><span class="p">,</span><span class="w"> </span><span class="n">saveSearchLabel</span><span class="p">:</span><span class="w"> </span><span class="nv">$saveSearchLabel</span><span class="p">,</span><span class="w"> </span><span class="n">saveSearchShortcode</span><span class="p">:</span><span class="w"> </span><span class="nv">$saveSearchShortcode</span><span class="p">,</span><span class="w">
+    </span><span class="n">contactOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$contactOpts</span><span class="p">,</span><span class="w"> </span><span class="n">messageOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+
     </span><span class="n">messages</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="p">,</span><span class="w">
       </span><span class="n">body</span><span class="p">,</span><span class="w">
@@ -4894,6 +5111,7 @@ Match the parent
   </span><span class="err">"</span><span class="n">term</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">def</span><span class="err">"</span><span class="p">,</span><span class="w">
   </span><span class="err">"</span><span class="n">shouldSave</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
   </span><span class="err">"</span><span class="n">saveSearchLabel</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Save</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">name</span><span class="err">"</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">saveSearchShortcode</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">SaveName</span><span class="err">"</span><span class="p">,</span><span class="w">
   </span><span class="err">"</span><span class="n">searchFilter</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="err">"</span><span class="n">includeTags</span><span class="err">":</span><span class="w"> </span><span class="err">["17"]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -4904,7 +5122,7 @@ Match the parent
   </span><span class="err">"</span><span class="n">contactOpts</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="err">"</span><span class="n">order</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">DESC</span><span class="err">"</span><span class="p">,</span><span class="w">
     </span><span class="err">"</span><span class="n">limit</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="w">
-  </span><span class="p">},</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -4952,7 +5170,7 @@ Match the parent
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This returns all the full text for the organization filtered by the input <a href="#conversation">Conversation</a></p>
+<p>This returns a list of conversations that match the term and filters <a href="#conversation">Conversation</a></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -4964,7 +5182,7 @@ Match the parent
 </thead><tbody>
 <tr>
 <td>term</td>
-<td><a href="#sting">String</a></td>
+<td><a href="#string">String</a></td>
 <td>nil</td>
 <td>keyword for search</td>
 </tr>
@@ -4987,6 +5205,12 @@ Match the parent
 <td>label for save search object</td>
 </tr>
 <tr>
+<td>saveSearchShortcode</td>
+<td><a href="#string">String</a></td>
+<td>nil</td>
+<td>shortcode for save search object</td>
+</tr>
+<tr>
 <td>messageOpts</td>
 <td><a href="#opts">Opts</a></td>
 <td>nil</td>
@@ -4997,6 +5221,113 @@ Match the parent
 <td><a href="#opts">Opts</a></td>
 <td>nil</td>
 <td>limit / offset contact options</td>
+</tr>
+</tbody></table>
+<h2 id='saved-search-execution'>Saved Search Execution</h2>
+<p>Runs a search as specified by a saved search. Can optionally send in a string to replace the saved search input string.</p>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">savedSearchExecute</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="nv">$term</span><span class="p">:</span><span class="nb">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">savedSearchExecute</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">,</span><span class="w"> </span><span class="n">term</span><span class="p">:</span><span class="w"> </span><span class="nv">$term</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">contact</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">name</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">messages</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">body</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">4</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query executes saved search 4 and returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"savedSearchExecute"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default receiver"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hindi"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hola"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This returns a list of conversations that match the term and saved search filter <a href="#conversation">Conversation</a></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><a href="#id">ID</a></td>
+<td>required</td>
+<td>Saved search ID</td>
+</tr>
+<tr>
+<td>term</td>
+<td><a href="#string">String</a></td>
+<td>nil</td>
+<td>optional keyword to add to saved search</td>
+</tr>
+</tbody></table>
+<h2 id='saved-search-count'>Saved Search Count</h2>
+<p>Returns the total number of contacts that match a saved search</p>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">savedSearchCount</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$term</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">savedSearchCount</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">,</span><span class="w"> </span><span class="n">term</span><span class="p">:</span><span class="w"> </span><span class="nv">$term</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">4</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"savedSearchCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Returns a count of the number of contacts returned when executing the saved search.</p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><a href="#id">ID</a></td>
+<td>required</td>
+<td>Saved search ID</td>
+</tr>
+<tr>
+<td>term</td>
+<td><a href="#string">String</a></td>
+<td>nil</td>
+<td>optional keyword to add to saved search</td>
 </tr>
 </tbody></table>
 <h2 id='search-objects'>Search Objects</h2><h3 id='searchfilter'>SearchFilter</h3>
@@ -5445,11 +5776,13 @@ Match the parent
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createAndSendMessage</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">MessageInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></code></pre></div><h2 id='create-and-send-scheduled-message'>Create and send Scheduled Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createAndSendMessage</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">MessageInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">createAndSendMessage</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">message</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="w">
       </span><span class="n">body</span><span class="w">
+      </span><span class="n">insertedAt</span><span class="w">
+      </span><span class="n">sendAt</span><span class="w">
     </span><span class="p">}</span><span class="w">
     </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">key</span><span class="w">
@@ -5460,10 +5793,10 @@ Match the parent
 
 </span><span class="p">{</span><span class="w">
   </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="err">"</span><span class="n">body</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">This</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">reach</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="err">9:00</span><span class="n">AM</span><span class="w"> </span><span class="p">(</span><span class="n">India</span><span class="p">)</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">body</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">This</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">reach</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="err">21:00</span><span class="w"> </span><span class="err">(</span><span class="n">India</span><span class="err">)"</span><span class="p">,</span><span class="w">
     </span><span class="err">"</span><span class="n">flow</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">OUTBOUND</span><span class="err">"</span><span class="p">,</span><span class="w">
     </span><span class="err">"</span><span class="n">receiverId</span><span class="err">":</span><span class="w"> </span><span class="err">7</span><span class="p">,</span><span class="w">
-    </span><span class="err">"</span><span class="n">sendAt</span><span class="err">":</span><span class="w"> </span><span class="err">"2020-07-10</span><span class="w"> </span><span class="err">03:30:00</span><span class="n">Z</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">sendAt</span><span class="err">":</span><span class="w"> </span><span class="err">"2020-07-10</span><span class="n">T03</span><span class="p">:</span><span class="err">30:00</span><span class="n">Z</span><span class="err">"</span><span class="p">,</span><span class="w">
     </span><span class="err">"</span><span class="n">senderId</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="p">,</span><span class="w">
     </span><span class="err">"</span><span class="n">type</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">TEXT</span><span class="err">"</span><span class="p">,</span><span class="w">
     </span><span class="err">"</span><span class="n">userId</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="w">
@@ -5478,8 +5811,10 @@ Match the parent
     </span><span class="nl">"createAndSendMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this message should reach at 8:00AM"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33"</span><span class="w">
+        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This message should reach at 21:00 (India)"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"insertedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-10T13:50:40Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sendAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-10T15:30:00Z"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -5879,8 +6214,38 @@ Match the parent
 </tr>
 
 <tr>
+<td colspan="2" valign="top"><strong>isHsm</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>insertedAt</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>updatedAt</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>sendAt</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+
+<tr>
 <td colspan="2" valign="top"><strong>Tags</strong></td>
 <td valign="top"><a href="#tags">Tags</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>user</strong></td>
+<td valign="top"><a href="#user">User</a></td>
 <td></td>
 </tr>
 
