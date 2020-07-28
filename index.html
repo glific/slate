@@ -4675,6 +4675,7 @@ Match the parent
     </span><span class="n">label</span><span class="w">
     </span><span class="n">shortcode</span><span class="w">
     </span><span class="n">args</span><span class="w">
+    </span><span class="n">count</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -4702,7 +4703,8 @@ Match the parent
         }"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All unread conversations"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"shortcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unread"</span><span class="w">
+        </span><span class="nl">"shortcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unread"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -4736,6 +4738,7 @@ Match the parent
     </span><span class="n">savedSearch</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="w">
       </span><span class="n">label</span><span class="w">
+      </span><span class="n">count</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4753,6 +4756,7 @@ Match the parent
       </span><span class="nl">"savedSearch"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All Read and Not replied messages"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -5005,9 +5009,14 @@ Match the parent
 <td></td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>Args</strong></td>
+<td colspan="2" valign="top"><strong>args</strong></td>
 <td valign="top"><a href="#json">Json</a></td>
 <td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>count</strong></td>
+<td valign="top"><a href="#integer">Integer</a></td>
+<td>This is a computed field, and requires a few DB queries. Use with caution</td>
 </tr>
 </tbody>
 </table>
