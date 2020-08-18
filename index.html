@@ -459,6 +459,9 @@
             <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#get-all-roles" class="toc-h2 toc-link" data-title="Get All Roles">Get All Roles</a>
+                  </li>
+                  <li>
                     <a href="#get-all-users" class="toc-h2 toc-link" data-title="Get All Users">Get All Users</a>
                   </li>
                   <li>
@@ -471,7 +474,10 @@
                     <a href="#update-a-user" class="toc-h2 toc-link" data-title="Update a User">Update a User</a>
                   </li>
                   <li>
-                    <a href="#update-a-user-password" class="toc-h2 toc-link" data-title="Update a User Password">Update a User Password</a>
+                    <a href="#update-current-user" class="toc-h2 toc-link" data-title="Update Current User">Update Current User</a>
+                  </li>
+                  <li>
+                    <a href="#update-current-user-password" class="toc-h2 toc-link" data-title="Update Current User Password">Update Current User Password</a>
                   </li>
                   <li>
                     <a href="#delete-a-user" class="toc-h2 toc-link" data-title="Delete a User">Delete a User</a>
@@ -538,6 +544,9 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-all-saved-searches" class="toc-h2 toc-link" data-title="Get All Saved Searches">Get All Saved Searches</a>
+                  </li>
+                  <li>
+                    <a href="#count-all-saved-searches" class="toc-h2 toc-link" data-title="Count all Saved Searches">Count all Saved Searches</a>
                   </li>
                   <li>
                     <a href="#get-a-specific-saved-search-by-id" class="toc-h2 toc-link" data-title="Get a specific Saved Search by ID">Get a specific Saved Search by ID</a>
@@ -708,20 +717,6 @@
               </ul>
           </li>
           <li>
-            <a href="#conversations" class="toc-h1 toc-link" data-title="Conversations">Conversations</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-all-conversations" class="toc-h2 toc-link" data-title="Get All Conversations">Get All Conversations</a>
-                  </li>
-                  <li>
-                    <a href="#get-a-specific-conversation-by-contact-id" class="toc-h2 toc-link" data-title="Get a specific Conversation by Contact ID">Get a specific Conversation by Contact ID</a>
-                  </li>
-                  <li>
-                    <a href="#conversation-objects" class="toc-h2 toc-link" data-title="Conversation Objects">Conversation Objects</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#groups" class="toc-h1 toc-link" data-title="Groups">Groups</a>
               <ul class="toc-list-h2">
                   <li>
@@ -752,6 +747,12 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#create-contact-group" class="toc-h2 toc-link" data-title="Create Contact Group">Create Contact Group</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-group-with-contacts-to-be-added-and-contacts-to-be-deleted" class="toc-h2 toc-link" data-title="Update a Group with contacts to be added and contacts to be deleted">Update a Group with contacts to be added and contacts to be deleted</a>
+                  </li>
+                  <li>
+                    <a href="#update-groups-to-be-added-and-groups-to-be-deleted-to-a-contact" class="toc-h2 toc-link" data-title="Update groups to be added and groups to be deleted to a Contact">Update groups to be added and groups to be deleted to a Contact</a>
                   </li>
                   <li>
                     <a href="#delete-a-contactgroup" class="toc-h2 toc-link" data-title="Delete a ContactGroup">Delete a ContactGroup</a>
@@ -786,6 +787,12 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#create-user-group" class="toc-h2 toc-link" data-title="Create User Group">Create User Group</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-group-with-users-to-be-added-and-users-to-be-deleted" class="toc-h2 toc-link" data-title="Update a Group with users to be added and users to be deleted">Update a Group with users to be added and users to be deleted</a>
+                  </li>
+                  <li>
+                    <a href="#update-groups-to-be-added-and-groups-to-be-deleted-to-a-user" class="toc-h2 toc-link" data-title="Update groups to be added and groups to be deleted to a User">Update groups to be added and groups to be deleted to a User</a>
                   </li>
                   <li>
                     <a href="#delete-a-usergroup" class="toc-h2 toc-link" data-title="Delete a UserGroup">Delete a UserGroup</a>
@@ -840,6 +847,9 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#contactstatusenum" class="toc-h2 toc-link" data-title="ContactStatusEnum">ContactStatusEnum</a>
+                  </li>
+                  <li>
+                    <a href="#contactproviderstatusenum" class="toc-h2 toc-link" data-title="ContactProviderStatusEnum">ContactProviderStatusEnum</a>
                   </li>
                   <li>
                     <a href="#messageflowenum" class="toc-h2 toc-link" data-title="MessageFlowEnum">MessageFlowEnum</a>
@@ -3337,7 +3347,54 @@ Match the status
 </tr>
 </tbody>
 </table>
-<h1 id='users'>Users</h1><h2 id='get-all-users'>Get All Users</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">users</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">UserFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$opts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h1 id='users'>Users</h1><h2 id='get-all-roles'>Get All Roles</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">roles</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">id</span><span class="w">
+    </span><span class="n">label</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"staff"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This returns all the roles</p>
+<h3 id='return-parameters'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>[<a href="#string">Role</a>]</td>
+<td>List of roles</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-users'>Get All Users</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">users</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">UserFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$opts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">users</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">:</span><span class="nv">$opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">id</span><span class="w">
     </span><span class="n">name</span><span class="w">
@@ -3385,7 +3442,7 @@ Match the status
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+918820198765"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"basic"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"staff"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"admin"</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -3416,7 +3473,7 @@ Match the status
 <td>limit / offset / sort order options</td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters'>Return Parameters</h3>
+<h3 id='return-parameters-2'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -3476,7 +3533,7 @@ Match the status
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-2'>Return Parameters</h3>
+<h3 id='return-parameters-3'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -3522,7 +3579,7 @@ Match the status
 <td>filter the list</td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-3'>Return Parameters</h3>
+<h3 id='return-parameters-4'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -3534,8 +3591,123 @@ Match the status
 <td>Count of filtered users</td>
 </tr>
 </tbody></table>
-<h2 id='update-a-user'>Update a User</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateUser</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$input</span><span class="p">:</span><span class="n">UserInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">updateUser</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h2 id='update-a-user'>Update a User</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateUser</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">UserInput</span><span class="p">!,</span><span class="w"> </span><span class="nv">$groupIds</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="nb">ID</span><span class="p">]!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updateUser</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">,</span><span class="w"> </span><span class="n">groupIds</span><span class="p">:</span><span class="w"> </span><span class="nv">$groupIds</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">user</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">name</span><span class="w">
+      </span><span class="n">phone</span><span class="w">
+      </span><span class="n">roles</span><span class="w">
+      </span><span class="n">groups</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">label</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">key</span><span class="w">
+      </span><span class="n">message</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"2"</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">name</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Updated</span><span class="w"> </span><span class="n">Name</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">roles</span><span class="err">":</span><span class="w"> </span><span class="err">[</span><span class="w">
+      </span><span class="err">"</span><span class="n">admin</span><span class="err">"</span><span class="w">
+    </span><span class="err">]</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">groupIds</span><span class="err">":</span><span class="w"> </span><span class="err">[</span><span class="w">
+      </span><span class="err">1</span><span class="p">,</span><span class="w">
+      </span><span class="err">2</span><span class="w">
+    </span><span class="err">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"updateUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First Group"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Poetry Group"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Updated Name"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"919876543210"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"admin"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>In case of errors, above function returns an error object like the below</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+  "data": {
+    "updateUser": {
+      "errors": [
+        {
+          "key": "roles",
+          "message": "has an invalid entry"
+        }
+      ],
+      "user": null
+    }
+  }
+}
+</code></pre></div><h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><a href="#id">ID</a>!</td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>input</td>
+<td><a href="#userinput">UserInput</a></td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>groupIds</td>
+<td>[<a href="#id">ID</a>]</td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-5'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#userresult">UserResult</a></td>
+<td>The updated user object</td>
+</tr>
+</tbody></table>
+<h2 id='update-current-user'>Update Current User</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateCurrentUser</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$input</span><span class="p">:</span><span class="n">CurrentUserInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updateCurrentUser</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">user</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="w">
       </span><span class="n">name</span><span class="w">
@@ -3561,39 +3733,22 @@ Match the status
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"updateUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"updateCurrentUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Updated Name"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+918820198765"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"basic"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"staff"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"admin"</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>In case of errors, above function returns an error object like the below</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>{
-  "data": {
-    "updateUser": {
-      "errors": [
-        {
-          "key": "roles",
-          "message": "has an invalid entry"
-        }
-      ],
-      "user": null
-    }
-  }
-}
-</code></pre></div><h2 id='update-a-user-password'>Update a User Password</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateUser</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$input</span><span class="p">:</span><span class="n">UserInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">updateUser</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></code></pre></div><h2 id='update-current-user-password'>Update Current User Password</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateCurrentUser</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$input</span><span class="p">:</span><span class="n">CurrentUserInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updateCurrentUser</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">user</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="w">
       </span><span class="n">name</span><span class="w">
@@ -3610,7 +3765,7 @@ Match the status
   </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="err">"</span><span class="n">name</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Updated</span><span class="w"> </span><span class="n">Name</span><span class="err">"</span><span class="p">,</span><span class="w">
     </span><span class="err">"</span><span class="n">otp</span><span class="err">":</span><span class="w"> </span><span class="err">"340606"</span><span class="p">,</span><span class="w">
-    </span><span class="err">"</span><span class="n">password</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">new_password</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">password</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">new_password</span><span class="err">"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -3619,7 +3774,7 @@ Match the status
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"updateUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"updateCurrentUser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
@@ -3634,7 +3789,7 @@ Match the status
 </blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>{
   "data": {
-    "updateUser": null
+    "updateCurrentUser": null
   },
   "errors": [
     {
@@ -3646,12 +3801,12 @@ Match the status
       ],
       "message": "does_not_exist",
       "path": [
-        "updateUser"
+        "updateCurrentUser"
       ]
     }
   ]
 }
-</code></pre></div><h3 id='query-parameters-4'>Query Parameters</h3>
+</code></pre></div><h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3668,12 +3823,12 @@ Match the status
 </tr>
 <tr>
 <td>input</td>
-<td><a href="#userinput">UserInput</a></td>
+<td><a href="#currentuserinput">CurrentUserInput</a></td>
 <td>required</td>
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-4'>Return Parameters</h3>
+<h3 id='return-parameters-6'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -3722,7 +3877,7 @@ Match the status
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-5'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3738,7 +3893,7 @@ Match the status
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-5'>Return Parameters</h3>
+<h3 id='return-parameters-7'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -3811,6 +3966,29 @@ Match the status
 </tr>
 </tbody>
 </table>
+<h3 id='role'>Role</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>id</strong></td>
+<td valign="top"><a href="#ID">ID</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>label</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h2 id='user-inputs'>User Inputs</h2><h3 id='userfilter'>UserFilter</h3>
 <p>Filtering options for users</p>
 
@@ -3861,6 +4039,23 @@ Match the phone
 <tr>
 <td colspan="2" valign="top"><strong>roles</strong></td>
 <td valign="top">[<a href="#string">String</a>]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id='currentuserinput'>CurrentUserInput</h3>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a></td>
 <td></td>
 </tr>
 <tr>
@@ -4059,6 +4254,7 @@ Match the phone
 </span><span class="p">{</span><span class="w">
   </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="err">"</span><span class="n">label</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">This</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">tag</span><span class="w"> </span><span class="n">for</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">example</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">shortcode</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">new</span><span class="err">-</span><span class="n">tag</span><span class="err">"</span><span class="p">,</span><span class="w">
     </span><span class="err">"</span><span class="n">description</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">This</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">cool</span><span class="w"> </span><span class="n">description</span><span class="err">"</span><span class="p">,</span><span class="w">
     </span><span class="err">"</span><span class="n">languageId</span><span class="err">":</span><span class="w"> </span><span class="err">"1"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -4352,6 +4548,13 @@ Match the phone
 <td valign="top"><a href="#string">String</a></td>
 <td></td>
 </tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>shortcode</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+
 <tr>
 <td colspan="2" valign="top"><strong>language</strong></td>
 <td valign="top"><a href="#language">Language</a></td>
@@ -4773,7 +4976,7 @@ Match the parent
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This returns all the saved searches for the organization filtered by the input <a href="#savedsearchfilters">SavedSearchFilter</a></p>
+<p>This returns all the saved searches for the organization filtered by the input <a href="#savedsearchfilter">SavedSearchFilter</a></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -4785,7 +4988,7 @@ Match the parent
 </thead><tbody>
 <tr>
 <td>filter</td>
-<td><a href="#savedsearchfilters">SavedSearchFilter</a></td>
+<td><a href="#savedsearchfilter">SavedSearchFilter</a></td>
 <td>nil</td>
 <td>filter the list</td>
 </tr>
@@ -4794,6 +4997,40 @@ Match the parent
 <td><a href="#opts">Opts</a></td>
 <td>nil</td>
 <td>limit / offset / sort order options</td>
+</tr>
+</tbody></table>
+<h2 id='count-all-saved-searches'>Count all Saved Searches</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">countSavedSearches</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">SavedSearchFilter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">countSavedSearches</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">filter</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">label</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Conversations</span><span class="w"> </span><span class="n">read</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">replied</span><span class="err">"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"countSavedSearches"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filter</td>
+<td><a href="#savedsearchfilter">SavedSearchFilter</a></td>
+<td>nil</td>
+<td>filter the list</td>
 </tr>
 </tbody></table>
 <h2 id='get-a-specific-saved-search-by-id'>Get a specific Saved Search by ID</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">savedSearch</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4824,7 +5061,7 @@ Match the parent
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-2'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4879,7 +5116,7 @@ Match the parent
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-3'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4941,7 +5178,7 @@ Match the parent
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-4'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5013,7 +5250,7 @@ Match the parent
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-5'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5157,13 +5394,10 @@ Match the parent
 </tr>
 </tbody>
 </table>
-<h1 id='search'>Search</h1><h2 id='search-contacts-and-conversations'>Search Contacts and Conversations</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">search</span><span class="p">(</span><span class="nv">$term</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$searchFilter</span><span class="p">:</span><span class="w"> </span><span class="n">SearchFilter</span><span class="p">!,</span><span class="w">
-  </span><span class="nv">$shouldSave</span><span class="p">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">,</span><span class="w"> </span><span class="nv">$saveSearchLabel</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nv">$saveSearchShortcode</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">
-  </span><span class="nv">$contactOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!,</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h1 id='search'>Search</h1><h2 id='search-contacts-and-conversations'>Search Contacts and Conversations</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">search</span><span class="p">(</span><span class="w">  </span><span class="nv">$saveSearchInput</span><span class="p">:</span><span class="w"> </span><span class="n">SaveSearchInput</span><span class="p">,</span><span class="w">
+  </span><span class="nv">$searchFilter</span><span class="p">:</span><span class="w"> </span><span class="n">SearchFilter</span><span class="p">!,</span><span class="w"> </span><span class="nv">$contactOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!,</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
 
-  </span><span class="n">search</span><span class="p">(</span><span class="n">term</span><span class="p">:</span><span class="w"> </span><span class="nv">$term</span><span class="p">,</span><span class="w"> </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$searchFilter</span><span class="p">,</span><span class="w">
-    </span><span class="n">saveSearch</span><span class="p">:</span><span class="w"> </span><span class="nv">$shouldSave</span><span class="p">,</span><span class="w"> </span><span class="n">saveSearchLabel</span><span class="p">:</span><span class="w"> </span><span class="nv">$saveSearchLabel</span><span class="p">,</span><span class="w"> </span><span class="n">saveSearchShortcode</span><span class="p">:</span><span class="w"> </span><span class="nv">$saveSearchShortcode</span><span class="p">,</span><span class="w">
-    </span><span class="n">contactOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$contactOpts</span><span class="p">,</span><span class="w"> </span><span class="n">messageOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">search</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$searchFilter</span><span class="p">,</span><span class="w"> </span><span class="n">saveSearchInput</span><span class="p">:</span><span class="w"> </span><span class="nv">$saveSearchInput</span><span class="p">,</span><span class="w"> </span><span class="n">contactOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$contactOpts</span><span class="p">,</span><span class="w"> </span><span class="n">messageOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
 
     </span><span class="n">messages</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="p">,</span><span class="w">
@@ -5180,12 +5414,19 @@ Match the parent
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-  </span><span class="err">"</span><span class="n">term</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">def</span><span class="err">"</span><span class="p">,</span><span class="w">
-  </span><span class="err">"</span><span class="n">shouldSave</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
-  </span><span class="err">"</span><span class="n">saveSearchLabel</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Save</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">name</span><span class="err">"</span><span class="p">,</span><span class="w">
-  </span><span class="err">"</span><span class="n">saveSearchShortcode</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">SaveName</span><span class="err">"</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">saveSearchInput</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="err">"</span><span class="n">label</span><span class="err">"</span><span class="w"> </span><span class="err">=&gt;</span><span class="w"> </span><span class="err">"</span><span class="n">Save</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">name</span><span class="err">"</span><span class="p">,</span><span class="w">
+      </span><span class="err">"</span><span class="n">shortcode</span><span class="err">"</span><span class="w"> </span><span class="err">=&gt;</span><span class="w"> </span><span class="err">"</span><span class="n">SaveName</span><span class="err">"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+
   </span><span class="err">"</span><span class="n">searchFilter</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="err">"</span><span class="n">includeTags</span><span class="err">":</span><span class="w"> </span><span class="err">["17"]</span><span class="w">
+    </span><span class="err">"</span><span class="n">includeTags</span><span class="err">":</span><span class="w"> </span><span class="err">["17"]</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">includeGroups</span><span class="err">":</span><span class="w"> </span><span class="err">["1"]</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">term</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">def</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">dateRange</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="err">"</span><span class="n">to</span><span class="err">":</span><span class="w"> </span><span class="err">"2020-08-10"</span><span class="p">,</span><span class="w">
+      </span><span class="err">"</span><span class="n">from</span><span class="err">":</span><span class="w"> </span><span class="err">"2020-08-12"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="err">"</span><span class="n">messageOpts</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="err">"</span><span class="n">limit</span><span class="err">":</span><span class="w"> </span><span class="err">3</span><span class="p">,</span><span class="w">
@@ -5253,116 +5494,94 @@ Match the parent
 </tr>
 </thead><tbody>
 <tr>
-<td>term</td>
-<td><a href="#string">String</a></td>
-<td>nil</td>
-<td>keyword for search</td>
-</tr>
-<tr>
 <td>filter</td>
 <td><a href="#searchfilter">SearchFilter</a></td>
 <td>nil</td>
 <td>filter the list</td>
 </tr>
-<tr>
-<td>saveSearch</td>
-<td><a href="#boolean">Boolean</a></td>
-<td>nil</td>
-<td>Search should be saved or not</td>
-</tr>
-<tr>
-<td>saveSearchLabel</td>
-<td><a href="#string">String</a></td>
-<td>nil</td>
-<td>label for save search object</td>
-</tr>
-<tr>
-<td>saveSearchShortcode</td>
-<td><a href="#string">String</a></td>
-<td>nil</td>
-<td>shortcode for save search object</td>
-</tr>
-<tr>
-<td>messageOpts</td>
-<td><a href="#opts">Opts</a></td>
-<td>nil</td>
-<td>limit / offset message options</td>
-</tr>
-<tr>
-<td>contactOpts</td>
-<td><a href="#opts">Opts</a></td>
-<td>nil</td>
-<td>limit / offset contact options</td>
-</tr>
 </tbody></table>
+
+<p>saveSearchInput | <a href="#savesearchinput">SaveSearchInput</a> | nil | filter the list. The label and other parameter should be available.</p>
+
+<p>messageOpts | <a href="#opts">Opts</a> | nil | limit / offset message options
+contactOpts | <a href="#opts">Opts</a> | nil | limit / offset contact options</p>
 <h2 id='saved-search-execution'>Saved Search Execution</h2>
 <p>Runs a search as specified by a saved search. Can optionally send in a string to replace the saved search input string.</p>
-<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">savedSearchExecute</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="nv">$term</span><span class="p">:</span><span class="nb">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">savedSearchExecute</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">,</span><span class="w"> </span><span class="n">term</span><span class="p">:</span><span class="w"> </span><span class="nv">$term</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="n">contact</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="n">id</span><span class="w">
-      </span><span class="n">name</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">search</span><span class="p">(</span><span class="w">
+  </span><span class="nv">$searchFilter</span><span class="p">:</span><span class="w"> </span><span class="n">SearchFilter</span><span class="p">!,</span><span class="w"> </span><span class="nv">$contactOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!,</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+
+  </span><span class="n">search</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$searchFilter</span><span class="p">,</span><span class="w"> </span><span class="n">contactOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$contactOpts</span><span class="p">,</span><span class="w"> </span><span class="n">messageOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+
     </span><span class="n">messages</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="n">id</span><span class="w">
-      </span><span class="n">body</span><span class="w">
+      </span><span class="n">id</span><span class="p">,</span><span class="w">
+      </span><span class="n">body</span><span class="p">,</span><span class="w">
+      </span><span class="n">tags</span><span class="p">{</span><span class="w">
+        </span><span class="n">label</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+    </span><span class="n">contact</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">name</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-  </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">4</span><span class="w">
+  </span><span class="err">"</span><span class="n">searchFilter</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">savedSearchID</span><span class="err">":</span><span class="w"> </span><span class="err">"17"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">term</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">def</span><span class="err">"</span><span class="p">,</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">"</span><span class="n">messageOpts</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">limit</span><span class="err">":</span><span class="w"> </span><span class="err">3</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">order</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">ASC</span><span class="err">"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">"</span><span class="n">contactOpts</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">order</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">DESC</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">limit</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>The above query executes saved search 4 and returns JSON structured like this:</p>
+<p>The above query returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"savedSearchExecute"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="nl">"search"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default receiver"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hindi"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="w">
+            </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZZZ message body for order test"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Compliment"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Good Bye"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greeting"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thank You"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hola"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
+            </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Omnis architecto qui pariatur autem minima."</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This returns a list of conversations that match the term and saved search filter <a href="#conversation">Conversation</a></p>
-<h3 id='query-parameters-2'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td><a href="#id">ID</a></td>
-<td>required</td>
-<td>Saved search ID</td>
-</tr>
-<tr>
-<td>term</td>
-<td><a href="#string">String</a></td>
-<td>nil</td>
-<td>optional keyword to add to saved search</td>
-</tr>
-</tbody></table>
+<p>This returns a list of conversations that match the term and filters <a href="#conversation">Conversation</a></p>
 <h2 id='saved-search-count'>Saved Search Count</h2>
 <p>Returns the total number of contacts that match a saved search</p>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">savedSearchCount</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$term</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5380,7 +5599,7 @@ Match the parent
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Returns a count of the number of contacts returned when executing the saved search.</p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5414,13 +5633,83 @@ Match the parent
 </thead>
 <tbody>
 <tr>
+<td colspan="2" valign="top"><strong>Term</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+
+<tr>
 <td colspan="2" valign="top"><strong>IncludeTags</strong></td>
 <td valign="top">[<a href="#gid">Gid</a>]</td>
 <td></td>
 </tr>
+
+
 <tr>
-<td colspan="2" valign="top"><strong>ExcludeTags</strong></td>
+<td colspan="2" valign="top"><strong>IncludeGroups</strong></td>
 <td valign="top">[<a href="#gid">Gid</a>]</td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>DateRange</strong></td>
+<td valign="top">[<a href="#daterange">DateRange</a>]</td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>SaveSearchID</strong></td>
+<td valign="top"><a href="#id">ID</a></td>
+<td></td>
+</tr>
+
+</tbody>
+</table>
+<h3 id='savesearchinput'>SaveSearchInput</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>label</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>shortcode</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+
+</tbody>
+</table>
+<h3 id='daterange'>daterange</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>From</strong></td>
+<td valign="top"><a href="#date">Date (Y-M-d)</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>to</strong></td>
+<td valign="top"><a href="#date">Date(Y-M-d)</a></td>
 <td></td>
 </tr>
 
@@ -8111,327 +8400,13 @@ Match the hsm template message
 </tr>
 </tbody>
 </table>
-<h1 id='conversations'>Conversations</h1><h2 id='get-all-conversations'>Get All Conversations</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">conversations</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">ConversationsFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$contactOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!,</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">conversations</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w"> </span><span class="n">contactOpts</span><span class="p">:</span><span class="nv">$contactOpts</span><span class="p">,</span><span class="w"> </span><span class="n">messageOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="n">contact</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="n">id</span><span class="w">
-      </span><span class="n">name</span><span class="w">
-      </span><span class="n">phone</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-    </span><span class="n">messages</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="n">id</span><span class="w">
-      </span><span class="n">body</span><span class="w">
-      </span><span class="n">flow</span><span class="w">
-      </span><span class="n">type</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span><span class="p">{</span><span class="w">
-  </span><span class="err">"</span><span class="n">messageOpts</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="err">"</span><span class="n">limit</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="p">,</span><span class="w">
-    </span><span class="err">"</span><span class="n">order</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">ASC</span><span class="err">"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="err">"</span><span class="n">contactOpts</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="err">"</span><span class="n">order</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">DESC</span><span class="err">"</span><span class="p">,</span><span class="w">
-    </span><span class="err">"</span><span class="n">limit</span><span class="err">":</span><span class="w"> </span><span class="err">2</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="err">"</span><span class="n">filter</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>The above query returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"conversations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"194"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rossie Bruen"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"657/719-5377"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"There is nothing either good or bad, but thinking makes it so."</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INBOUND"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8576"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Althea Hirthe"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"542-462-6684"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Now is the winter of our discontent."</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OUTBOUND"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2297"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This returns all the conversations starting with most recent. You can use limit, offset and
-sort order options on both the contacts and the conversations returned</p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>filter</td>
-<td><a href="#conversationfilter">ConversationFilter</a></td>
-<td>nil</td>
-<td>filter the conversations</td>
-</tr>
-<tr>
-<td>contactOpts</td>
-<td><a href="#opts">Opts</a></td>
-<td>limit / offset / sort order contact options</td>
-<td></td>
-</tr>
-<tr>
-<td>messageOpts</td>
-<td><a href="#opts">Opts</a></td>
-<td>limit / offset / sort order message options</td>
-<td></td>
-</tr>
-</tbody></table>
-<h3 id='return-parameters'>Return Parameters</h3>
-<table><thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>[<a href="#conversation">Conversation</a>]</td>
-<td>A list of conversation objects</td>
-</tr>
-</tbody></table>
-<h2 id='get-a-specific-conversation-by-contact-id'>Get a specific Conversation by Contact ID</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">conversation</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">ConversationFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$contactId</span><span class="p">:</span><span class="w"> </span><span class="n">Gid</span><span class="p">!,</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">conversation</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w"> </span><span class="n">contactId</span><span class="p">:</span><span class="w"> </span><span class="nv">$contactId</span><span class="p">,</span><span class="w"> </span><span class="n">messageOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="n">contact</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="n">id</span><span class="w">
-      </span><span class="n">name</span><span class="w">
-      </span><span class="n">phone</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-    </span><span class="n">messages</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="n">id</span><span class="w">
-      </span><span class="n">body</span><span class="w">
-      </span><span class="n">flow</span><span class="w">
-      </span><span class="n">type</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span><span class="p">{</span><span class="w">
-  </span><span class="err">"</span><span class="n">messageOpts</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="err">"</span><span class="n">limit</span><span class="err">":</span><span class="w"> </span><span class="err">3</span><span class="p">,</span><span class="w">
-    </span><span class="err">"</span><span class="n">order</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">ASC</span><span class="err">"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="err">"</span><span class="n">contactId</span><span class="err">":"194"</span><span class="p">,</span><span class="w">
-  </span><span class="err">"</span><span class="n">filter</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>The above query returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"conversation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"194"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rossie Bruen"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"657/719-5377"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"There is nothing either good or bad, but thinking makes it so."</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INBOUND"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8576"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rich gifts wax poor when givers prove unkind."</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OUTBOUND"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8575"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What's in a name? That which we call a rose by any other name would smell as sweet."</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INBOUND"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8574"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-2'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>filter</td>
-<td><a href="#conversationfilter">ConversationFilter</a></td>
-<td>nil</td>
-<td>filter the conversation</td>
-</tr>
-<tr>
-<td>contactId</td>
-<td><a href="#id">ID</a></td>
-<td>nil</td>
-<td></td>
-</tr>
-<tr>
-<td>messageOpts</td>
-<td><a href="#opts">Opts</a></td>
-<td>limit / offset / sort order message options</td>
-<td></td>
-</tr>
-</tbody></table>
-<h3 id='return-parameters-2'>Return Parameters</h3>
-<table><thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><a href="#conversation">Conversation</a></td>
-<td>The conversation object</td>
-</tr>
-</tbody></table>
-<h2 id='conversation-objects'>Conversation Objects</h2><h3 id='conversation'>Conversation</h3>
-<table>
-<thead>
-<tr>
-<th align="left">Field</th>
-<th align="right">Argument</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td colspan="2" valign="top"><strong>contact</strong></td>
-<td valign="top"><a href="#contact">Contact</a></td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>messages</strong></td>
-<td valign="top">[<a href="#message">Message</a>]</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id='conversationfilter'>ConversationFilter</h3>
-<p>Filtering options for conversations</p>
-
-<table>
-<thead>
-<tr>
-<th colspan="2" align="left">Field</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td colspan="2" valign="top"><strong>excludeTags</strong></td>
-<td valign="top">[<a href="#gid">Gid</a>]</td>
-<td>
-
-Exclude conversations with these tags
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>includeTags</strong></td>
-<td valign="top">[<a href="#gid">Gid</a>]</td>
-<td>
-
-Include conversations with these tags
-
-</td>
-</tr>
-</tbody>
-</table>
-<h3 id='conversationsfilter'>ConversationsFilter</h3>
-<p>Filtering options for conversations</p>
-
-<table>
-<thead>
-<tr>
-<th colspan="2" align="left">Field</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td colspan="2" valign="top"><strong>excludeTags</strong></td>
-<td valign="top">[<a href="#gid">Gid</a>]</td>
-<td>
-
-Exclude conversations with these tags
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>id</strong></td>
-<td valign="top"><a href="#gid">Gid</a></td>
-<td>
-
-Match one contact ID
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>ids</strong></td>
-<td valign="top">[<a href="#gid">Gid</a>]</td>
-<td>
-
-Match multiple contact ids
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>includeTags</strong></td>
-<td valign="top">[<a href="#gid">Gid</a>]</td>
-<td>
-
-Include conversations with these tags
-
-</td>
-</tr>
-</tbody>
-</table>
 <h1 id='groups'>Groups</h1><h2 id='get-all-groups'>Get All Groups</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">groups</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">GroupFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$opts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">groups</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">:</span><span class="nv">$opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">id</span><span class="w">
     </span><span class="n">label</span><span class="w">
     </span><span class="n">isRestricted</span><span class="w">
+    </span><span class="n">contactsCount</span><span class="w">
+    </span><span class="n">usersCount</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -8453,9 +8428,18 @@ Include conversations with these tags
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"contactsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"isRestricted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Group"</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Group"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"usersCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"contactsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isRestricted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Restricted Group"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"usersCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -8490,6 +8474,12 @@ Include conversations with these tags
       </span><span class="n">id</span><span class="w">
       </span><span class="n">label</span><span class="w">
       </span><span class="n">isRestricted</span><span class="w">
+      </span><span class="n">contacts</span><span class="p">{</span><span class="w">
+        </span><span class="n">name</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+      </span><span class="n">users</span><span class="p">{</span><span class="w">
+        </span><span class="n">name</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -8505,9 +8495,22 @@ Include conversations with these tags
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Glific Admin"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adelle Cavin"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"isRestricted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Group"</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Group"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Glific Admin"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -8749,6 +8752,29 @@ Include conversations with these tags
 <td valign="top"><a href="#string">String</a></td>
 <td></td>
 </tr>
+<tr>
+<td colspan="2" valign="top"><strong>description</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>contacts</strong></td>
+<td valign="top">[<a href="#user">Contact</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>users</strong></td>
+<td valign="top">[<a href="#user">User</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>contactsCount</strong></td>
+<td valign="top"><a href="#integer">Integer</a></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>usersCount</strong></td>
+<td valign="top"><a href="#integer">Integer</a></td>
+</tr>
 </tbody>
 </table>
 <h3 id='groupresult'>GroupResult</h3>
@@ -8791,6 +8817,11 @@ Include conversations with these tags
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>label</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>description</strong></td>
 <td valign="top"><a href="#string">String</a></td>
 <td></td>
 </tr>
@@ -8874,6 +8905,167 @@ Include conversations with these tags
 <td>The created contact group object</td>
 </tr>
 </tbody></table>
+<h2 id='update-a-group-with-contacts-to-be-added-and-contacts-to-be-deleted'>Update a Group with contacts to be added and contacts to be deleted</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateGroupContacts</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">GroupContactsInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updateGroupContacts</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">groupContacts</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">group</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">label</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+      </span><span class="n">contact</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">name</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">numberDeleted</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">groupId</span><span class="err">":</span><span class="w"> </span><span class="err">2</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">addContactIds</span><span class="err">":</span><span class="w"> </span><span class="err">[1</span><span class="p">,</span><span class="w"> </span><span class="err">2]</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">deleteContactIds</span><span class="err">":</span><span class="w"> </span><span class="err">[3</span><span class="p">,</span><span class="w"> </span><span class="err">8]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"updateGroupContacts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"groupContacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Receiver"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Art"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Glific Admin"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Art"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"numberDeleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>input</td>
+<td><a href="#groupcontactsinput">GroupContactsInput</a></td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-2'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#group_contacts">groupContacts</a></td>
+<td>The list of contact groups added</td>
+</tr>
+<tr>
+<td>integer</td>
+<td>The number of contact groups deleted</td>
+</tr>
+</tbody></table>
+<h2 id='update-groups-to-be-added-and-groups-to-be-deleted-to-a-contact'>Update groups to be added and groups to be deleted to a Contact</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateContactGroups</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">ContactGroupsInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updateContactGroups</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">contactGroups</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">group</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">label</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+      </span><span class="n">contact</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">name</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">numberDeleted</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">contactId</span><span class="err">":</span><span class="w"> </span><span class="err">2</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">addGroupIds</span><span class="err">":</span><span class="w"> </span><span class="err">[1]</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">deleteGroupIds</span><span class="err">":</span><span class="w"> </span><span class="err">[2</span><span class="p">,</span><span class="w"> </span><span class="err">3]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"updateContactGroups"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"numberDeleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"contactGroups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Poetry"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Receiver"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>input</td>
+<td><a href="#contactgroupsinput">ContactGroupsInput</a></td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-3'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#contact_groups">contactGroups</a></td>
+<td>The list of contact groups added</td>
+</tr>
+<tr>
+<td>integer</td>
+<td>The number of contact groups deleted</td>
+</tr>
+</tbody></table>
 <h2 id='delete-a-contactgroup'>Delete a ContactGroup</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">deleteContactGroup</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">deleteContactGroup</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -8897,7 +9089,7 @@ Include conversations with these tags
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-2'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8913,7 +9105,7 @@ Include conversations with these tags
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-2'>Return Parameters</h3>
+<h3 id='return-parameters-4'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -8999,6 +9191,60 @@ Include conversations with these tags
 <tr>
 <td colspan="2" valign="top"><strong>groupId</strong></td>
 <td valign="top"><a href="#id">ID</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id='groupcontactsinput'>GroupContactsInput</h3>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>GroupId</strong></td>
+<td valign="top"><a href="#id">Id</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>AddContactIds</strong></td>
+<td valign="top">[<a href="#id">Id</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>DeleteContactIds</strong></td>
+<td valign="top">[<a href="#id">Id</a>]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id='contactgroupsinput'>ContactGroupsInput</h3>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>ContactId</strong></td>
+<td valign="top"><a href="#id">Id</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>AddGroupIds</strong></td>
+<td valign="top">[<a href="#id">Id</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>DeleteGroupIds</strong></td>
+<td valign="top">[<a href="#id">Id</a>]</td>
 <td></td>
 </tr>
 </tbody>
@@ -9288,6 +9534,167 @@ Include conversations with these tags
 <td>The created user group object</td>
 </tr>
 </tbody></table>
+<h2 id='update-a-group-with-users-to-be-added-and-users-to-be-deleted'>Update a Group with users to be added and users to be deleted</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateGroupUsers</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">GroupUsersInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updateGroupUsers</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">groupUsers</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">group</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">label</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+      </span><span class="n">user</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">name</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">numberDeleted</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">groupId</span><span class="err">":</span><span class="w"> </span><span class="err">2</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">addUserIds</span><span class="err">":</span><span class="w"> </span><span class="err">[1</span><span class="p">,</span><span class="w"> </span><span class="err">2]</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">deleteUserIds</span><span class="err">":</span><span class="w"> </span><span class="err">[3</span><span class="p">,</span><span class="w"> </span><span class="err">8]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"updateGroupUsers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"groupUsers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Art"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NGO Basic User 1"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Art"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Glific Admin"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"numberDeleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>input</td>
+<td><a href="#groupusersinput">GroupUsersInput</a></td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-2'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#group_users">groupUsers</a></td>
+<td>The list of user groups added</td>
+</tr>
+<tr>
+<td>integer</td>
+<td>The number of user groups deleted</td>
+</tr>
+</tbody></table>
+<h2 id='update-groups-to-be-added-and-groups-to-be-deleted-to-a-user'>Update groups to be added and groups to be deleted to a User</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateUserGroups</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">UserGroupsInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updateUserGroups</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">userGroups</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">group</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">label</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+      </span><span class="n">user</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">name</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">numberDeleted</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">userId</span><span class="err">":</span><span class="w"> </span><span class="err">2</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">addGroupIds</span><span class="err">":</span><span class="w"> </span><span class="err">[1]</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">deleteGroupIds</span><span class="err">":</span><span class="w"> </span><span class="err">[2</span><span class="p">,</span><span class="w"> </span><span class="err">3]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"updateUserGroups"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"numberDeleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"userGroups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Poetry"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NGO Basic User 1"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>input</td>
+<td><a href="#usergroupsinput">UserGroupsInput</a></td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-3'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#user_groups">userGroups</a></td>
+<td>The list of user groups added</td>
+</tr>
+<tr>
+<td>integer</td>
+<td>The number of user groups deleted</td>
+</tr>
+</tbody></table>
 <h2 id='delete-a-usergroup'>Delete a UserGroup</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">deleteUserGroup</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">deleteUserGroup</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9311,7 +9718,7 @@ Include conversations with these tags
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-2'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -9327,7 +9734,7 @@ Include conversations with these tags
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-2'>Return Parameters</h3>
+<h3 id='return-parameters-4'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -9413,6 +9820,60 @@ Include conversations with these tags
 <tr>
 <td colspan="2" valign="top"><strong>userId</strong></td>
 <td valign="top"><a href="#id">ID</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id='groupusersinput'>GroupUsersInput</h3>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>GroupId</strong></td>
+<td valign="top"><a href="#id">Id</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>AddUserIds</strong></td>
+<td valign="top">[<a href="#id">Id</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>DeleteUserIds</strong></td>
+<td valign="top">[<a href="#id">Id</a>]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id='usergroupsinput'>UserGroupsInput</h3>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>UserId</strong></td>
+<td valign="top"><a href="#id">Id</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>AddGroupIds</strong></td>
+<td valign="top">[<a href="#id">Id</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>DeleteGroupIds</strong></td>
+<td valign="top">[<a href="#id">Id</a>]</td>
 <td></td>
 </tr>
 </tbody>
@@ -9521,6 +9982,33 @@ represent free-form human-readable text.</p>
 </tr>
 <tr>
 <td valign="top"><strong>VALID</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id='contactproviderstatusenum'>ContactProviderStatusEnum</h3>
+<p>The Contact Provider Status enum</p>
+
+<table>
+<thead>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</thead>
+<tbody>
+<tr>
+<td valign="top"><strong>NONE</strong></td>
+<td></td>
+</tr>
+<tr>
+<td valign="top"><strong>SESSION</strong></td>
+<td></td>
+</tr>
+<tr>
+<td valign="top"><strong>SESSION_AND_HSM</strong></td>
+<td></td>
+</tr>
+<tr>
+<td valign="top"><strong>HSM</strong></td>
 <td></td>
 </tr>
 </tbody>
