@@ -430,6 +430,9 @@
                     <a href="#get-all-contacts" class="toc-h2 toc-link" data-title="Get All Contacts">Get All Contacts</a>
                   </li>
                   <li>
+                    <a href="#other-filters-on-contacts" class="toc-h2 toc-link" data-title="Other filters on Contacts">Other filters on Contacts</a>
+                  </li>
+                  <li>
                     <a href="#get-a-specific-contact-by-id" class="toc-h2 toc-link" data-title="Get a specific Contact by ID">Get a specific Contact by ID</a>
                   </li>
                   <li>
@@ -2775,6 +2778,85 @@ Match the url of provider
 <td>List of contacts</td>
 </tr>
 </tbody></table>
+<h2 id='other-filters-on-contacts'>Other filters on Contacts</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">contacts</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">ContactFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$opts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">contacts</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">:</span><span class="w"> </span><span class="nv">$opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">id</span><span class="w">
+    </span><span class="n">name</span><span class="w">
+    </span><span class="n">groups</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">tags</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">filter</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">includeGroups</span><span class="err">":</span><span class="w"> </span><span class="err">[</span><span class="w">
+      </span><span class="err">1</span><span class="p">,</span><span class="w">
+      </span><span class="err">2</span><span class="w">
+    </span><span class="err">]</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">includeTags</span><span class="err">":</span><span class="w"> </span><span class="err">[</span><span class="w">
+      </span><span class="err">1</span><span class="w">
+    </span><span class="err">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Glific Admin"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"917834811114"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default receiver"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"917834811231"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='return-parameters-2'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>[<a href="#contact">Contact</a>]</td>
+<td>List of contacts</td>
+</tr>
+</tbody></table>
 <h2 id='get-a-specific-contact-by-id'>Get a specific Contact by ID</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">contact</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">contact</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">contact</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2832,7 +2914,7 @@ Match the url of provider
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-2'>Return Parameters</h3>
+<h3 id='return-parameters-3'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -2878,7 +2960,7 @@ Match the url of provider
 <td>filter the list</td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-3'>Return Parameters</h3>
+<h3 id='return-parameters-4'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -2955,7 +3037,7 @@ Match the url of provider
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-4'>Return Parameters</h3>
+<h3 id='return-parameters-5'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -3038,7 +3120,7 @@ Match the url of provider
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-5'>Return Parameters</h3>
+<h3 id='return-parameters-6'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -3103,7 +3185,7 @@ Match the url of provider
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-6'>Return Parameters</h3>
+<h3 id='return-parameters-7'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -3153,7 +3235,7 @@ Match the url of provider
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-7'>Return Parameters</h3>
+<h3 id='return-parameters-8'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -3313,6 +3395,27 @@ Match the status
 
 </td>
 </tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>includeTags</strong></td>
+<td valign="top">[<a href="#id">id</a>]</td>
+<td>
+
+Match if contact has a tag of includeTags list
+
+</td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>includeGroups</strong></td>
+<td valign="top">[<a href="#id">id</a>]</td>
+<td>
+
+Match if contact is mapped in a group of includeGroups list
+
+</td>
+</tr>
+
 </tbody>
 </table>
 <h3 id='contactinput'>ContactInput</h3>
@@ -3348,10 +3451,7 @@ Match the status
 </tbody>
 </table>
 <h1 id='users'>Users</h1><h2 id='get-all-roles'>Get All Roles</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">roles</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="n">id</span><span class="w">
-    </span><span class="n">label</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="n">roles</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -3361,22 +3461,10 @@ Match the status
 </span><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"staff"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+         </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"staff"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"manager"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"admin"</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3919,6 +4007,11 @@ Match the status
 <tr>
 <td colspan="2" valign="top"><strong>id</strong></td>
 <td valign="top"><a href="#id">ID</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>contact</strong></td>
+<td valign="top"><a href="#contact">Contact</a></td>
 <td></td>
 </tr>
 <tr>
