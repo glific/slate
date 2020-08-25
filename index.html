@@ -4785,6 +4785,14 @@ Match the parent
 <td></td>
 </tr>
 <tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>colorcode</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+
 <td colspan="2" valign="top"><strong>isActive</strong></td>
 <td valign="top"><a href="#boolean">Boolean</a></td>
 <td></td>
@@ -7547,16 +7555,12 @@ Match the tags excluded
 </tr>
 </tbody></table>
 <h2 id='subscription-for-create-message-tag'>Subscription for Create Message Tag</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">subscription</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">createdMessageTag</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="n">id</span><span class="w">
-    </span><span class="n">message</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="n">id</span><span class="w">
-        </span><span class="n">body</span><span class="w">
+  </span><span class="n">createdMessageTag</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">message</span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
     </span><span class="p">}</span><span class="w">
-
-    </span><span class="n">tag</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="n">id</span><span class="w">
-        </span><span class="n">label</span><span class="w">
+    </span><span class="n">tag</span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -7568,14 +7572,11 @@ Match the tags excluded
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"createdMessageTag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
       </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"body"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello Sir"</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"194"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"label"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Greeting"</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"194"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -7590,24 +7591,20 @@ Match the tags excluded
 </tr>
 </thead><tbody>
 <tr>
-<td><a href="#messagetag">MessageTag</a></td>
+<td><a href="#message">Message</a></td>
 <td>An error or object</td>
 <td></td>
 <td></td>
 </tr>
 </tbody></table>
 <h2 id='subscription-for-delete-message-tag'>Subscription for Delete Message Tag</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">subscription</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">deletedMessageTag</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="n">id</span><span class="w">
-    </span><span class="n">message</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="n">id</span><span class="w">
+  </span><span class="n">updateMessageTags</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">messageTags</span><span class="p">{</span><span class="w">
+      </span><span class="n">message</span><span class="p">{</span><span class="w">
         </span><span class="n">body</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
-
-    </span><span class="n">tag</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="n">id</span><span class="w">
-        </span><span class="n">label</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="n">numberDeleted</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -7617,16 +7614,9 @@ Match the tags excluded
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"deletedMessageTag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"body"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello Sir"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"label"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Greeting"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"updateMessageTags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"messageTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"numberDeleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -7640,7 +7630,7 @@ Match the tags excluded
 </tr>
 </thead><tbody>
 <tr>
-<td><a href="#messagetag">MessageTag</a></td>
+<td><a href="#messagetag">MessageTags</a></td>
 <td>An error or object</td>
 <td></td>
 <td></td>
