@@ -471,6 +471,9 @@
                     <a href="#get-a-specific-user-by-id" class="toc-h2 toc-link" data-title="Get a specific User by ID">Get a specific User by ID</a>
                   </li>
                   <li>
+                    <a href="#get-current-user" class="toc-h2 toc-link" data-title="Get Current User">Get Current User</a>
+                  </li>
+                  <li>
                     <a href="#count-all-users" class="toc-h2 toc-link" data-title="Count all Users">Count all Users</a>
                   </li>
                   <li>
@@ -827,6 +830,9 @@
                   </li>
                   <li>
                     <a href="#datetime" class="toc-h2 toc-link" data-title="DateTime">DateTime</a>
+                  </li>
+                  <li>
+                    <a href="#time" class="toc-h2 toc-link" data-title="Time">Time</a>
                   </li>
                   <li>
                     <a href="#gid" class="toc-h2 toc-link" data-title="Gid">Gid</a>
@@ -1831,12 +1837,22 @@ Unique
 <td>The created organization object</td>
 </tr>
 </tbody></table>
-<h2 id='update-an-organization'>Update an Organization</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateOrganization</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$input</span><span class="p">:</span><span class="n">OrganizationInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h2 id='update-an-organization'>Update an Organization</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateOrganization</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">OrganizationInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">updateOrganization</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">organization</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="w">
       </span><span class="n">name</span><span class="w">
       </span><span class="n">displayName</span><span class="w">
+      </span><span class="n">outOfOffice</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">enabled</span><span class="w">
+        </span><span class="n">startTime</span><span class="w">
+        </span><span class="n">endTime</span><span class="w">
+        </span><span class="n">flowId</span><span class="w">
+        </span><span class="n">enabledDays</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="n">id</span><span class="w">
+          </span><span class="n">enabled</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
     </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">key</span><span class="w">
@@ -1848,7 +1864,43 @@ Unique
 </span><span class="p">{</span><span class="w">
   </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"1"</span><span class="p">,</span><span class="w">
   </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="err">"</span><span class="n">display_name</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">updated</span><span class="w"> </span><span class="n">organization</span><span class="w"> </span><span class="n">display</span><span class="w"> </span><span class="n">name</span><span class="err">"</span><span class="w">
+    </span><span class="err">"</span><span class="n">displayName</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">updated</span><span class="w"> </span><span class="n">organization</span><span class="w"> </span><span class="n">display</span><span class="w"> </span><span class="n">name</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">outOfOffice</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="err">"</span><span class="n">enabled</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
+      </span><span class="err">"</span><span class="n">enabledDays</span><span class="err">":</span><span class="w"> </span><span class="err">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="err">"</span><span class="n">enabled</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
+          </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="err">"</span><span class="n">enabled</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
+          </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">2</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="err">"</span><span class="n">enabled</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
+          </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">3</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="err">"</span><span class="n">enabled</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
+          </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">4</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="err">"</span><span class="n">enabled</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
+          </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">5</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="err">"</span><span class="n">enabled</span><span class="err">":</span><span class="w"> </span><span class="n">false</span><span class="p">,</span><span class="w">
+          </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">6</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="err">"</span><span class="n">enabled</span><span class="err">":</span><span class="w"> </span><span class="n">false</span><span class="p">,</span><span class="w">
+          </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">7</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="err">]</span><span class="p">,</span><span class="w">
+      </span><span class="err">"</span><span class="n">endTime</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">T19</span><span class="p">:</span><span class="err">00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="err">"</span><span class="n">flowId</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="p">,</span><span class="w">
+      </span><span class="err">"</span><span class="n">startTime</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">T09</span><span class="p">:</span><span class="err">00:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1862,7 +1914,43 @@ Unique
       </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"updated organization display name"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Organization"</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Glific"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"outOfOffice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"enabledDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19:00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"flowId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9:00:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -2027,6 +2115,11 @@ Unique
 <td valign="top"><a href="#string">String</a></td>
 <td></td>
 </tr>
+<tr>
+<td colspan="2" valign="top"><strong>outOfOffice</strong></td>
+<td valign="top"><a href="#outofoffice">OutOfOffice</a></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h3 id='organizationresult'>OrganizationResult</h3>
@@ -2048,6 +2141,67 @@ Unique
 <tr>
 <td colspan="2" valign="top"><strong>organization</strong></td>
 <td valign="top"><a href="#organization">Organization</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id='outofoffice'>OutOfOffice</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>enabled</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>startTime</strong></td>
+<td valign="top"><a href="#time">Time</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>endTime</strong></td>
+<td valign="top"><a href="#time">Time</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>enabledDays</strong></td>
+<td valign="top">[<a href="#enabledday">EnabledDay</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>flow_id</strong></td>
+<td valign="top"><a href="#id">ID</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id='enabledday'>EnabledDay</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>id</strong></td>
+<td valign="top"><a href="#integer">Integer</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>enabled</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a></td>
 <td></td>
 </tr>
 </tbody>
@@ -2191,6 +2345,72 @@ Unique
 <tr>
 <td colspan="2" valign="top"><strong>providerNumber</strong></td>
 <td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>outOfOfficeInput</strong></td>
+<td valign="top"><a href="#outofofficeinput">OutOfOfficeInput</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id='outofofficeinput'>OutOfOfficeInput</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>enabled</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>startTime</strong></td>
+<td valign="top"><a href="#time">Time</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>endTime</strong></td>
+<td valign="top"><a href="#time">Time</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>enabledDays</strong></td>
+<td valign="top">[<a href="#enableddayinput">EnabledDayInput</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>flow_id</strong></td>
+<td valign="top"><a href="#id">ID</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id='enableddayinput'>EnabledDayInput</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>id</strong></td>
+<td valign="top"><a href="#integer">Integer</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>enabled</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a>!</td>
 <td></td>
 </tr>
 </tbody>
@@ -3633,6 +3853,46 @@ Match if contact is mapped in a group of includeGroups list
 <td>Queried User</td>
 </tr>
 </tbody></table>
+<h2 id='get-current-user'>Get Current User</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">currentUser</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">currentUser</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">user</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">name</span><span class="w">
+      </span><span class="n">phone</span><span class="w">
+      </span><span class="n">roles</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+919820198765"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"admin"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='return-parameters-4'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#userresult">UserResult</a></td>
+<td>Current User</td>
+</tr>
+</tbody></table>
 <h2 id='count-all-users'>Count all Users</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">countUsers</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">UserFilter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">countUsers</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">)</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3667,7 +3927,7 @@ Match if contact is mapped in a group of includeGroups list
 <td>filter the list</td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-4'>Return Parameters</h3>
+<h3 id='return-parameters-5'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -3782,7 +4042,7 @@ Match if contact is mapped in a group of includeGroups list
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-5'>Return Parameters</h3>
+<h3 id='return-parameters-6'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -3916,7 +4176,7 @@ Match if contact is mapped in a group of includeGroups list
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-6'>Return Parameters</h3>
+<h3 id='return-parameters-7'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -3981,7 +4241,7 @@ Match if contact is mapped in a group of includeGroups list
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-7'>Return Parameters</h3>
+<h3 id='return-parameters-8'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -5516,13 +5776,14 @@ Match the parent
 
 </span><span class="p">{</span><span class="w">
   </span><span class="err">"</span><span class="n">saveSearchInput</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="err">"</span><span class="n">label</span><span class="err">"</span><span class="w"> </span><span class="err">=&gt;</span><span class="w"> </span><span class="err">"</span><span class="n">Save</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">name</span><span class="err">"</span><span class="p">,</span><span class="w">
-      </span><span class="err">"</span><span class="n">shortcode</span><span class="err">"</span><span class="w"> </span><span class="err">=&gt;</span><span class="w"> </span><span class="err">"</span><span class="n">SaveName</span><span class="err">"</span><span class="w">
+      </span><span class="err">"</span><span class="n">label</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Save</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">name</span><span class="err">"</span><span class="p">,</span><span class="w">
+      </span><span class="err">"</span><span class="n">shortcode</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">SaveName</span><span class="err">"</span><span class="w">
   </span><span class="p">},</span><span class="w">
 
   </span><span class="err">"</span><span class="n">searchFilter</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="err">"</span><span class="n">includeTags</span><span class="err">":</span><span class="w"> </span><span class="err">["17"]</span><span class="p">,</span><span class="w">
     </span><span class="err">"</span><span class="n">includeGroups</span><span class="err">":</span><span class="w"> </span><span class="err">["1"]</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">includeUsers</span><span class="err">":</span><span class="w"> </span><span class="err">["1"]</span><span class="p">,</span><span class="w">
     </span><span class="err">"</span><span class="n">term</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">def</span><span class="err">"</span><span class="p">,</span><span class="w">
     </span><span class="err">"</span><span class="n">dateRange</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="err">"</span><span class="n">to</span><span class="err">":</span><span class="w"> </span><span class="err">"2020-08-10"</span><span class="p">,</span><span class="w">
@@ -5748,6 +6009,12 @@ contactOpts | <a href="#opts">Opts</a> | nil | limit / offset contact options</p
 
 <tr>
 <td colspan="2" valign="top"><strong>IncludeGroups</strong></td>
+<td valign="top">[<a href="#gid">Gid</a>]</td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>IncludeUsers</strong></td>
 <td valign="top">[<a href="#gid">Gid</a>]</td>
 <td></td>
 </tr>
@@ -7598,13 +7865,13 @@ Match the tags excluded
 </tr>
 </tbody></table>
 <h2 id='subscription-for-delete-message-tag'>Subscription for Delete Message Tag</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">subscription</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">updateMessageTags</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="n">messageTags</span><span class="p">{</span><span class="w">
-      </span><span class="n">message</span><span class="p">{</span><span class="w">
-        </span><span class="n">body</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+  </span><span class="n">deletedMessageTag</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">message</span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
     </span><span class="p">}</span><span class="w">
-    </span><span class="n">numberDeleted</span><span class="w">
+    </span><span class="n">tag</span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -7614,9 +7881,13 @@ Match the tags excluded
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"updateMessageTags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"messageTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nl">"numberDeleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="nl">"deletedMessageTag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"194"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"194"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -10022,6 +10293,8 @@ Match the hsm template message
 timezone. The DateTime appears in a JSON response as an ISO8601 formatted
 string, including UTC timezone (&quot;Z&quot;). The parsed date and time string will
 be converted to UTC if there is an offset.</p>
+<h3 id='time'>Time</h3>
+<p>The <code>Time</code> scalar type represents a time without microseconds precision. The Time appears in a JSON response as an ISO8601 formatted string.</p>
 <h3 id='gid'>Gid</h3>
 <p>The <code>gid</code> scalar appears in JSON as a String. The string appears to
 the glific backend as an integer</p>
