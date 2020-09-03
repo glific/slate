@@ -489,7 +489,7 @@
                     <a href="#update-a-user" class="toc-h2 toc-link" data-title="Update a User">Update a User</a>
                   </li>
                   <li>
-                    <a href="#update-current-user" class="toc-h2 toc-link" data-title="Update Current User">Update Current User</a>
+                    <a href="#update-current-user-details" class="toc-h2 toc-link" data-title="Update Current User Details">Update Current User Details</a>
                   </li>
                   <li>
                     <a href="#update-current-user-password" class="toc-h2 toc-link" data-title="Update Current User Password">Update Current User Password</a>
@@ -1579,6 +1579,7 @@ Unique
       </span><span class="n">label</span><span class="w">
     </span><span class="p">}</span><span class="w">
     </span><span class="n">isActive</span><span class="w">
+    </span><span class="n">timezone</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -1606,7 +1607,8 @@ Unique
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Organization"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Asia/Kolkata"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"defaultLanguage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1615,7 +1617,8 @@ Unique
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Slam Out Loud"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Asia/Kolkata"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -1662,6 +1665,7 @@ Unique
       </span><span class="n">id</span><span class="w">
       </span><span class="n">name</span><span class="w">
       </span><span class="n">isActive</span><span class="w">
+      </span><span class="n">timezone</span><span class="w">
       </span><span class="n">defaultLanguage</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="n">id</span><span class="w">
         </span><span class="n">label</span><span class="w">
@@ -1687,7 +1691,8 @@ Unique
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Organization"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Asia/Kolkata"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -2159,6 +2164,11 @@ Unique
 <td valign="top"><a href="#boolean">Boolean</a></td>
 <td></td>
 </tr>
+<tr>
+<td colspan="2" valign="top"><strong>timezone</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h3 id='organizationresult'>OrganizationResult</h3>
@@ -2380,6 +2390,11 @@ Unique
 <tr>
 <td colspan="2" valign="top"><strong>isActive</strong></td>
 <td valign="top"><a href="#boolean">Boolean</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>timezone</strong></td>
+<td valign="top"><a href="#string">String</a></td>
 <td></td>
 </tr>
 </tbody>
@@ -4260,13 +4275,11 @@ Match if contact is mapped in a group of includeGroups list
 <td>The updated user object</td>
 </tr>
 </tbody></table>
-<h2 id='update-current-user'>Update Current User</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateCurrentUser</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$input</span><span class="p">:</span><span class="n">CurrentUserInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">updateCurrentUser</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h2 id='update-current-user-details'>Update Current User Details</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateCurrentUser</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="n">CurrentUserInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updateCurrentUser</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">user</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="w">
       </span><span class="n">name</span><span class="w">
-      </span><span class="n">phone</span><span class="w">
-      </span><span class="n">roles</span><span class="w">
     </span><span class="p">}</span><span class="w">
     </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">key</span><span class="w">
@@ -4276,7 +4289,6 @@ Match if contact is mapped in a group of includeGroups list
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-  </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"2"</span><span class="p">,</span><span class="w">
   </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="err">"</span><span class="n">name</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Updated</span><span class="w"> </span><span class="n">Name</span><span class="err">"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -4291,18 +4303,15 @@ Match if contact is mapped in a group of includeGroups list
       </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Updated Name"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+918820198765"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"staff"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"admin"</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Updated Name"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='update-current-user-password'>Update Current User Password</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateCurrentUser</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$input</span><span class="p">:</span><span class="n">CurrentUserInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">updateCurrentUser</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></code></pre></div>
+<p>Current User can update only the name and password, but not the phone number</p>
+<h2 id='update-current-user-password'>Update Current User Password</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateCurrentUser</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="n">CurrentUserInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updateCurrentUser</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">user</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="w">
       </span><span class="n">name</span><span class="w">
@@ -4315,7 +4324,6 @@ Match if contact is mapped in a group of includeGroups list
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-  </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"2"</span><span class="p">,</span><span class="w">
   </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="err">"</span><span class="n">name</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Updated</span><span class="w"> </span><span class="n">Name</span><span class="err">"</span><span class="p">,</span><span class="w">
     </span><span class="err">"</span><span class="n">otp</span><span class="err">":</span><span class="w"> </span><span class="err">"340606"</span><span class="p">,</span><span class="w">
@@ -4343,22 +4351,16 @@ Match if contact is mapped in a group of includeGroups list
 </blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>{
   "data": {
-    "updateCurrentUser": null
-  },
-  "errors": [
-    {
-      "locations": [
+    "updateCurrentUser": {
+      "errors": [
         {
-          "column": 3,
-          "line": 2
+          "key": "OTP",
+          "message": "does_not_exist"
         }
       ],
-      "message": "does_not_exist",
-      "path": [
-        "updateCurrentUser"
-      ]
+      "user": null
     }
-  ]
+  }
 }
 </code></pre></div><h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
@@ -5521,7 +5523,7 @@ Match the parent
 </tbody></table>
 <h2 id='subscription-for-create-contact-tag'>Subscription for Create Contact Tag</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">subscription</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">createdContactTag</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="n">message</span><span class="p">{</span><span class="w">
+    </span><span class="n">contact</span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="w">
     </span><span class="p">}</span><span class="w">
     </span><span class="n">tag</span><span class="p">{</span><span class="w">
@@ -5556,7 +5558,7 @@ Match the parent
 </tr>
 </thead><tbody>
 <tr>
-<td><a href="#contact">Contact</a></td>
+<td><a href="#contacttag">ContactTag</a></td>
 <td>An error or object</td>
 <td></td>
 <td></td>
@@ -5599,7 +5601,7 @@ Match the parent
 </tr>
 </thead><tbody>
 <tr>
-<td><a href="#contacttag">ContactTags</a></td>
+<td><a href="#contacttag">ContactTag</a></td>
 <td>An error or object</td>
 <td></td>
 <td></td>
@@ -5721,8 +5723,14 @@ Match the parent
 </tr>
 
 <tr>
-<td colspan="2" valign="top"><strong>TagsId</strong></td>
-<td valign="top">[<a href="#id">Id</a>]</td>
+<td colspan="2" valign="top"><strong>AddTagIds</strong></td>
+<td valign="top">[<a href="#id">Id</a>]!</td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>DeleteTagIds</strong></td>
+<td valign="top">[<a href="#id">Id</a>]!</td>
 <td></td>
 </tr>
 
@@ -8463,8 +8471,14 @@ Match the tags excluded
 </tr>
 
 <tr>
-<td colspan="2" valign="top"><strong>TagsId</strong></td>
-<td valign="top">[<a href="#id">Id</a>]</td>
+<td colspan="2" valign="top"><strong>AddTagIds</strong></td>
+<td valign="top">[<a href="#id">Id</a>]!</td>
+<td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>DeleteTagIds</strong></td>
+<td valign="top">[<a href="#id">Id</a>]!</td>
 <td></td>
 </tr>
 
@@ -9031,7 +9045,7 @@ Match the tags excluded
 <td valign="top"><a href="#string">String</a></td>
 <td>
 
-Match term with label, body or shortcode of template
+Match term with labe/body/shortcode of template or label/shortcode of associated tag
 
 </td>
 </tr>
