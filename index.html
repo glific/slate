@@ -309,6 +309,11 @@
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#api-endpoint" class="toc-h2 toc-link" data-title="API Endpoint">API Endpoint</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
@@ -525,6 +530,9 @@
                   </li>
                   <li>
                     <a href="#get-contact-39-s-location" class="toc-h2 toc-link" data-title="Get contact's location">Get contact's location</a>
+                  </li>
+                  <li>
+                    <a href="#optin-a-contact" class="toc-h2 toc-link" data-title="Optin a Contact">Optin a Contact</a>
                   </li>
                   <li>
                     <a href="#contact-objects" class="toc-h2 toc-link" data-title="Contact Objects">Contact Objects</a>
@@ -972,11 +980,19 @@
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
 <p>Welcome to the Glific API! You can use this API to access the Glific  endpoint via GraphQL. This is the
-interface used between the Glific FrontEnd and BackEnd and as such is expected to be
-complete, documented and tested.</p>
+interface used between the Glific FrontEnd and BackEnd and as such is expected to be complete, documented
+and tested.</p>
 
 <p>We have language bindings in GraphQL and shell (for authentication).
 You can view code examples in the dark area to the right.</p>
+<h2 id='api-endpoint'>API Endpoint</h2>
+<p>For NGOs who already have an account with Glific, your API endpoint is &quot;api.&quot; concatenated with
+your current url. Thus if your endpoint is: https://ilp.tides.coloredcow.com/, your API endpoint will
+be: https://api.ilp.tides.coloredcow.com/api</p>
+
+<p>Note that for authentication we use REST, and for the rest of the API we use <a href="https://graphql.org">GraphQL</a>.
+We have also implemented <a href="https://graphql.org/blog/subscriptions-in-graphql-and-relay/">GraphQL subscriptions</a>
+if you want to be informed when we receive a message and other events.</p>
 <h1 id='webhooks'>Webhooks</h1>
 <p>Webhooks in Glific are called from floweditor as part of a flow. You need to choose, &quot;Call a webhook&quot;
 as the action of a node. We recommend that you implement the POST method for your webhook. This is because
@@ -4771,6 +4787,58 @@ Match the phone
 <tr>
 <td><a href="#location">Location</a></td>
 <td>A location object</td>
+</tr>
+</tbody></table>
+<h2 id='optin-a-contact'>Optin a Contact</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">optinContact</span><span class="p">(</span><span class="nv">$phone</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$name</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">optinContact</span><span class="p">(</span><span class="n">phone</span><span class="p">:</span><span class="w"> </span><span class="nv">$phone</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nv">$name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">contact</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">phone</span><span class="w">
+      </span><span class="n">name</span><span class="w">
+      </span><span class="n">lastMessageAt</span><span class="w">
+      </span><span class="n">optinTime</span><span class="w">
+      </span><span class="n">bspStatus</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">key</span><span class="w">
+      </span><span class="n">message</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">phone</span><span class="err">":</span><span class="w"> </span><span class="err">"917834811119"</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">name</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">contact</span><span class="w"> </span><span class="n">name</span><span class="err">"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"optinContact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"bspStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HSM"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastMessageAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"contact name"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"optinTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-25T16:12:18Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"917834811119"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='return-parameters-12'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#contactresult">ContactResult</a></td>
+<td>contact object</td>
 </tr>
 </tbody></table>
 <h2 id='contact-objects'>Contact Objects</h2><h3 id='contact'>Contact</h3>
