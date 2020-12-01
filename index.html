@@ -2188,6 +2188,16 @@ Unique
 <td valign="top"><a href="#json">Json</a></td>
 <td>structure for secrets</td>
 </tr>
+<tr>
+<td colspan="2" valign="top"><strong>insertedAt</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>updatedAt</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h3 id='bsp-balance'>Bsp Balance</h3>
@@ -3951,6 +3961,16 @@ Unique
 <td valign="top"><a href="#boolean">Boolean</a></td>
 <td></td>
 </tr>
+<tr>
+<td colspan="2" valign="top"><strong>insertedAt</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>updatedAt</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h3 id='userresult'>UserResult</h3>
@@ -4513,7 +4533,7 @@ Match the phone
       </span><span class="n">settings</span><span class="w">
       </span><span class="n">language</span><span class="p">{</span><span class="w">
         </span><span class="n">label</span><span class="w">
-      </span><span class="p">}</span><span class="w">      
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
     </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">key</span><span class="w">
@@ -4909,6 +4929,16 @@ Match the phone
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>lastCommunicationAt</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>insertedAt</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>updatedAt</strong></td>
 <td valign="top"><a href="#datetime">DateTime</a></td>
 <td></td>
 </tr>
@@ -5582,6 +5612,16 @@ Match if contact is mapped in a group of includeGroups list
 <tr>
 <td colspan="2" valign="top"><strong>parent</strong></td>
 <td valign="top"><a href="#tag">Tag</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>insertedAt</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>updatedAt</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
 <td></td>
 </tr>
 </tbody>
@@ -9588,6 +9628,16 @@ Match the tags excluded
 <td valign="top"><a href="#int">Int</a></td>
 <td></td>
 </tr>
+<tr>
+<td colspan="2" valign="top"><strong>insertedAt</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>updatedAt</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h3 id='sessiontemplateresult'>SessionTemplateResult</h3>
@@ -11886,6 +11936,16 @@ Match the hsm template message
 <td valign="top"><a href="#boolean">Boolean</a></td>
 <td></td>
 </tr>
+<tr>
+<td colspan="2" valign="top"><strong>insertedAt</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>updatedAt</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h3 id='flowresult'>FlowResult</h3>
@@ -12069,6 +12129,11 @@ Match the hsm template message
 <td colspan="2" valign="top"><strong>order</strong></td>
 <td valign="top"><a href="#sortorder">SortOrder</a></td>
 <td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>order_with</strong></td>
+<td valign="top"><a href="#sortorder">String</a></td>
+<td>The field in the DB to sort the results with. Applies to simple objects only.</td>
 </tr>
 </tbody>
 </table>
