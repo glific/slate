@@ -761,6 +761,9 @@
                     <a href="#count-all-session-templates" class="toc-h2 toc-link" data-title="Count all Session Templates">Count all Session Templates</a>
                   </li>
                   <li>
+                    <a href="#get-list-of-whatsapp-hsm-categories" class="toc-h2 toc-link" data-title="Get List of Whatsapp HSM categories">Get List of Whatsapp HSM categories</a>
+                  </li>
+                  <li>
                     <a href="#create-a-session-template" class="toc-h2 toc-link" data-title="Create a Session Template">Create a Session Template</a>
                   </li>
                   <li>
@@ -1004,26 +1007,39 @@ user responses in the flow, the name can be &#39;survey&#39;.</p>
 <h2 id='prerequisites'>Prerequisites</h2>
 <p>You need to host and maintain a public URL that is the destination of your webhook.</p>
 <h2 id='webhook-parameters'>Webhook parameters</h2>
-<p>Glific sends a standard json object with the following fields as the POST body. In a future version
-of Glific, the value that will be sent will be configurable</p>
+<p>Glific sends a standard json object with contact and results fields as default fields in the POST body. In addition to that Glific supports sending additional data in form of JSON fields.</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ID of contact in Glific Database"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name of Contact"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Phone of Contact"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"field 1 key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"field 1 value"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"field 2 key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"field 2 value"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"field 1 key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"type of field"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label of field"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value of field"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"inserted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inserted time of field"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="err">...</span><span class="w">
-      </span><span class="nl">"field n key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"field n value"</span><span class="w">
+      </span><span class="nl">"field n key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"type of field"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label of field"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value of field"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"inserted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inserted time of field"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"result 1 key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"result 1 value"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"result 2 key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"result 2 value"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"result 1 key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"input of result"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"category of result"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="err">...</span><span class="w">
-    </span><span class="nl">"result n key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"result n value"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"result n key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"input of result"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"category of result"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"custom_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_value"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='webhook-authentication'>Webhook Authentication</h2>
 <p>By default, Glific adds an extra signature header to each webhook to indicate that this was sent from Glific. This
@@ -1035,12 +1051,13 @@ its accuracy can be found in <a href="https://dashbit.co/blog/how-we-verify-webh
 be composed of {key, value} pairs. Each of these key value pairs is then stored in the flow &quot;results&quot; map, with the key
 being appended to the variable indicated in the &quot;Call a Webhook&quot; node.</p>
 
-<p>Thus is your &#39;survey&#39; webhook, returns two values: &#39;score&#39;, &#39;message&#39;, Glific will add:</p>
+<p>Thus if your &#39;survey&#39; webhook, returns three values: &#39;score&#39;, &#39;message&#39;, &#39;content&#39;,  Glific will add:</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="err">...</span><span class="w"> </span><span class="err">(results</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">flow</span><span class="w"> </span><span class="err">currently)</span><span class="w">
-    </span><span class="nl">"survey_score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Score you set in webhook"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"survey_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Message you want to send next to the user"</span><span class="w">
+    </span><span class="nl">"survey.score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Score you set in webhook"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"survey.message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Message you want to send next to the user"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"survey.content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Content you want to send next to the user"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -9118,6 +9135,7 @@ Match the tags excluded
     </span><span class="n">isHsm</span><span class="w">
     </span><span class="n">type</span><span class="w">
     </span><span class="n">isActive</span><span class="w">
+    </span><span class="n">translation</span><span class="w">
     </span><span class="n">isReserved</span><span class="w">
     </span><span class="n">isSource</span><span class="w">
     </span><span class="n">parent</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9171,6 +9189,7 @@ Match the tags excluded
           </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Template Label"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"shortcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"translations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">2</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">number_parameters</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">language_id</span><span class="se">\"</span><span class="s2">:2,</span><span class="se">\"</span><span class="s2">body</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">एक और टेम्पलेट</span><span class="se">\"</span><span class="s2">}}"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -9188,6 +9207,7 @@ Match the tags excluded
         </span><span class="nl">"messageMedia"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"shortcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"translations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">2</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">number_parameters</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">language_id</span><span class="se">\"</span><span class="s2">:2,</span><span class="se">\"</span><span class="s2">body</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">पूर्व उपस्थित नमूना</span><span class="se">\"</span><span class="s2">}}"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -9236,6 +9256,7 @@ Match the tags excluded
       </span><span class="n">body</span><span class="w">
       </span><span class="n">label</span><span class="w">
       </span><span class="n">shortcode</span><span class="w">
+      </span><span class="n">translation</span><span class="w">
       </span><span class="n">type</span><span class="w">
       </span><span class="n">language</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="n">id</span><span class="w">
@@ -9264,6 +9285,7 @@ Match the tags excluded
           </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"English (United States)"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"shortcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"translations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">2</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">number_parameters</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">language_id</span><span class="se">\"</span><span class="s2">:2,</span><span class="se">\"</span><span class="s2">body</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">पूर्व उपस्थित नमूना</span><span class="se">\"</span><span class="s2">}}"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -9343,6 +9365,45 @@ Match the tags excluded
 <td>Count of filtered session templates</td>
 </tr>
 </tbody></table>
+<h2 id='get-list-of-whatsapp-hsm-categories'>Get List of Whatsapp HSM categories</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">whatsappHsmCategories</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"whatsappHsmCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"ACCOUNT_UPDATE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"PAYMENT_UPDATE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"PERSONAL_FINANCE_UPDATE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"SHIPPING_UPDATE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"RESERVATION_UPDATE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ISSUE_RESOLUTION"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"APPOINTMENT_UPDATE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"TRANSPORTATION_UPDATE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"TICKET_UPDATE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ALERT_UPDATE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"AUTO_REPLY"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This returns list of whatsapp HSM categories</p>
+<h3 id='return-parameters-4'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>[<a href="#string">String</a>]</td>
+<td>List of categories</td>
+</tr>
+</tbody></table>
 <h2 id='create-a-session-template'>Create a Session Template</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createSessionTemplate</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="n">SessionTemplateInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">createSessionTemplate</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">sessionTemplate</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9364,6 +9425,7 @@ Match the tags excluded
     </span><span class="err">"</span><span class="n">body</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Test</span><span class="w"> </span><span class="n">template</span><span class="err">"</span><span class="p">,</span><span class="w">
     </span><span class="err">"</span><span class="n">label</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Test</span><span class="w"> </span><span class="n">label</span><span class="err">"</span><span class="p">,</span><span class="w">
     </span><span class="err">"</span><span class="n">languageId</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">translations</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="p">{</span><span class="err">\"2\":</span><span class="p">{</span><span class="err">\"</span><span class="n">number_parameters</span><span class="err">\":0</span><span class="p">,</span><span class="err">\"</span><span class="n">language_id</span><span class="err">\":2</span><span class="p">,</span><span class="err">\"</span><span class="n">body</span><span class="err">\":\"पूर्व</span><span class="w"> </span><span class="err">उपस्थित</span><span class="w"> </span><span class="err">नमूना\"</span><span class="p">}}</span><span class="err">"</span><span class="w">
     </span><span class="err">"</span><span class="n">type</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">TEXT</span><span class="err">"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -9380,6 +9442,7 @@ Match the tags excluded
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test label"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"shortcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"translations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">2</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">number_parameters</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">language_id</span><span class="se">\"</span><span class="s2">:2,</span><span class="se">\"</span><span class="s2">body</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">पूर्व उपस्थित नमूना</span><span class="se">\"</span><span class="s2">}}"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -9401,7 +9464,7 @@ Match the tags excluded
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-4'>Return Parameters</h3>
+<h3 id='return-parameters-5'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -9420,6 +9483,7 @@ Match the tags excluded
       </span><span class="n">body</span><span class="w">
       </span><span class="n">label</span><span class="w">
       </span><span class="n">shortcode</span><span class="w">
+      </span><span class="n">translation</span><span class="w">
       </span><span class="n">type</span><span class="w">
     </span><span class="p">}</span><span class="w">
     </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9448,6 +9512,7 @@ Match the tags excluded
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Template Label"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"shortcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"translations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">2</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">number_parameters</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">language_id</span><span class="se">\"</span><span class="s2">:2,</span><span class="se">\"</span><span class="s2">body</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">पूर्व उपस्थित नमूना</span><span class="se">\"</span><span class="s2">}}"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -9475,7 +9540,7 @@ Match the tags excluded
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-5'>Return Parameters</h3>
+<h3 id='return-parameters-6'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -9540,7 +9605,7 @@ Match the tags excluded
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-6'>Return Parameters</h3>
+<h3 id='return-parameters-7'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -9624,13 +9689,33 @@ Match the tags excluded
 <td></td>
 </tr>
 <tr>
+<td colspan="2" valign="top"><strong>status</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
 <td colspan="2" valign="top"><strong>number_parameters</strong></td>
 <td valign="top"><a href="#int">Int</a></td>
 <td></td>
 </tr>
 <tr>
+<td colspan="2" valign="top"><strong>category</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>example</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
 <td colspan="2" valign="top"><strong>insertedAt</strong></td>
 <td valign="top"><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>translations</strong></td>
+<td valign="top"><a href="#json">Json</a></td>
 <td></td>
 </tr>
 <tr>
@@ -9761,6 +9846,15 @@ Match the parent
 <td valign="top"><a href="#string">String</a></td>
 <td>
 
+Match the translations
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>translations</strong></td>
+<td valign="top"><a href="#json">Json</a></td>
+<td>
+
 Match the shortcode of template
 
 </td>
@@ -9774,6 +9868,16 @@ Match the shortcode of template
 <td>
 
 Match the hsm template message
+
+</td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>status</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Match the whatsapp status of hsm template message
 
 </td>
 </tr>
@@ -9811,8 +9915,18 @@ Match the hsm template message
 <td></td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>number_parameters</strong></td>
-<td valign="top"><a href="#int">Int</a></td>
+<td colspan="2" valign="top"><strong>category</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>example</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>translations</strong></td>
+<td valign="top"><a href="#json">Json</a></td>
 <td></td>
 </tr>
 <tr>
@@ -10205,12 +10319,22 @@ Match the hsm template message
 <td></td>
 </tr>
 <tr>
+<td colspan="2" valign="top"><strong>messages</strong></td>
+<td valign="top">[<a href="#message">Message</a>]</td>
+<td></td>
+</tr>
+<tr>
 <td colspan="2" valign="top"><strong>contactsCount</strong></td>
 <td valign="top"><a href="#integer">Integer</a></td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>usersCount</strong></td>
 <td valign="top"><a href="#integer">Integer</a></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>lastCommunicationAt</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
