@@ -6694,12 +6694,25 @@ Match the parent
 <td>nil</td>
 <td>filter the list</td>
 </tr>
+<tr>
+<td>saveSearchInput</td>
+<td><a href="#savesearchinput">SaveSearchInput</a></td>
+<td>nil</td>
+<td>filter the list. The label and other parameter should be available.</td>
+</tr>
+<tr>
+<td>messageOpts</td>
+<td><a href="#opts">Opts</a></td>
+<td>nil</td>
+<td>limit / offset message options</td>
+</tr>
+<tr>
+<td>contactOpts</td>
+<td><a href="#opts">Opts</a></td>
+<td>nil</td>
+<td>limit / offset contact options</td>
+</tr>
 </tbody></table>
-
-<p>saveSearchInput | <a href="#savesearchinput">SaveSearchInput</a> | nil | filter the list. The label and other parameter should be available.</p>
-
-<p>messageOpts | <a href="#opts">Opts</a> | nil | limit / offset message options
-contactOpts | <a href="#opts">Opts</a> | nil | limit / offset contact options</p>
 <h2 id='search-for-a-multiple-section-based-on-term'>Search for a multiple section based on term</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">searchMulti</span><span class="p">(</span><span class="w"> </span><span class="nv">$searchFilter</span><span class="p">:</span><span class="w"> </span><span class="n">SearchFilter</span><span class="p">!,</span><span class="w"> </span><span class="nv">$contactOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!,</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
 
   </span><span class="n">searchMulti</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$searchFilter</span><span class="p">,</span><span class="w"> </span><span class="n">contactOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$contactOpts</span><span class="p">,</span><span class="w"> </span><span class="n">messageOpts</span><span class="p">:</span><span class="w"> </span><span class="nv">$messageOpts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6956,6 +6969,12 @@ contactOpts | <a href="#opts">Opts</a> | nil | limit / offset contact options</p
 <td colspan="2" valign="top"><strong>IncludeGroups</strong></td>
 <td valign="top">[<a href="#gid">Gid</a>]</td>
 <td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>SearchGroup</strong></td>
+<td valign="top">[<a href="#boolean">Boolean</a>]</td>
+<td>When enabled, we retrieve messages sent to a group. IncludeGroups is the only filter used in this case.</td>
 </tr>
 
 <tr>
