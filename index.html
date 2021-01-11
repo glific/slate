@@ -535,6 +535,12 @@
                     <a href="#optin-a-contact" class="toc-h2 toc-link" data-title="Optin a Contact">Optin a Contact</a>
                   </li>
                   <li>
+                    <a href="#get-a-simulator-contact" class="toc-h2 toc-link" data-title="Get a simulator contact">Get a simulator contact</a>
+                  </li>
+                  <li>
+                    <a href="#release-a-simulator-contact" class="toc-h2 toc-link" data-title="Release a simulator contact">Release a simulator contact</a>
+                  </li>
+                  <li>
                     <a href="#contact-objects" class="toc-h2 toc-link" data-title="Contact Objects">Contact Objects</a>
                   </li>
                   <li>
@@ -4900,6 +4906,97 @@ Match the phone
 <td>contact object</td>
 </tr>
 </tbody></table>
+<h2 id='get-a-simulator-contact'>Get a simulator contact</h2>
+<p>Gets a simulator contact for the logged in user. We are currently returning the same simulator
+for the same user ID. We will revisit this protocol and potentially pass the user token instead
+to get a different simulator for different sessions for the same logged in user.</p>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">simulatorGet</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">simulatorGet</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">id</span><span class="w">
+    </span><span class="n">name</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span><span class="err">&gt;</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">above</span><span class="w"> </span><span class="k">query</span><span class="w"> </span><span class="n">returns</span><span class="w"> </span><span class="n">JSON</span><span class="w"> </span><span class="n">structured</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="n">this</span><span class="err">:</span><span class="w">
+
+</span><span class="err">```</span><span class="n">json</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">simulatorGet</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="err">"</span><span class="n">name</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Simulator</span><span class="err">"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">OR</span><span class="w"> </span><span class="err">(if</span><span class="w"> </span><span class="err">no</span><span class="w"> </span><span class="err">simulator</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">available</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">simulatorGet</span><span class="err">":</span><span class="w"> </span><span class="n">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-9'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='return-parameters-13'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#contact">Contact</a></td>
+<td>A contact object</td>
+</tr>
+</tbody></table>
+<h2 id='release-a-simulator-contact'>Release a simulator contact</h2>
+<p>Releases a simulator contact for the logged in user if one exists. The system also releases the simulator
+when it has been idle for more than 10 minutes and there is a request for a simulator</p>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="w">
+</span><span class="k">query</span><span class="w"> </span><span class="n">simulatorRelease</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">simulatorRelease</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">id</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">&gt;</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">above</span><span class="w"> </span><span class="k">query</span><span class="w"> </span><span class="n">returns</span><span class="w"> </span><span class="n">JSON</span><span class="w"> </span><span class="n">structured</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="n">this</span><span class="err">:</span><span class="w">
+
+</span><span class="err">```</span><span class="n">json</span><span class="w">
+</span><span class="p">{</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">simulatorRelease</span><span class="err">":</span><span class="w"> </span><span class="n">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-10'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='return-parameters-14'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h2 id='contact-objects'>Contact Objects</h2><h3 id='contact'>Contact</h3>
 <table>
 <thead>
@@ -8054,7 +8151,65 @@ Match the parent
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='create-and-send-scheduled-message'>Create and send Scheduled Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createAndSendMessage</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">MessageInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>## Create and send SessionTemplate
+
+```graphql
+mutation createAndSendMessage($input: MessageInput!) {
+  createAndSendMessage(input: $input) {
+    message {
+      id
+      body
+      receiver {
+        id
+        name
+      }
+    }
+    errors {
+      key
+      message
+    }
+  }
+}
+{
+  "input": {
+    "flow": "OUTBOUND",
+    "type": "TEXT",
+    "senderId": 1,
+    "receiverId": 11,
+    "isHsm": true,
+    "params": ["Fifty", "Next Week"],
+    "templateId": 32
+
+  }
+}
+</code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:
+<code>json
+{
+  &quot;data&quot;: {
+    &quot;createAndSendMessage&quot;: {
+      &quot;__typename&quot;: &quot;MessageResult&quot;,
+      &quot;errors&quot;: null,
+      &quot;message&quot;: {
+        &quot;__typename&quot;: &quot;Message&quot;,
+        &quot;body&quot;: &quot;Your Fifty points will expire on Next Week.&quot;,
+        &quot;id&quot;: &quot;241&quot;,
+        &quot;isHsm&quot;: true,
+        &quot;params&quot;: null,
+        &quot;receiver&quot;: {
+          &quot;__typename&quot;: &quot;Contact&quot;,
+          &quot;id&quot;: &quot;11&quot;,
+          &quot;name&quot;: &quot;Test&quot;
+        },
+        &quot;templateId&quot;: null
+      }
+    }
+  }
+}
+</code></p>
+</blockquote>
+<h2 id='create-and-send-scheduled-message'>Create and send Scheduled Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createAndSendMessage</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">MessageInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">createAndSendMessage</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">message</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="w">
