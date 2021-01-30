@@ -715,6 +715,12 @@
                     <a href="#subscription-for-sent-message" class="toc-h2 toc-link" data-title="Subscription for Sent Message">Subscription for Sent Message</a>
                   </li>
                   <li>
+                    <a href="#subscription-for-update-message-status" class="toc-h2 toc-link" data-title="Subscription for Update Message Status">Subscription for Update Message Status</a>
+                  </li>
+                  <li>
+                    <a href="#subscription-for-sent-group-message" class="toc-h2 toc-link" data-title="Subscription for Sent Group Message">Subscription for Sent Group Message</a>
+                  </li>
+                  <li>
                     <a href="#subscription-for-received-message" class="toc-h2 toc-link" data-title="Subscription for Received Message">Subscription for Received Message</a>
                   </li>
                   <li>
@@ -794,6 +800,9 @@
                   </li>
                   <li>
                     <a href="#get-a-group-by-id" class="toc-h2 toc-link" data-title="Get a Group by ID">Get a Group by ID</a>
+                  </li>
+                  <li>
+                    <a href="#get-group-information-for-a-group-by-id" class="toc-h2 toc-link" data-title="Get Group Information for a Group by ID">Get Group Information for a Group by ID</a>
                   </li>
                   <li>
                     <a href="#create-group" class="toc-h2 toc-link" data-title="Create Group">Create Group</a>
@@ -8514,6 +8523,107 @@ mutation createAndSendMessage($input: MessageInput!) {
 <td></td>
 </tr>
 </tbody></table>
+<h2 id='subscription-for-update-message-status'>Subscription for Update Message Status</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">subscription</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">update_message_status</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">id</span><span class="w">
+    </span><span class="n">body</span><span class="w">
+    </span><span class="n">flow</span><span class="w">
+    </span><span class="n">type</span><span class="w">
+    </span><span class="n">status</span><span class="w">
+    </span><span class="n">receiver</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">id</span><span class="w">
+        </span><span class="n">phone</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+    </span><span class="n">sender</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">id</span><span class="w">
+        </span><span class="n">phone</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"update_message_status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OUTBOUND"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10397"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sent"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"484"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"91997612324"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"917834811114"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='return-parameters-9'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#messageresult">MessageResult</a></td>
+<td>An error or object</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='subscription-for-sent-group-message'>Subscription for Sent Group Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">subscription</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">sent_group_message</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">id</span><span class="w">
+    </span><span class="n">body</span><span class="w">
+    </span><span class="n">flow</span><span class="w">
+    </span><span class="n">type</span><span class="w">
+    </span><span class="n">status</span><span class="w">
+    </span><span class="n">group_id</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"sent_group_message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OUTBOUND"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10397"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sent"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"group_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='return-parameters-10'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#messageresult">MessageResult</a></td>
+<td>An error or object</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 <h2 id='subscription-for-received-message'>Subscription for Received Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">subscription</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">receivedMessage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">id</span><span class="w">
@@ -8554,7 +8664,7 @@ mutation createAndSendMessage($input: MessageInput!) {
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='return-parameters-9'>Return Parameters</h3>
+</span></code></pre></div><h3 id='return-parameters-11'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8611,6 +8721,16 @@ mutation createAndSendMessage($input: MessageInput!) {
 <tr>
 <td colspan="2" valign="top"><strong>BspStatus</strong></td>
 <td valign="top"><a href="#string">MessageStatusEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>status</strong></td>
+<td valign="top"><a href="#string">MessageStatusEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>errors</strong></td>
+<td valign="top"><a href="#json">Json</a></td>
 <td></td>
 </tr>
 <tr>
@@ -10275,6 +10395,42 @@ Match the whatsapp status of hsm template message
 <td></td>
 </tr>
 </tbody></table>
+<h2 id='get-group-information-for-a-group-by-id'>Get Group Information for a Group by ID</h2>
+<p>Returns a count of the total number of contacts in the group, along with a breakdown of
+each type: &quot;none&quot;, &quot;session&quot;, &quot;session_and_hsm&quot;, &quot;hsm&quot;. If a key is missing, the value is 0</p>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="w">  </span><span class="k">query</span><span class="w"> </span><span class="n">groupInfo</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">groupInfo</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"2"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"groupInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">total</span><span class="se">\"</span><span class="s2">:2,</span><span class="se">\"</span><span class="s2">session_and_hsm</span><span class="se">\"</span><span class="s2">:1,</span><span class="se">\"</span><span class="s2">session</span><span class="se">\"</span><span class="s2">:1}"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><a href="#id">ID</a></td>
+<td>nil</td>
+<td></td>
+</tr>
+</tbody></table>
 <h2 id='create-group'>Create Group</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createGroup</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">GroupInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">createGroup</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">group</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -10320,7 +10476,7 @@ Match the whatsapp status of hsm template message
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-3'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -10385,7 +10541,7 @@ Match the whatsapp status of hsm template message
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-4'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -10442,7 +10598,7 @@ Match the whatsapp status of hsm template message
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-5'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
