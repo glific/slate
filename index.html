@@ -248,8 +248,11 @@
 .highlight .kd {
   color: #cb4b16;
 }
-.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
   color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
 }
 .highlight .sr {
   color: #2aa198;
@@ -281,7 +284,7 @@
     </style>
     <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-e9bde216.js"></script>
+      <script src="javascripts/all-e033bdd3.js"></script>
 
     <script>
       $(function() { setupCodeCopy(); });
@@ -450,6 +453,9 @@
                     <a href="#subscription-for-collection-count" class="toc-h2 toc-link" data-title="Subscription for Collection Count">Subscription for Collection Count</a>
                   </li>
                   <li>
+                    <a href="#subscription-for-simulator-release" class="toc-h2 toc-link" data-title="Subscription for Simulator release">Subscription for Simulator release</a>
+                  </li>
+                  <li>
                     <a href="#organization-objects" class="toc-h2 toc-link" data-title="Organization Objects">Organization Objects</a>
                   </li>
                   <li>
@@ -570,7 +576,7 @@
                     <a href="#delete-a-tag" class="toc-h2 toc-link" data-title="Delete a Tag">Delete a Tag</a>
                   </li>
                   <li>
-                    <a href="#remove-unread-tag-from-messages" class="toc-h2 toc-link" data-title="Remove unread tag from messages">Remove unread tag from messages</a>
+                    <a href="#remove-unread-status-from-contact" class="toc-h2 toc-link" data-title="Remove unread status from contact">Remove unread status from contact</a>
                   </li>
                   <li>
                     <a href="#tag-objects" class="toc-h2 toc-link" data-title="Tag Objects">Tag Objects</a>
@@ -659,6 +665,9 @@
                     <a href="#get-a-specific-saved-search-by-id" class="toc-h2 toc-link" data-title="Get a specific Saved Search by ID">Get a specific Saved Search by ID</a>
                   </li>
                   <li>
+                    <a href="#get-a-collection-count-stats-for-organization" class="toc-h2 toc-link" data-title="Get a Collection Count Stats for organization">Get a Collection Count Stats for organization</a>
+                  </li>
+                  <li>
                     <a href="#save-a-search" class="toc-h2 toc-link" data-title="Save a Search">Save a Search</a>
                   </li>
                   <li>
@@ -703,6 +712,9 @@
                     <a href="#create-and-send-message" class="toc-h2 toc-link" data-title="Create and send Message">Create and send Message</a>
                   </li>
                   <li>
+                    <a href="#create-and-send-sessiontemplate" class="toc-h2 toc-link" data-title="Create and send SessionTemplate">Create and send SessionTemplate</a>
+                  </li>
+                  <li>
                     <a href="#create-and-send-scheduled-message" class="toc-h2 toc-link" data-title="Create and send Scheduled Message">Create and send Scheduled Message</a>
                   </li>
                   <li>
@@ -721,7 +733,13 @@
                     <a href="#subscription-for-sent-group-message" class="toc-h2 toc-link" data-title="Subscription for Sent Group Message">Subscription for Sent Group Message</a>
                   </li>
                   <li>
+                    <a href="#subscription-for-cleared-message" class="toc-h2 toc-link" data-title="Subscription for Cleared Message">Subscription for Cleared Message</a>
+                  </li>
+                  <li>
                     <a href="#subscription-for-received-message" class="toc-h2 toc-link" data-title="Subscription for Received Message">Subscription for Received Message</a>
+                  </li>
+                  <li>
+                    <a href="#remove-unread-status-from-messages-belonging-to-a-contact" class="toc-h2 toc-link" data-title="Remove unread status from messages belonging to a contact">Remove unread status from messages belonging to a contact</a>
                   </li>
                   <li>
                     <a href="#message-objects" class="toc-h2 toc-link" data-title="Message Objects">Message Objects</a>
@@ -1060,7 +1078,7 @@ user responses in the flow, the name can be &#39;survey&#39;.</p>
 <p>By default, Glific adds an extra signature header to each webhook to indicate that this was sent from Glific. This
 signature key is generated using the signature phrase you set up for your organization and is also encrypted with
 the current time, which is part of the signature payload. More details on how we sign the payload and how to verify
-its accuracy can be found in <a href="https://dashbit.co/blog/how-we-verify-webhooks">How we verifu webhooks</a></p>
+its accuracy can be found in <a href="https://dashbit.co/blog/how-we-verify-webhooks">How we verify webhooks</a></p>
 <h2 id='webhook-return-values'>Webhook Return Values</h2>
 <p>On successful completion of the webhook, return a status code of 200 along with a JSON body. The JSON body, should only
 be composed of {key, value} pairs. Each of these key value pairs is then stored in the flow &quot;results&quot; map, with the key
@@ -1939,11 +1957,8 @@ Unique
 <td>Count of filtered providers</td>
 </tr>
 </tbody></table>
-<h2 id='get-bsp-balance-for-an-organization'>Get BSP balance for an organization</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">bspbalance</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">bspbalance</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="n">key</span><span class="w">
-    </span><span class="n">value</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+<h2 id='get-bsp-balance-for-an-organization'>Get BSP balance for an organization</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">provider_queries</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">bspbalance</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
@@ -1952,10 +1967,7 @@ Unique
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"bspbalance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bsp_balance"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">balance</span><span class="se">\"</span><span class="s2">:0.628}"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"bspbalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">balance</span><span class="se">\"</span><span class="s2">:0.426}"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='return-parameters-4'>Return Parameters</h3>
@@ -1966,8 +1978,8 @@ Unique
 </tr>
 </thead><tbody>
 <tr>
-<td><a href="#bsp_balance_result">bsp_balance_result</a></td>
-<td>remaining bsp balance</td>
+<td><a href="#json">JSON with &quot;balance&quot; as name and the amount of remaining balance as value</a></td>
+<td></td>
 </tr>
 </tbody></table>
 <h2 id='create-a-provider'>Create a Provider</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createProvider</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="n">ProviderInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2244,12 +2256,7 @@ Unique
 </thead>
 <tbody>
 <tr>
-<td colspan="2" valign="top"><strong>key</strong></td>
-<td valign="top"><a href="#string">String</a></td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>value</strong></td>
+<td colspan="2" valign="top"><strong>bspbalance</strong></td>
 <td valign="top"><a href="#id">Json</a></td>
 <td></td>
 </tr>
@@ -2931,11 +2938,8 @@ Match the shortcode of provider
 <td>List of timezones</td>
 </tr>
 </tbody></table>
-<h2 id='subscription-for-wallet-balance'>Subscription for Wallet Balance</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">subscription</span><span class="w"> </span><span class="n">PeriodicInfo</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">periodicInfo</span><span class="p">(</span><span class="n">organizationId</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="n">key</span><span class="w">
-    </span><span class="n">value</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+<h2 id='subscription-for-wallet-balance'>Subscription for Wallet Balance</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">subscription</span><span class="w"> </span><span class="n">organization_subscriptions</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">bsp_balance</span><span class="p">(</span><span class="n">organizationId</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">)</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
@@ -2944,10 +2948,7 @@ Match the shortcode of provider
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"periodicInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bsp_balance"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">balance</span><span class="se">\"</span><span class="s2">:0.787}"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"bspbalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">balance</span><span class="se">\"</span><span class="s2">:0.426}"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='return-parameters-8'>Return Parameters</h3>
@@ -2960,17 +2961,14 @@ Match the shortcode of provider
 </tr>
 </thead><tbody>
 <tr>
-<td><a href="#PeriodicInfoResult">PeriodicInfoResult</a></td>
-<td>An error or object</td>
+<td><a href="#json">JSON with &quot;balance&quot; as name and the amount of remaining balance as value</a></td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='subscription-for-collection-count'>Subscription for Collection Count</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">subscription</span><span class="w"> </span><span class="n">PeriodicInfo</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">periodicInfo</span><span class="p">(</span><span class="n">organizationId</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="n">key</span><span class="w">
-    </span><span class="n">value</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+<h2 id='subscription-for-collection-count'>Subscription for Collection Count</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">subscription</span><span class="w"> </span><span class="n">organization_subscriptions</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">collection_count</span><span class="p">(</span><span class="n">organizationId</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">)</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
@@ -2979,11 +2977,13 @@ Match the shortcode of provider
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"periodicInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"__typename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PeriodicInfoResult"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Collection_count"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">5</span><span class="se">\"</span><span class="s2">:1}"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"collection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{
+      </span><span class="se">\"</span><span class="s2">All</span><span class="se">\"</span><span class="s2">: 5,
+      </span><span class="se">\"</span><span class="s2">Not Responded</span><span class="se">\"</span><span class="s2">: 3,
+      </span><span class="se">\"</span><span class="s2">Not replied</span><span class="se">\"</span><span class="s2">: 2,
+      </span><span class="se">\"</span><span class="s2">Optout</span><span class="se">\"</span><span class="s2">: 0,
+      </span><span class="se">\"</span><span class="s2">Unread</span><span class="se">\"</span><span class="s2">: 4
+    }"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='return-parameters-9'>Return Parameters</h3>
@@ -2996,8 +2996,37 @@ Match the shortcode of provider
 </tr>
 </thead><tbody>
 <tr>
-<td><a href="#PeriodicInfoResult">PeriodicInfoResult</a></td>
-<td>An error or object</td>
+<td><a href="#json">JSON with &quot;collection&quot; as name and array with key as collection count name and value as collection count</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='subscription-for-simulator-release'>Subscription for Simulator release</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">subscription</span><span class="w"> </span><span class="n">organization_subscriptions</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">simulator_release</span><span class="p">(</span><span class="n">organizationId</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"simulator_release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">simulator_release</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">user_id</span><span class="se">\"</span><span class="s2">:1}"</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='return-parameters-10'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#json">JSON with &quot;simulator_release&quot; as name and array with key as user_id and value as id of user</a></td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -5648,7 +5677,7 @@ Match if contact is mapped in a group of includeGroups list
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='remove-unread-tag-from-messages'>Remove unread tag from messages</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">markContactMessagesAsRead</span><span class="p">(</span><span class="nv">$contactId</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Gid</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h2 id='remove-unread-status-from-contact'>Remove unread status from contact</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">markContactMessagesAsRead</span><span class="p">(</span><span class="nv">$contactId</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Gid</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">markContactMessagesAsRead</span><span class="p">(</span><span class="n">contactId</span><span class="p">:</span><span class="w"> </span><span class="nv">$contactId</span><span class="p">)</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -5657,12 +5686,12 @@ Match if contact is mapped in a group of includeGroups list
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>The above query returns effected messages ids:</p>
+<p>The above query returns the same contactID back</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"markContactMessagesAsRead"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"10"</span><span class="w">
+       </span><span class="s2">"26"</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5692,8 +5721,8 @@ Match if contact is mapped in a group of includeGroups list
 </tr>
 </thead><tbody>
 <tr>
-<td><a href="#list">List</a></td>
-<td>An error object or empty</td>
+<td><a href="#gid">Contact ID</a></td>
+<td>The same contact ID or an error object</td>
 <td></td>
 <td></td>
 </tr>
@@ -7084,6 +7113,12 @@ Match the parent
 </tr>
 
 <tr>
+<td colspan="2" valign="top"><strong>Status</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>Message Status - Unread / Not replied / Not Responded / Optout</td>
+</tr>
+
+<tr>
 <td colspan="2" valign="top"><strong>IncludeTags</strong></td>
 <td valign="top">[<a href="#gid">Gid</a>]</td>
 <td></td>
@@ -7347,6 +7382,50 @@ Match the parent
 <td></td>
 </tr>
 </tbody></table>
+<h2 id='get-a-collection-count-stats-for-organization'>Get a Collection Count Stats for organization</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">search_queries</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">collectionStats</span><span class="p">(</span><span class="n">organizationId</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"collectionStats"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">1</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">Unread</span><span class="se">\"</span><span class="s2">:4,</span><span class="se">\"</span><span class="s2">Optout</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">Not replied</span><span class="se">\"</span><span class="s2">:2,</span><span class="se">\"</span><span class="s2">Not Responded</span><span class="se">\"</span><span class="s2">:2,</span><span class="se">\"</span><span class="s2">All</span><span class="se">\"</span><span class="s2">:4}}"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><a href="#id">ID</a>!</td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#json">JSON with &quot;organization_id&quot; as name and collection count as value</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 <h2 id='save-a-search'>Save a Search</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createSavedSearch</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">SavedSearchInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">createSavedSearch</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">savedSearch</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -7381,12 +7460,12 @@ Match the parent
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a saved search"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"shortcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Save Search"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">term</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Save this search</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">term</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Save this search</span><span class="se">\"</span><span class="s2">}"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-4'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7402,7 +7481,7 @@ Match the parent
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters'>Return Parameters</h3>
+<h3 id='return-parameters-2'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -7448,7 +7527,7 @@ Match the parent
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-5'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7470,7 +7549,7 @@ Match the parent
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-2'>Return Parameters</h3>
+<h3 id='return-parameters-3'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -7520,7 +7599,7 @@ Match the parent
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-6'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7536,7 +7615,7 @@ Match the parent
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-3'>Return Parameters</h3>
+<h3 id='return-parameters-4'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7697,19 +7776,17 @@ Match the parent
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello, how are you"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Sender"</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Sender"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello world"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Althea Hirthe"</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Althea Hirthe"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -8157,65 +8234,62 @@ Match the parent
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>## Create and send SessionTemplate
+</span></code></pre></div>
+<p><code></code></p>
+<h2 id='create-and-send-sessiontemplate'>Create and send SessionTemplate</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createAndSendMessage</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">MessageInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">createAndSendMessage</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">message</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">body</span><span class="w">
+      </span><span class="n">receiver</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">id</span><span class="w">
+        </span><span class="n">name</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">key</span><span class="w">
+      </span><span class="n">message</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">flow</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">OUTBOUND</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">type</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">TEXT</span><span class="err">"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">senderId</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">receiverId</span><span class="err">":</span><span class="w"> </span><span class="err">11</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">isHsm</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">params</span><span class="err">":</span><span class="w"> </span><span class="err">["</span><span class="n">Fifty</span><span class="err">"</span><span class="p">,</span><span class="w"> </span><span class="err">"</span><span class="n">Next</span><span class="w"> </span><span class="n">Week</span><span class="err">"]</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">templateId</span><span class="err">":</span><span class="w"> </span><span class="err">32</span><span class="w">
 
-```graphql
-mutation createAndSendMessage($input: MessageInput!) {
-  createAndSendMessage(input: $input) {
-    message {
-      id
-      body
-      receiver {
-        id
-        name
-      }
-    }
-    errors {
-      key
-      message
-    }
-  }
-}
-{
-  "input": {
-    "flow": "OUTBOUND",
-    "type": "TEXT",
-    "senderId": 1,
-    "receiverId": 11,
-    "isHsm": true,
-    "params": ["Fifty", "Next Week"],
-    "templateId": 32
-
-  }
-}
-</code></pre></div>
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <blockquote>
-<p>The above query returns JSON structured like this:
-<code>json
-{
-  &quot;data&quot;: {
-    &quot;createAndSendMessage&quot;: {
-      &quot;__typename&quot;: &quot;MessageResult&quot;,
-      &quot;errors&quot;: null,
-      &quot;message&quot;: {
-        &quot;__typename&quot;: &quot;Message&quot;,
-        &quot;body&quot;: &quot;Your Fifty points will expire on Next Week.&quot;,
-        &quot;id&quot;: &quot;241&quot;,
-        &quot;isHsm&quot;: true,
-        &quot;params&quot;: null,
-        &quot;receiver&quot;: {
-          &quot;__typename&quot;: &quot;Contact&quot;,
-          &quot;id&quot;: &quot;11&quot;,
-          &quot;name&quot;: &quot;Test&quot;
-        },
-        &quot;templateId&quot;: null
-      }
-    }
-  }
-}
-</code></p>
+<p>The above query returns JSON structured like this:</p>
 </blockquote>
-<h2 id='create-and-send-scheduled-message'>Create and send Scheduled Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createAndSendMessage</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">MessageInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"createAndSendMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"__typename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MessageResult"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"__typename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Message"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Fifty points will expire on Next Week."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"241"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isHsm"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"params"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"__typename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contact"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"templateId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='create-and-send-scheduled-message'>Create and send Scheduled Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createAndSendMessage</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">MessageInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">createAndSendMessage</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">message</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="w">
@@ -8316,9 +8390,7 @@ mutation createAndSendMessage($input: MessageInput!) {
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"createAndSendMessageToGroup"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"contactIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"8"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"contactIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"8"</span><span class="p">],</span><span class="w">
       </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -8417,9 +8489,7 @@ mutation createAndSendMessage($input: MessageInput!) {
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You need to provide correct number of parameters for hsm template"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"sendHsmMessage"</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"sendHsmMessage"</span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -8494,15 +8564,15 @@ mutation createAndSendMessage($input: MessageInput!) {
     </span><span class="nl">"sentMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OUTBOUND"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10397"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10397"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"484"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"91997612324"</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"484"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91997612324"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"917834811114"</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"917834811114"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -8551,16 +8621,16 @@ mutation createAndSendMessage($input: MessageInput!) {
     </span><span class="nl">"update_message_status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OUTBOUND"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10397"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10397"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sent"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"484"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"91997612324"</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"484"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91997612324"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"917834811114"</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"917834811114"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -8601,10 +8671,37 @@ mutation createAndSendMessage($input: MessageInput!) {
     </span><span class="nl">"sent_group_message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OUTBOUND"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10397"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10397"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sent"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"group_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='subscription-for-cleared-message'>Subscription for Cleared Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">subscription</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">cleared_messages</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">id</span><span class="w">
+    </span><span class="n">phone</span><span class="w">
+    </span><span class="n">name</span><span class="w">
+    </span><span class="n">lastMessageAt</span><span class="w">
+    </span><span class="n">optinTime</span><span class="w">
+    </span><span class="n">bspStatus</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"cleared_messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"bspStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HSM"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lastMessageAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"contact name"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"optinTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-25T16:12:18Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"917834811119"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -8618,7 +8715,7 @@ mutation createAndSendMessage($input: MessageInput!) {
 </tr>
 </thead><tbody>
 <tr>
-<td><a href="#messageresult">MessageResult</a></td>
+<td><a href="#contactresult">ContactResult</a></td>
 <td>An error or object</td>
 <td></td>
 <td></td>
@@ -8651,15 +8748,15 @@ mutation createAndSendMessage($input: MessageInput!) {
     </span><span class="nl">"sentMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Message"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"flow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OUTBOUND"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10397"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10397"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"917834811114"</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"917834811114"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"91998782231"</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91998782231"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -8676,6 +8773,54 @@ mutation createAndSendMessage($input: MessageInput!) {
 <tr>
 <td><a href="#messageresult">MessageResult</a></td>
 <td>An error or an object</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='remove-unread-status-from-messages-belonging-to-a-contact'>Remove unread status from messages belonging to a contact</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">markContactMessagesAsRead</span><span class="p">(</span><span class="nv">$contactId</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Gid</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">markContactMessagesAsRead</span><span class="p">(</span><span class="n">contactId</span><span class="p">:</span><span class="w"> </span><span class="nv">$contactId</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">contactId</span><span class="err">":</span><span class="w"> </span><span class="err">"26"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns the same contactID back</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"markContactMessagesAsRead"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"26"</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-11'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>contactId</td>
+<td><a href="#gid">Gid</a>!</td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-12'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#gid">Contact ID</a></td>
+<td>The same contact ID or an error object</td>
 <td></td>
 <td></td>
 </tr>
@@ -8754,6 +8899,18 @@ mutation createAndSendMessage($input: MessageInput!) {
 <td colspan="2" valign="top"><strong>isHsm</strong></td>
 <td valign="top"><a href="#boolean">Boolean</a></td>
 <td></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>isRead</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a></td>
+<td>Applicable only to inbound messages</td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top"><strong>isReplied</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a></td>
+<td>For inbound messages, false == Not replied, For outbound messages, false == Not Responded</td>
 </tr>
 
 <tr>
@@ -8964,7 +9121,6 @@ Match the tags excluded
 </td>
 </tr>
 
-
 </tbody>
 </table>
 <h3 id='messageinput'>MessageInput</h3>
@@ -8977,7 +9133,6 @@ Match the tags excluded
 </tr>
 </thead>
 <tbody>
-
 
 <tr>
 <td colspan="2" valign="top"><strong>body</strong></td>
@@ -8996,7 +9151,6 @@ Match the tags excluded
 <td valign="top"><a href="#message_flow_enum">MessageFlowEnum</a></td>
 <td></td>
 </tr>
-
 
 <tr>
 <td colspan="2" valign="top"><strong>sender_id</strong></td>
