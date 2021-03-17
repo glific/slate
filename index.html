@@ -12746,21 +12746,24 @@ each type: &quot;none&quot;, &quot;session&quot;, &quot;session_and_hsm&quot;, &
 provider contacts in the database.</p>
 
 <p>The function operates on csv style formatted data. The CSV data needs to be of the following format:
-<code>
-name,phone,Language,opt_in,delete
-test,9989329297,english,2021-03-09
+(check the shell tab on right)</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>name,phone,Language,opt_in,delete
+<span class="nb">test</span>,9989329297,english,2021-03-09
 test2,1111111111,hindi,2021-03-09,1
-</code>
-The method supports extracting this CSV data from three mechanisms:
-- file_path: A csv file location.
-- raw data: Passing in the csv as raw data.
-- url: A url from where the data can be downloaded as a csv.</p>
-
-<p>The method operates on the following logic:
-- If a row consists of delete column&#39;s value as 1, the particular contact is deleted from the database.
-If the contact is already not present in the datbase, the function ignores the row.</p>
+</code></pre></div>
+<p>The method supports extracting this CSV data from three mechanisms:</p>
 
 <ul>
+<li><p>file_path: A csv file location.</p></li>
+<li><p>raw data: Passing in the csv as raw data.</p></li>
+<li><p>url: A url from where the data can be downloaded as a csv.</p></li>
+</ul>
+
+<p>The method operates on the following logic:</p>
+
+<ul>
+<li><p>If a row consists of delete column&#39;s value as 1, the particular contact is deleted from the database.
+If the contact is already not present in the datbase, the function ignores the row.</p></li>
 <li><p>If a row is for a mobile number which does not exist in the databae and delete!=1, the contact is inserted in the databse.</p>
 
 <ul>
@@ -12771,25 +12774,28 @@ and then added to the database</li>
 <li><p>If a row is for a mobile number which exists in the database and <code>delete != 1</code>, the contact information is updated in the database.</p></li>
 </ul>
 
-<p>The method takes in the following parameters:
-- organization_id: the organization for which the contacts have to be imported.
-- group_label: The label of the group to which the contacts have to be added. The group is created,
-if a group by the provided label does not exist.
-- opts: opts allows the following key-word arguments to be supplied:
-    - file_path: The file_path of the csv file
-    - url: The url of csv file.
-    - data: The csv as a string.
-    - date_format: The format of the opt_in in the CSV. Default <code>{YYYY}-{M}-{D}</code></p>
-<h2 id='examples'>Examples</h2>
-<p>You will need to fun these examples from iex</p>
+<p>The method takes in the following parameters:</p>
 
 <ul>
-<li><code>Glific.Contacts.Import.import_contacts(1, &quot;Group&quot;, file_path: &quot;test.csv&quot;)</code></li>
-<li><code>Glific.Contacts.Import.import_contacts(1,&quot;Group&quot;, url: &quot;http://foo.com/bar.csv&quot;)</code></li>
-<li><code>Glific.Contacts.Import.import_contacts(1,&quot;Group&quot;, data: &quot;name,phone,Language,opt_in,delete\ntest2,1111111111,hindi,2021-03-09,1&quot;)</code></li>
-<li><code>Glific.Contacts.Import.import_contacts(1, &quot;Group&quot;, file_path: &quot;test.csv&quot;, date_format: &quot;{YYYY}-{M}-{D}&quot;)</code></li>
+<li><p>organization_id: the organization for which the contacts have to be imported.</p></li>
+<li><p>group_label: The label of the group to which the contacts have to be added. The group is created,
+if a group by the provided label does not exist.</p></li>
+<li><p>opts: opts allows the following key-word arguments to be supplied:</p>
+
+<ul>
+<li>file_path: The file_path of the csv file</li>
+<li>url: The url of csv file.</li>
+<li>data: The csv as a string.</li>
+<li>date_format: The format of the opt_in in the CSV. Default <code>{YYYY}-{M}-{D}</code></li>
+</ul></li>
 </ul>
-<h1 id='glific-system'>Glific System</h1><h2 id='objects'>Objects</h2><h3 id='inputerror'>InputError</h3>
+<h2 id='examples'>Examples</h2>
+<p>You will need to fun these examples from iex</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>iex&gt; Glific.Contacts.Import.import_contacts<span class="o">(</span>1, <span class="s2">"Group"</span>, file_path: <span class="s2">"test.csv"</span><span class="o">)</span>
+iex&gt; <span class="sb">`</span>Glific.Contacts.Import.import_contacts<span class="o">(</span>1,<span class="s2">"Group"</span>, url: <span class="s2">"http://foo.com/bar.csv"</span><span class="o">)</span>
+iex&gt; Glific.Contacts.Import.import_contacts<span class="o">(</span>1,<span class="s2">"Group"</span>, data: <span class="s2">"name,phone,Language,opt_in,delete</span><span class="se">\n</span><span class="s2">test2,1111111111,hindi,2021-03-09,1"</span><span class="o">)</span>
+iex&gt; Glific.Contacts.Import.import_contacts<span class="o">(</span>1, <span class="s2">"Group"</span>, file_path: <span class="s2">"test.csv"</span>, date_format: <span class="s2">"{YYYY}-{M}-{D}"</span><span class="o">)</span>
+</code></pre></div><h1 id='glific-system'>Glific System</h1><h2 id='objects'>Objects</h2><h3 id='inputerror'>InputError</h3>
 <p>An error encountered trying to persist input</p>
 
 <table>
