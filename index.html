@@ -938,7 +938,7 @@
               </ul>
           </li>
           <li>
-            <a href="#glific-contacts-import-module" class="toc-h1 toc-link" data-title="Glific.Contacts.Import Module">Glific.Contacts.Import Module</a>
+            <a href="#glific-contact-import" class="toc-h1 toc-link" data-title="Glific Contact Import">Glific Contact Import</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#import_contacts-organization_id-group_label-opts" class="toc-h2 toc-link" data-title="import_contacts(organization_id, group_label, opts \ [])">import_contacts(organization_id, group_label, opts \ [])</a>
@@ -12741,7 +12741,7 @@ each type: &quot;none&quot;, &quot;session&quot;, &quot;session_and_hsm&quot;, &
 </tr>
 </tbody>
 </table>
-<h1 id='glific-contacts-import-module'>Glific.Contacts.Import Module</h1><h2 id='import_contacts-organization_id-group_label-opts'>import_contacts(organization_id, group_label, opts \ [])</h2>
+<h1 id='glific-contact-import'>Glific Contact Import</h1><h2 id='import_contacts-organization_id-group_label-opts'>import_contacts(organization_id, group_label, opts \ [])</h2>
 <p>The <code>import_contacts</code> method can be used for performing bulk add/update/deletion of
 provider contacts in the database.</p>
 
@@ -12781,11 +12781,13 @@ if a group by the provided label does not exist.
     - data: The csv as a string.
     - date_format: The format of the opt_in in the CSV. Default <code>{YYYY}-{M}-{D}</code></p>
 <h2 id='examples'>Examples</h2>
+<p>You will need to fun these examples from iex</p>
+
 <ul>
-<li><code>Import.import_contacts(1, &quot;Group&quot;, file_path: &quot;test.csv&quot;)</code></li>
-<li><code>Import.import_contacts(1,&quot;Group&quot;, url: &quot;http://foo.com/bar.csv&quot;)</code></li>
-<li><code>Import.import_contacts(1,&quot;Group&quot;, data: &quot;name,phone,Language,opt_in,delete\ntest2,1111111111,hindi,2021-03-09,1&quot;)</code></li>
-<li><code>Import.import_contacts(1, &quot;Group&quot;, file_path: &quot;test.csv&quot;, date_format: &quot;{YYYY}-{M}-{D}&quot;)</code></li>
+<li><code>Glific.Contacts.Import.import_contacts(1, &quot;Group&quot;, file_path: &quot;test.csv&quot;)</code></li>
+<li><code>Glific.Contacts.Import.import_contacts(1,&quot;Group&quot;, url: &quot;http://foo.com/bar.csv&quot;)</code></li>
+<li><code>Glific.Contacts.Import.import_contacts(1,&quot;Group&quot;, data: &quot;name,phone,Language,opt_in,delete\ntest2,1111111111,hindi,2021-03-09,1&quot;)</code></li>
+<li><code>Glific.Contacts.Import.import_contacts(1, &quot;Group&quot;, file_path: &quot;test.csv&quot;, date_format: &quot;{YYYY}-{M}-{D}&quot;)</code></li>
 </ul>
 <h1 id='glific-system'>Glific System</h1><h2 id='objects'>Objects</h2><h3 id='inputerror'>InputError</h3>
 <p>An error encountered trying to persist input</p>
