@@ -765,6 +765,9 @@
                     <a href="#count-all-message-media" class="toc-h2 toc-link" data-title="Count all Message Media">Count all Message Media</a>
                   </li>
                   <li>
+                    <a href="#validate-a-media-url-and-type" class="toc-h2 toc-link" data-title="Validate a Media URL and type">Validate a Media URL and type</a>
+                  </li>
+                  <li>
                     <a href="#create-a-message-media" class="toc-h2 toc-link" data-title="Create a Message Media">Create a Message Media</a>
                   </li>
                   <li>
@@ -955,6 +958,14 @@
               </ul>
           </li>
           <li>
+            <a href="#saas" class="toc-h1 toc-link" data-title="SaaS">SaaS</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-an-organization-organization-contact-and-bsp-credentials" class="toc-h2 toc-link" data-title="Create an organization, organization contact and BSP credentials">Create an organization, organization contact and BSP credentials</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#glific-system" class="toc-h1 toc-link" data-title="Glific System">Glific System</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1121,8 +1132,7 @@ being appended to the variable indicated in the &quot;Call a Webhook&quot; node.
 </span></code></pre></div>
 <p>An example implementation of a webhook can be seen in our <a href="https://github.com/glific/glific/blob/master/lib/glific/clients/stir.ex">github repository</a></p>
 <h1 id='authentication'>Authentication</h1>
-<p>Authorization in Glific is still at a prototype stage and is not currently enforced by the system.
-We do <strong>not</strong> use GraphQL for authorization, but use REST to generate and renew tokens. The
+<p>We do <strong>not</strong> use GraphQL for authorization, but use REST to generate and renew tokens. The
 authentication tokens should be included in all GraphQL requests. This section will be expanded to also
 include roles and permissions. User management will be done via GraphQL</p>
 
@@ -1333,7 +1343,7 @@ that looks like the following:</p>
         </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"English"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"labelLocale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"English"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"localized"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -4203,6 +4213,11 @@ Match the phone
 <td></td>
 </tr>
 <tr>
+<td colspan="2" valign="top"><strong>languageId</strong></td>
+<td valign="top"><a href="#id">ID</a></td>
+<td></td>
+</tr>
+<tr>
 <td colspan="2" valign="top"><strong>isRestricted</strong></td>
 <td valign="top"><a href="#boolean">Boolean</a></td>
 <td></td>
@@ -4232,6 +4247,11 @@ Match the phone
 <tr>
 <td colspan="2" valign="top"><strong>password</strong></td>
 <td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>languageId</strong></td>
+<td valign="top"><a href="#id">ID</a></td>
 <td></td>
 </tr>
 </tbody>
@@ -9095,6 +9115,13 @@ Match the parent
 <td></td>
 </tr>
 
+
+<tr>
+<td colspan="2" valign="top"><strong>ContextMessage</strong></td>
+<td valign="top"><a href="#messagemedia">Message</a></td>
+<td>Context message that the user responded to</td>
+</tr>
+
 <tr>
 <td colspan="2" valign="top"><strong>isHsm</strong></td>
 <td valign="top"><a href="#boolean">Boolean</a></td>
@@ -9482,6 +9509,26 @@ Match the tags excluded
     </span><span class="nl">"countMessagesMedia"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='validate-a-media-url-and-type'>Validate a Media URL and type</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">validateMedia</span><span class="p">(</span><span class="nv">$url</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$type</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">validateMedia</span><span class="p">(</span><span class="n">url</span><span class="p">:</span><span class="w"> </span><span class="nv">$url</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">:</span><span class="w"> </span><span class="nv">$type</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"validateMedia"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">is_valid</span><span class="se">\"</span><span class="s2">: true, </span><span class="se">\"</span><span class="s2">message</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">success</span><span class="se">\"</span><span class="s2">}"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">OR</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"validateMedia"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">is_valid</span><span class="se">\"</span><span class="s2">: false, </span><span class="se">\"</span><span class="s2">message</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Media content-type is not valid</span><span class="se">\"</span><span class="s2">}"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='create-a-message-media'>Create a Message Media</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createMessageMedia</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="n">MessageMediaInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">createMessageMedia</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">messageMedia</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9550,7 +9597,7 @@ Match the tags excluded
     </span><span class="n">messageMedia</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="w">
       </span><span class="n">url</span><span class="w">
-      </span><span class="n">caption</span><span class="w"> 
+      </span><span class="n">caption</span><span class="w">
     </span><span class="p">}</span><span class="w">
     </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">key</span><span class="w">
@@ -13024,7 +13071,50 @@ if a group by the provided label does not exist.</p></li>
 iex&gt; <span class="sb">`</span>Glific.Contacts.Import.import_contacts<span class="o">(</span>1,<span class="s2">"Group"</span>, url: <span class="s2">"http://foo.com/bar.csv"</span><span class="o">)</span>
 iex&gt; Glific.Contacts.Import.import_contacts<span class="o">(</span>1,<span class="s2">"Group"</span>, data: <span class="s2">"name,phone,Language,opt_in,delete</span><span class="se">\n</span><span class="s2">test2,1111111111,hindi,2021-03-09,1"</span><span class="o">)</span>
 iex&gt; Glific.Contacts.Import.import_contacts<span class="o">(</span>1, <span class="s2">"Group"</span>, file_path: <span class="s2">"test.csv"</span>, date_format: <span class="s2">"{YYYY}-{M}-{D}"</span><span class="o">)</span>
-</code></pre></div><h1 id='glific-system'>Glific System</h1><h2 id='objects'>Objects</h2><h3 id='inputerror'>InputError</h3>
+</code></pre></div><h1 id='saas'>SaaS</h1>
+<p>Start of the documentation and functionality to run Glific as your very own SaaS. In keeping
+with our open source philosophy, everything we do will be open, to encourage more SaaS providers to
+offer Glific locally</p>
+
+<p>Billing with stripe is already included as part of the core platform, and hence will not be covered in this section.
+As we make advances in that area, we will add more documentation</p>
+<h2 id='create-an-organization-organization-contact-and-bsp-credentials'>Create an organization, organization contact and BSP credentials</h2>
+<p>One function to rule them all. Grab the minimum amount of information that we require from the user
+to bootstrap their account. All the other functionality can be done via the main Glific interface</p>
+
+<p>At this stage, this is open to the world. However the organization created is marked as not active AND
+not approved, so they really cannot login. In the next version, we will add simple OTP based authentication
+to ensure the Admin is opted in with the SaaS WhatsApp Business API Account.</p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">If</span> <span class="nx">you</span> <span class="nx">are</span> <span class="nx">using</span> <span class="nx">axios</span> <span class="nx">or</span> <span class="nx">other</span> <span class="nx">libraries</span><span class="p">,</span> <span class="nx">send</span> <span class="nx">the</span> <span class="nx">following</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">BODY</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">POST</span> <span class="nx">request</span>
+
+<span class="p">{</span>
+  <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Sample Organization</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">shortcode</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sample</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">phone</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">WhatsApp Business API Registered number</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">api_key</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Gupshup API Key</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">app_name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Gupshup App Name</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Email Address of Admin</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+
+<p>In the case of a validation failure</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"is_valid"</span><span class="p">:</span><span class="w"> </span><span class="err">FALSE</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Error Message 1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Error Message 2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Error Message 3"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Or in the case of success</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"is_valid"</span><span class="p">:</span><span class="w"> </span><span class="err">TRUE</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organization Object"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contact Object"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"credential"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Credential Object"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h1 id='glific-system'>Glific System</h1><h2 id='objects'>Objects</h2><h3 id='inputerror'>InputError</h3>
 <p>An error encountered trying to persist input</p>
 
 <table>
