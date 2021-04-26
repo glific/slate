@@ -785,6 +785,14 @@
               </ul>
           </li>
           <li>
+            <a href="#media-management" class="toc-h1 toc-link" data-title="Media Management">Media Management</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#upload-a-file" class="toc-h2 toc-link" data-title="Upload a file">Upload a file</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#session-template" class="toc-h1 toc-link" data-title="Session Template">Session Template</a>
               <ul class="toc-list-h2">
                   <li>
@@ -962,6 +970,12 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#create-an-organization-organization-contact-and-bsp-credentials" class="toc-h2 toc-link" data-title="Create an organization, organization contact and BSP credentials">Create an organization, organization contact and BSP credentials</a>
+                  </li>
+                  <li>
+                    <a href="#update-organization-status-isactive-or-isapproved" class="toc-h2 toc-link" data-title="Update Organization Status IsActive or IsApproved">Update Organization Status IsActive or IsApproved</a>
+                  </li>
+                  <li>
+                    <a href="#delete-organization-with-status-as-inactive" class="toc-h2 toc-link" data-title="Delete Organization with status as inactive">Delete Organization with status as inactive</a>
                   </li>
               </ul>
           </li>
@@ -9840,7 +9854,25 @@ Match the tags excluded
 
 </tbody>
 </table>
-<h1 id='session-template'>Session Template</h1><h2 id='get-all-session-templates'>Get All Session Templates</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">sessionTemplates</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">SessionTemplateFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$opts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h1 id='media-management'>Media Management</h1>
+<p>Start of the documentation and functionality to incorporate media management into Glific. Note
+that this will start off as a simple trivial layer over google cloud storage.</p>
+
+<p>Base functionality will be to upload the files to a GCS public bucket, get the url from GCS, to return to
+client (frontend). Client can then use this url, in a media message to send to WhatsApp user</p>
+<h2 id='upload-a-file'>Upload a file</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">uploadMedia</span><span class="p">(</span><span class="nv">$media</span><span class="p">:</span><span class="w"> </span><span class="n">Upload</span><span class="p">!,</span><span class="w"> </span><span class="nv">$type</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">uploadMedia</span><span class="p">(</span><span class="n">media</span><span class="p">:</span><span class="w"> </span><span class="nv">$media</span><span class="err">.</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">:</span><span class="w"> </span><span class="nv">$type</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"uploadMedia"</span><span class="p">:</span><span class="s2">"https://storage.googleapis.com/BUCKET/uploads/outbound/2021-17/NGO Main Account/70253d8b-e419-425f-ad24-7878eb8eb687.png"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h1 id='session-template'>Session Template</h1><h2 id='get-all-session-templates'>Get All Session Templates</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">sessionTemplates</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">SessionTemplateFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$opts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">sessionTemplates</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">:</span><span class="nv">$opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">id</span><span class="w">
     </span><span class="n">body</span><span class="w">
@@ -13103,7 +13135,7 @@ to ensure the Admin is opted in with the SaaS WhatsApp Business API Account.</p>
 <p>In the case of a validation failure</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"is_valid"</span><span class="p">:</span><span class="w"> </span><span class="err">FALSE</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Error Message 1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Error Message 2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Error Message 3"</span><span class="p">]</span><span class="w">
+  </span><span class="nl">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">email:</span><span class="w"> </span><span class="s2">"email is invalid"</span><span class="p">,</span><span class="w"> </span><span class="err">shortcode:</span><span class="w"> </span><span class="s2">"shortcode already taken"</span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Or in the case of success</p>
@@ -13114,7 +13146,221 @@ to ensure the Admin is opted in with the SaaS WhatsApp Business API Account.</p>
   </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contact Object"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"credential"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Credential Object"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='glific-system'>Glific System</h1><h2 id='objects'>Objects</h2><h3 id='inputerror'>InputError</h3>
+</span></code></pre></div><h2 id='update-organization-status-isactive-or-isapproved'>Update Organization Status IsActive or IsApproved</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateOrganizationStatus</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">OrganizationStatusInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updateOrganizationStatus</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">organization</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">email</span><span class="w">
+      </span><span class="n">isActive</span><span class="w">
+      </span><span class="n">isApproved</span><span class="w">
+      </span><span class="n">name</span><span class="w">
+      </span><span class="n">shortcode</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">key</span><span class="w">
+      </span><span class="n">message</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">isActive</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">isApproved</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">updateOrganizationId</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"updateOrganizationStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"__typename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organization"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isApproved"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Glific"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"shortcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"glific"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Enabled days Ids represets weekdays starting from 1 for Monday.</p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><a href="#id">ID</a>!</td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>input</td>
+<td><a href="#organizationstatusinput">OrganizationStatusInput</a></td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#organizationresult">OrganizationResult</a></td>
+<td>The updated organization object</td>
+</tr>
+</tbody></table>
+<h2 id='delete-organization-with-status-as-inactive'>Delete Organization with status as inactive</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">deleteInactiveOrganization</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">DeleteOrganizationInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">deleteInactiveOrganization</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">organization</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">email</span><span class="w">
+      </span><span class="n">isActive</span><span class="w">
+      </span><span class="n">isApproved</span><span class="w">
+      </span><span class="n">name</span><span class="w">
+      </span><span class="n">shortcode</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">key</span><span class="w">
+      </span><span class="n">message</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">isConfirmed</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">deleteOrganizationId</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"deleteInactiveOrganization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"__typename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organization"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isApproved"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Glific"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"shortcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"glific"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Enabled days Ids represets weekdays starting from 1 for Monday.</p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><a href="#id">ID</a>!</td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>input</td>
+<td><a href="#organizationstatusinput">OrganizationStatusInput</a></td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-2'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#organizationresult">OrganizationResult</a></td>
+<td>The updated organization object</td>
+</tr>
+</tbody></table>
+<h3 id='organizationstatusinput'>OrganizationStatusInput</h3>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>updateOrganizationId</strong></td>
+<td valign="top"><a href="#id">ID</a></td>
+<td>
+
+Unique
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>isActive</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>isApproved</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id='deleteinactiveorganization'>DeleteInactiveOrganization</h3>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>deleteOrganizationId</strong></td>
+<td valign="top"><a href="#id">ID</a></td>
+<td>
+
+Unique
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>isConfirmed</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id='glific-system'>Glific System</h1><h2 id='objects'>Objects</h2><h3 id='inputerror'>InputError</h3>
 <p>An error encountered trying to persist input</p>
 
 <table>
