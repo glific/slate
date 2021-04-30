@@ -444,6 +444,9 @@
                     <a href="#delete-an-organization" class="toc-h2 toc-link" data-title="Delete an Organization">Delete an Organization</a>
                   </li>
                   <li>
+                    <a href="#check-for-attachment-support-for-the-given-user" class="toc-h2 toc-link" data-title="Check for attachment support for the given user">Check for attachment support for the given user</a>
+                  </li>
+                  <li>
                     <a href="#get-list-of-timezones" class="toc-h2 toc-link" data-title="Get List of Timezones">Get List of Timezones</a>
                   </li>
                   <li>
@@ -790,6 +793,9 @@
                   <li>
                     <a href="#upload-a-file" class="toc-h2 toc-link" data-title="Upload a file">Upload a file</a>
                   </li>
+                  <li>
+                    <a href="#upload-a-buffer" class="toc-h2 toc-link" data-title="Upload a buffer">Upload a buffer</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -976,6 +982,9 @@
                   </li>
                   <li>
                     <a href="#delete-organization-with-status-as-inactive" class="toc-h2 toc-link" data-title="Delete Organization with status as inactive">Delete Organization with status as inactive</a>
+                  </li>
+                  <li>
+                    <a href="#reset-selected-tables-from-organization" class="toc-h2 toc-link" data-title="Reset selected tables from Organization">Reset selected tables from Organization</a>
                   </li>
               </ul>
           </li>
@@ -2997,6 +3006,31 @@ Match the shortcode of provider
 <td>An error object or empty</td>
 </tr>
 </tbody></table>
+<h2 id='check-for-attachment-support-for-the-given-user'>Check for attachment support for the given user</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">attachmentsEnabled</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">attachmentsEnabled</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"attachmentsEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='return-parameters-7'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#boolean">Boolean</a></td>
+<td>Have we enabled attachment support for this organization</td>
+</tr>
+</tbody></table>
 <h2 id='get-list-of-timezones'>Get List of Timezones</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">timezones</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">timezones</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3017,7 +3051,7 @@ Match the shortcode of provider
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This returns list of timezones</p>
-<h3 id='return-parameters-7'>Return Parameters</h3>
+<h3 id='return-parameters-8'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Type</th>
@@ -3042,7 +3076,7 @@ Match the shortcode of provider
     </span><span class="nl">"bspbalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">balance</span><span class="se">\"</span><span class="s2">:0.426}"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='return-parameters-8'>Return Parameters</h3>
+</span></code></pre></div><h3 id='return-parameters-9'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3077,7 +3111,7 @@ Match the shortcode of provider
     }"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='return-parameters-9'>Return Parameters</h3>
+</span></code></pre></div><h3 id='return-parameters-10'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3106,7 +3140,7 @@ Match the shortcode of provider
     </span><span class="nl">"simulator_release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">simulator_release</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">user_id</span><span class="se">\"</span><span class="s2">:1}"</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='return-parameters-10'>Return Parameters</h3>
+</span></code></pre></div><h3 id='return-parameters-11'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3196,6 +3230,16 @@ Match the shortcode of provider
 <tr>
 <td colspan="2" valign="top"><strong>signaturePhrase</strong></td>
 <td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>insertedAt</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>updatedAt</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
 <td></td>
 </tr>
 </tbody>
@@ -9860,8 +9904,8 @@ that this will start off as a simple trivial layer over google cloud storage.</p
 
 <p>Base functionality will be to upload the files to a GCS public bucket, get the url from GCS, to return to
 client (frontend). Client can then use this url, in a media message to send to WhatsApp user</p>
-<h2 id='upload-a-file'>Upload a file</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">uploadMedia</span><span class="p">(</span><span class="nv">$media</span><span class="p">:</span><span class="w"> </span><span class="n">Upload</span><span class="p">!,</span><span class="w"> </span><span class="nv">$type</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">uploadMedia</span><span class="p">(</span><span class="n">media</span><span class="p">:</span><span class="w"> </span><span class="nv">$media</span><span class="err">.</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">:</span><span class="w"> </span><span class="nv">$type</span><span class="p">)</span><span class="w">
+<h2 id='upload-a-file'>Upload a file</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">uploadMedia</span><span class="p">(</span><span class="nv">$media</span><span class="p">:</span><span class="w"> </span><span class="n">Upload</span><span class="p">!,</span><span class="w"> </span><span class="nv">$extension</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">uploadMedia</span><span class="p">(</span><span class="n">media</span><span class="p">:</span><span class="w"> </span><span class="nv">$media</span><span class="p">,</span><span class="w"> </span><span class="n">extension</span><span class="p">:</span><span class="w"> </span><span class="nv">$extension</span><span class="p">)</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -9872,7 +9916,51 @@ client (frontend). Client can then use this url, in a media message to send to W
     </span><span class="nl">"uploadMedia"</span><span class="p">:</span><span class="s2">"https://storage.googleapis.com/BUCKET/uploads/outbound/2021-17/NGO Main Account/70253d8b-e419-425f-ad24-7878eb8eb687.png"</span><span class="w">
    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='session-template'>Session Template</h1><h2 id='get-all-session-templates'>Get All Session Templates</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">sessionTemplates</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">SessionTemplateFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$opts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></code></pre></div><h2 id='upload-a-buffer'>Upload a buffer</h2>
+<p>The media blob has to be encoded in base64</p>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">uploadBlob</span><span class="p">(</span><span class="nv">$media</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$extension</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">uploadBlob</span><span class="p">(</span><span class="n">media</span><span class="p">:</span><span class="w"> </span><span class="nv">$media</span><span class="p">,</span><span class="w"> </span><span class="n">extension</span><span class="p">:</span><span class="w"> </span><span class="nv">$extension</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">media</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">W29iamVjdCBCbG9iXQ</span><span class="err">=="</span><span class="p">,</span><span class="w">
+    </span><span class="err">"</span><span class="n">extension</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">wav</span><span class="err">"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"uploadBlob"</span><span class="p">:</span><span class="s2">"https://storage.googleapis.com/BUCKET/uploads/outbound/2021-17/NGO Main Account/70253d8b-e419-425f-ad24-7878eb8eb687.png"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='blobinput'>BlobInput</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>media</strong></td>
+<td valign="top">[<a href="#string">String</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>extension</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id='session-template'>Session Template</h1><h2 id='get-all-session-templates'>Get All Session Templates</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">sessionTemplates</span><span class="p">(</span><span class="nv">$filter</span><span class="p">:</span><span class="w"> </span><span class="n">SessionTemplateFilter</span><span class="p">,</span><span class="w"> </span><span class="nv">$opts</span><span class="p">:</span><span class="w"> </span><span class="n">Opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">sessionTemplates</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="nv">$filter</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">:</span><span class="nv">$opts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">id</span><span class="w">
     </span><span class="n">body</span><span class="w">
@@ -13144,10 +13232,10 @@ to ensure the Admin is opted in with the SaaS WhatsApp Business API Account.</p>
   </span><span class="nl">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organization Object"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contact Object"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"credential"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Credential Object"</span><span class="w">
+  </span><span class="nl">"credential"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Message indicating creating a credential was successful"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='update-organization-status-isactive-or-isapproved'>Update Organization Status IsActive or IsApproved</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateOrganizationStatus</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">OrganizationStatusInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">updateOrganizationStatus</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></code></pre></div><h2 id='update-organization-status-isactive-or-isapproved'>Update Organization Status IsActive or IsApproved</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">updateOrganizationStatus</span><span class="p">(</span><span class="nv">$updateOrganizationid</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$isActive</span><span class="p">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">,</span><span class="w"> </span><span class="nv">$isApproved</span><span class="p">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updateOrganizationStatus</span><span class="p">(</span><span class="err">$</span><span class="n">updateOrganizationid</span><span class="p">:</span><span class="w"> </span><span class="n">updateOrganizationid</span><span class="p">,</span><span class="w"> </span><span class="err">$</span><span class="n">isActive</span><span class="p">:</span><span class="w"> </span><span class="n">isActive</span><span class="p">,</span><span class="w"> </span><span class="err">$</span><span class="n">isApproved</span><span class="p">:</span><span class="w"> </span><span class="n">isApproved</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w">
     </span><span class="n">organization</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">email</span><span class="w">
       </span><span class="n">isActive</span><span class="w">
@@ -13160,15 +13248,12 @@ to ensure the Admin is opted in with the SaaS WhatsApp Business API Account.</p>
       </span><span class="n">message</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
+</span><span class="err">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-  </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"1"</span><span class="p">,</span><span class="w">
-  </span><span class="err">"</span><span class="n">input</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="err">"</span><span class="n">isActive</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
-    </span><span class="err">"</span><span class="n">isApproved</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
-    </span><span class="err">"</span><span class="n">updateOrganizationId</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="p">,</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="err">"</span><span class="n">isActive</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">isApproved</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">updateOrganizationId</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -13189,9 +13274,7 @@ to ensure the Admin is opted in with the SaaS WhatsApp Business API Account.</p>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Enabled days Ids represets weekdays starting from 1 for Monday.</p>
-<h3 id='query-parameters'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -13201,14 +13284,20 @@ to ensure the Admin is opted in with the SaaS WhatsApp Business API Account.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
+<td>updateOrganizationId</td>
 <td><a href="#id">ID</a>!</td>
 <td>required</td>
 <td></td>
 </tr>
 <tr>
-<td>input</td>
-<td><a href="#organizationstatusinput">OrganizationStatusInput</a></td>
+<td>isActive</td>
+<td><a href="#boolean">Boolean</a></td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>isApproved</td>
+<td><a href="#boolean">Boolean</a></td>
 <td>required</td>
 <td></td>
 </tr>
@@ -13225,8 +13314,10 @@ to ensure the Admin is opted in with the SaaS WhatsApp Business API Account.</p>
 <td>The updated organization object</td>
 </tr>
 </tbody></table>
-<h2 id='delete-organization-with-status-as-inactive'>Delete Organization with status as inactive</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">deleteInactiveOrganization</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">DeleteOrganizationInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">deleteInactiveOrganization</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h2 id='delete-organization-with-status-as-inactive'>Delete Organization with status as inactive</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">deleteInactiveOrganization</span><span class="p">(</span><span class="nv">$deleteOrganizationID</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$isConfirmed</span><span class="p">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="err">deleteInactiveOrganization(</span><span class="w">
+    </span><span class="err">deleteOrganizationID:</span><span class="w"> </span><span class="err">$deleteOrganizationID</span><span class="p">,</span><span class="w">
+    </span><span class="err">isConfirmed:</span><span class="w"> </span><span class="err">$isConfirmed)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">organization</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="n">email</span><span class="w">
       </span><span class="n">isActive</span><span class="w">
@@ -13239,7 +13330,7 @@ to ensure the Admin is opted in with the SaaS WhatsApp Business API Account.</p>
       </span><span class="n">message</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
+</span><span class="err">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
   </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"1"</span><span class="p">,</span><span class="w">
@@ -13267,9 +13358,7 @@ to ensure the Admin is opted in with the SaaS WhatsApp Business API Account.</p>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Enabled days Ids represets weekdays starting from 1 for Monday.</p>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -13279,14 +13368,14 @@ to ensure the Admin is opted in with the SaaS WhatsApp Business API Account.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
+<td>deleteOrganizationID</td>
 <td><a href="#id">ID</a>!</td>
 <td>required</td>
 <td></td>
 </tr>
 <tr>
-<td>input</td>
-<td><a href="#organizationstatusinput">OrganizationStatusInput</a></td>
+<td>isConfirmed</td>
+<td><a href="#boolean">Boolean</a></td>
 <td>required</td>
 <td></td>
 </tr>
@@ -13301,6 +13390,69 @@ to ensure the Admin is opted in with the SaaS WhatsApp Business API Account.</p>
 <tr>
 <td><a href="#organizationresult">OrganizationResult</a></td>
 <td>The updated organization object</td>
+</tr>
+</tbody></table>
+<h2 id='reset-selected-tables-from-organization'>Reset selected tables from Organization</h2>
+<p>Used to delete potential test and sample data. Currently only deletes entries from
+<code>
+* Messages
+* Flow Results
+* Flow Context
+* Resets Contact Fields and Settings to empty
+</code></p>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">resetOrganization</span><span class="p">(</span><span class="nv">$resetOrganizationID</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$isConfirmed</span><span class="p">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="err">resetOrganization(</span><span class="w">
+    </span><span class="err">resetOrganizationID:</span><span class="w"> </span><span class="err">$resetOrganizationID</span><span class="p">,</span><span class="w">
+    </span><span class="err">isConfirmed:</span><span class="w"> </span><span class="err">$isConfirmed)</span><span class="w">
+</span><span class="err">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">reset_organization_id</span><span class="err">":</span><span class="w"> </span><span class="err">"2"</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">isConfirmed</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"resetOrganization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Successfully reset tables and fields of organization"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>resetOrganizationID</td>
+<td><a href="#id">ID!</a>!</td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>isConfirmed</td>
+<td><a href="#boolean">Boolean</a></td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-3'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#string">Status Message</a></td>
+<td>Message indicating successful completion</td>
 </tr>
 </tbody></table>
 <h3 id='organizationstatusinput'>OrganizationStatusInput</h3>
@@ -13329,32 +13481,6 @@ Unique
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>isApproved</strong></td>
-<td valign="top"><a href="#boolean">Boolean</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id='deleteinactiveorganization'>DeleteInactiveOrganization</h3>
-<table>
-<thead>
-<tr>
-<th colspan="2" align="left">Field</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td colspan="2" valign="top"><strong>deleteOrganizationId</strong></td>
-<td valign="top"><a href="#id">ID</a></td>
-<td>
-
-Unique
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>isConfirmed</strong></td>
 <td valign="top"><a href="#boolean">Boolean</a></td>
 <td></td>
 </tr>
