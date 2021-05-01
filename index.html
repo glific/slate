@@ -721,13 +721,16 @@
                     <a href="#create-and-send-scheduled-message" class="toc-h2 toc-link" data-title="Create and send Scheduled Message">Create and send Scheduled Message</a>
                   </li>
                   <li>
-                    <a href="#create-and-send-message-to-contacts-of-a-group" class="toc-h2 toc-link" data-title="Create and send Message to contacts of a group">Create and send Message to contacts of a group</a>
+                    <a href="#create-and-send-session-message-to-contacts-of-a-collection" class="toc-h2 toc-link" data-title="Create and send Session Message to contacts of a collection">Create and send Session Message to contacts of a collection</a>
                   </li>
                   <li>
-                    <a href="#send-hsm-message" class="toc-h2 toc-link" data-title="Send hsm Message">Send hsm Message</a>
+                    <a href="#send-hsm-message" class="toc-h2 toc-link" data-title="Send HSM Message">Send HSM Message</a>
                   </li>
                   <li>
-                    <a href="#send-media-hsm-message" class="toc-h2 toc-link" data-title="Send media hsm Message">Send media hsm Message</a>
+                    <a href="#send-hsm-message-to-contacts-of-a-collection" class="toc-h2 toc-link" data-title="Send HSM Message to contacts of a collection">Send HSM Message to contacts of a collection</a>
+                  </li>
+                  <li>
+                    <a href="#send-media-hsm-message" class="toc-h2 toc-link" data-title="Send Media HSM Message">Send Media HSM Message</a>
                   </li>
                   <li>
                     <a href="#subscription-for-sent-message" class="toc-h2 toc-link" data-title="Subscription for Sent Message">Subscription for Sent Message</a>
@@ -8531,7 +8534,7 @@ Match the parent
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='create-and-send-message-to-contacts-of-a-group'>Create and send Message to contacts of a group</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createAndSendMessageToGroup</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">MessageInput</span><span class="p">!,</span><span class="w"> </span><span class="nv">$groupId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h2 id='create-and-send-session-message-to-contacts-of-a-collection'>Create and send Session Message to contacts of a collection</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createAndSendMessageToGroup</span><span class="p">(</span><span class="nv">$input</span><span class="p">:</span><span class="w"> </span><span class="n">MessageInput</span><span class="p">!,</span><span class="w"> </span><span class="nv">$groupId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">createAndSendMessageToGroup</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="nv">$input</span><span class="p">,</span><span class="w"> </span><span class="n">groupId</span><span class="p">:</span><span class="w"> </span><span class="nv">$groupId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">success</span><span class="w">
     </span><span class="n">contactIds</span><span class="w">
@@ -8602,7 +8605,7 @@ Match the parent
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='send-hsm-message'>Send hsm Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">sendHsmMessage</span><span class="p">(</span><span class="nv">$templateId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$receiverId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$parameters</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="nb">String</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h2 id='send-hsm-message'>Send HSM Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">sendHsmMessage</span><span class="p">(</span><span class="nv">$templateId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$receiverId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$parameters</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="nb">String</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">sendHsmMessage</span><span class="p">(</span><span class="n">templateId</span><span class="p">:</span><span class="w"> </span><span class="nv">$templateId</span><span class="p">,</span><span class="w"> </span><span class="n">receiverId</span><span class="p">:</span><span class="w"> </span><span class="nv">$receiverId</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">:</span><span class="w"> </span><span class="nv">$parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">message</span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="w">
@@ -8705,7 +8708,84 @@ Match the parent
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='send-media-hsm-message'>Send media hsm Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createAndSendMessage</span><span class="p">(</span><span class="nv">$templateId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$mediaId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$receiverId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$parameters</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="nb">String</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h2 id='send-hsm-message-to-contacts-of-a-collection'>Send HSM Message to contacts of a collection</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">sendHsmMessageToGroup</span><span class="p">(</span><span class="nv">$templateId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$groupId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$parameters</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="nb">String</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">sendHsmMessage</span><span class="p">(</span><span class="n">templateId</span><span class="p">:</span><span class="w"> </span><span class="nv">$templateId</span><span class="p">,</span><span class="w"> </span><span class="n">groupId</span><span class="p">:</span><span class="w"> </span><span class="nv">$groupId</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">:</span><span class="w"> </span><span class="nv">$parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">success</span><span class="w">
+    </span><span class="n">contactIds</span><span class="w">
+    </span><span class="n">errors</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">key</span><span class="w">
+      </span><span class="n">message</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="err">"</span><span class="n">templateId</span><span class="err">":</span><span class="w"> </span><span class="err">34</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">groupId</span><span class="err">":</span><span class="w"> </span><span class="err">5</span><span class="p">,</span><span class="w">
+  </span><span class="err">"</span><span class="n">parameters</span><span class="err">":</span><span class="w"> </span><span class="err">[</span><span class="w">
+    </span><span class="err">"100"</span><span class="p">,</span><span class="w">
+    </span><span class="err">"30</span><span class="w"> </span><span class="n">Oct</span><span class="err">"</span><span class="w">
+  </span><span class="err">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"sendHsmMessageToGroup"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"contactIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"8"</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='query-parameters-11'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>templateId</td>
+<td><a href="#id">ID</a>!</td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>groupId</td>
+<td><a href="#id">ID</a>!</td>
+<td>required</td>
+<td></td>
+</tr>
+<tr>
+<td>parameters</td>
+<td>[<a href="#string">List of String</a>]!</td>
+<td>required</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='return-parameters-8'>Return Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>[<a href="#groupmessageresult">GroupMessageResult</a>]</td>
+<td>List of contact ids</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='send-media-hsm-message'>Send Media HSM Message</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">createAndSendMessage</span><span class="p">(</span><span class="nv">$templateId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$mediaId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$receiverId</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!,</span><span class="w"> </span><span class="nv">$parameters</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="nb">String</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">createAndSendMessage</span><span class="p">(</span><span class="n">templateId</span><span class="p">:</span><span class="w"> </span><span class="nv">$templateId</span><span class="p">,</span><span class="w"> </span><span class="n">mediaId</span><span class="p">:</span><span class="w"> </span><span class="nv">$mediaId</span><span class="p">,</span><span class="w"> </span><span class="n">receiverId</span><span class="p">:</span><span class="w"> </span><span class="nv">$receiverId</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">:</span><span class="w"> </span><span class="nv">$parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">message</span><span class="p">{</span><span class="w">
       </span><span class="n">id</span><span class="w">
@@ -8765,7 +8845,7 @@ Match the parent
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-11'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-12'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8799,7 +8879,7 @@ Match the parent
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-8'>Return Parameters</h3>
+<h3 id='return-parameters-9'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8855,7 +8935,7 @@ Match the parent
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='return-parameters-9'>Return Parameters</h3>
+</span></code></pre></div><h3 id='return-parameters-10'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8913,7 +8993,7 @@ Match the parent
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='return-parameters-10'>Return Parameters</h3>
+</span></code></pre></div><h3 id='return-parameters-11'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8983,7 +9063,7 @@ Match the parent
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='return-parameters-11'>Return Parameters</h3>
+</span></code></pre></div><h3 id='return-parameters-12'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -9039,7 +9119,7 @@ Match the parent
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='return-parameters-12'>Return Parameters</h3>
+</span></code></pre></div><h3 id='return-parameters-13'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -9071,7 +9151,7 @@ Match the parent
     </span><span class="nl">"markContactMessagesAsRead"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"26"</span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='query-parameters-12'>Query Parameters</h3>
+</span></code></pre></div><h3 id='query-parameters-13'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -9087,7 +9167,7 @@ Match the parent
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='return-parameters-13'>Return Parameters</h3>
+<h3 id='return-parameters-14'>Return Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
